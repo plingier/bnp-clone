@@ -61,7 +61,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				'financial-green': {
+					DEFAULT: 'hsl(var(--financial-green))',
+					dark: 'hsl(var(--financial-green-dark))'
+				},
+				'financial-light': 'hsl(var(--financial-light))',
+				'financial-accent': 'hsl(var(--financial-accent))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

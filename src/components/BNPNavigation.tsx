@@ -633,11 +633,16 @@ const BNPNavigation = () => {
                           </div>}
                         
                         {/* Column 5: Banner */}
-                        {item.banner && <div className="bg-financial-green text-white p-4 rounded space-y-3">
-                            <div className="text-xs font-bold">{item.banner.title}</div>
-                            <h4 className="font-semibold">{item.banner.subtitle}</h4>
-                            <p className="text-sm">{item.banner.description}</p>
-                            <Button variant="secondary" size="sm" className="bg-white text-financial-green hover:bg-gray-100" asChild>
+                        {item.banner && <div className="bg-financial-green text-white p-6 rounded-lg space-y-4">
+                            <div className="text-xs font-bold tracking-wide uppercase">{item.banner.title}</div>
+                            {item.banner.subtitle && <h4 className="font-semibold text-base">{item.banner.subtitle}</h4>}
+                            <p className="text-sm leading-relaxed">{item.banner.description}</p>
+                            <Button 
+                              variant="secondary" 
+                              size="sm" 
+                              className="bg-white text-financial-green hover:bg-gray-50 font-medium rounded-lg px-4 py-2 transition-colors" 
+                              asChild
+                            >
                               <a href={item.banner.href}>{item.banner.cta}</a>
                             </Button>
                           </div>}
