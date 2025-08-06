@@ -4,6 +4,7 @@ import bankingAppImage from "@/assets/banking-app-phone.jpg";
 import TitleWidth from "@/components/TitleWidth";
 import RichText from "@/components/RichText";
 import { ProductCardGrid } from "@/components/ProductCard";
+import { MultiPurposeGrid } from "@/components/MultiPurpose";
 import { MessageSquare, Calendar, Phone, ArrowRight, CreditCard } from "lucide-react";
 
 const Index = () => {
@@ -242,6 +243,104 @@ const Index = () => {
                     description: "Contactloos betalen met uw smartphone.",
                     button: {
                       text: "Meer info",
+                      href: "#"
+                    }
+                  }
+                ]}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* MultiPurpose Component Examples */}
+        <div className="px-6 md:px-10 lg:px-12">
+          <div className="space-y-16">
+            {/* Single Column Layout */}
+            <div className="space-y-8">
+              <TitleWidth
+                label="SINGLE COLUMN"
+                title="Pakket Diefstal+"
+                description="Uitgebreide dekking voor al uw bezittingen met onze premium verzekeringspakketten."
+              />
+              
+              <MultiPurposeGrid
+                itemsPerRow={1}
+                items={[
+                  {
+                    title: "Pack Diefstal+",
+                    description: "Voeg dit optionele pack toe aan uw verzekering Top Woning van AG en profiteer van extra waarborgen en dienstverlening bij diefstal.",
+                    button: {
+                      text: "Commercieel document",
+                      href: "#"
+                    }
+                  }
+                ]}
+              />
+            </div>
+
+            {/* Two Column Layout */}
+            <div className="space-y-8">
+              <TitleWidth
+                label="TWO COLUMNS"
+                title="Dual Protection Packages"
+                description="Kies uit onze populaire verzekeringspakketten voor optimale bescherming."
+              />
+              
+              <MultiPurposeGrid
+                itemsPerRow={2}
+                items={[
+                  {
+                    title: "Pack Diefstal+",
+                    description: "Voeg dit optionele pack toe aan uw verzekering Top Woning van AG en profiteer van extra waarborgen en dienstverlening bij diefstal.",
+                    button: {
+                      text: "Commercieel document",
+                      href: "#"
+                    }
+                  },
+                  {
+                    title: "Pack Tuin",
+                    description: "Met Pack Tuin breidt u de waarborgen van uw verzekering Top Woning van AG uit naar uw tuin en/of het ingericht terras van uw appartement.",
+                    button: {
+                      text: "Commercieel document",
+                      href: "#"
+                    }
+                  }
+                ]}
+              />
+            </div>
+
+            {/* Three Column Layout */}
+            <div className="space-y-8">
+              <TitleWidth
+                label="THREE COLUMNS"
+                title="Complete Protection Suite"
+                description="Ontdek onze volledige range van verzekeringspakketten voor elke situatie."
+              />
+              
+              <MultiPurposeGrid
+                itemsPerRow={3}
+                items={[
+                  {
+                    title: "Pack Diefstal+",
+                    description: "Voeg dit optionele pack toe aan uw verzekering Top Woning van AG en profiteer van extra waarborgen en dienstverlening bij diefstal.",
+                    button: {
+                      text: "Commercieel document",
+                      href: "#"
+                    }
+                  },
+                  {
+                    title: "Pack Tuin",
+                    description: "Met Pack Tuin breidt u de waarborgen van uw verzekering Top Woning van AG uit naar uw tuin en/of het ingericht terras van uw appartement.",
+                    button: {
+                      text: "Commercieel document",
+                      href: "#"
+                    }
+                  },
+                  {
+                    title: "Waarborg Alle Risico's Woning van AG",
+                    description: "Deze waarborg is een optionele aanvulling op de brandverzekering Top Woning van AG voor eigenaars. Hij dekt alle mogelijke materiële schade, ongeacht de oorzaak.",
+                    button: {
+                      text: "Ontdek de waarborg Alle Risico's Woning van AG",
                       href: "#"
                     }
                   }
