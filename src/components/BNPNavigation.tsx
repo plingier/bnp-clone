@@ -610,9 +610,9 @@ const BNPNavigation = () => {
                     <NavigationMenuTrigger className="text-gray-900 hover:text-financial-green font-medium">
                       {item.title}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="grid grid-cols-5 gap-6 p-6 w-full max-w-6xl overflow-hidden">{/* Fixed width issue */}
-                        {/* Columns 1-3: Main content */}
+                     <NavigationMenuContent className="bg-white border border-gray-200 shadow-lg">
+                       <div className="grid grid-cols-5 gap-6 p-6 w-[1200px] bg-white">
+                         {/* Columns 1-3: Main content */}
                         {item.sections.map((section, idx) => <div key={idx} className="space-y-3">
                             <h4 className="font-semibold text-gray-900">{section.title}</h4>
                             <ul className="space-y-2">
