@@ -29,7 +29,7 @@ export const ProductCard = ({ image, title, description, button, className }: Pr
       className
     )}>
       {/* Image Section */}
-      <div className="aspect-[4/3] overflow-hidden">
+      <div className="overflow-hidden">
         <img
           src={image.src}
           alt={image.alt}
