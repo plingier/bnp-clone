@@ -17,43 +17,83 @@ const BNPNavigation = () => {
     title: "Dagelijks bankieren",
     sections: [{
       title: "Rekeningen",
-      links: [
-        { text: "Betaalrekeningen vergelijken", href: "/nl/public/particulieren/dagelijks-bankieren/bankrekeningen/zichtrekening-vergelijken" },
-        { text: "Betaalrekening voor jongeren", href: "/nl/public/particulieren/dagelijks-bankieren/bankrekeningen/zichtrekening/hello4you" },
-        { text: "Betaalrekening voor kinderen", href: "/nl/public/particulieren/dagelijks-bankieren/bankrekeningen/zichtrekening/jongerenrekening" },
-        { text: "Spaarrekeningen – Algemene info", href: "/nl/public/particulieren/sparen-en-beleggen/spaarinfo" },
-        { text: "Onze spaarrekeningen", href: "/nl/public/particulieren/sparen-en-beleggen/spaarrekening-vergelijken" }
-      ]
+      links: [{
+        text: "Betaalrekeningen vergelijken",
+        href: "/nl/public/particulieren/dagelijks-bankieren/bankrekeningen/zichtrekening-vergelijken"
+      }, {
+        text: "Betaalrekening voor jongeren",
+        href: "/nl/public/particulieren/dagelijks-bankieren/bankrekeningen/zichtrekening/hello4you"
+      }, {
+        text: "Betaalrekening voor kinderen",
+        href: "/nl/public/particulieren/dagelijks-bankieren/bankrekeningen/zichtrekening/jongerenrekening"
+      }, {
+        text: "Spaarrekeningen – Algemene info",
+        href: "/nl/public/particulieren/sparen-en-beleggen/spaarinfo"
+      }, {
+        text: "Onze spaarrekeningen",
+        href: "/nl/public/particulieren/sparen-en-beleggen/spaarrekening-vergelijken"
+      }]
     }, {
       title: "Bankkaarten",
-      links: [
-        { text: "Bancontact-Visa Debit-debetkaart", href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/debetkaart/visa-debit" },
-        { text: "Vergelijk onze kredietkaarten", href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart" },
-        { text: "Visa kredietkaart", href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart/visa-classic" },
-        { text: "Mastercard Gold kredietkaart", href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart/mastercard-gold" },
-        { text: "Kredietkaart voor jongeren", href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart/visa-hello" },
-        { text: "Al onze oplossingen", href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten" }
-      ]
+      links: [{
+        text: "Bancontact-Visa Debit-debetkaart",
+        href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/debetkaart/visa-debit"
+      }, {
+        text: "Vergelijk onze kredietkaarten",
+        href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart"
+      }, {
+        text: "Visa kredietkaart",
+        href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart/visa-classic"
+      }, {
+        text: "Mastercard Gold kredietkaart",
+        href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart/mastercard-gold"
+      }, {
+        text: "Kredietkaart voor jongeren",
+        href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart/visa-hello"
+      }, {
+        text: "Al onze oplossingen",
+        href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten"
+      }]
     }, {
       title: "Betalen",
-      links: [
-        { text: "Met Easy Banking App", href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app" },
-        { text: "Met Easy Banking Web", href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-web" },
-        { text: "Contactloos betalen", href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/mobiel-betalen" },
-        { text: "CASH-punten netwerk", href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/bankautomaat/points-cash" },
-        { text: "In het buitenland", href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/betalen-buitenland" },
-        { text: "Overschrijven, IBAN, domiciliëring, Zoomit ...", href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/soorten-betaalmiddelen" },
-        { text: "Veilig online", href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/online-veiligheid" }
-      ]
+      links: [{
+        text: "Met Easy Banking App",
+        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app"
+      }, {
+        text: "Met Easy Banking Web",
+        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-web"
+      }, {
+        text: "Contactloos betalen",
+        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/mobiel-betalen"
+      }, {
+        text: "CASH-punten netwerk",
+        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/bankautomaat/points-cash"
+      }, {
+        text: "In het buitenland",
+        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/betalen-buitenland"
+      }, {
+        text: "Overschrijven, IBAN, domiciliëring, Zoomit ...",
+        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/soorten-betaalmiddelen"
+      }, {
+        text: "Veilig online",
+        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/online-veiligheid"
+      }]
     }],
     expertise: {
       title: "Onze expertise",
-      content: [
-        { text: "Selfbanking met Easy Banking App en Web", href: "/nl/public/particulieren/dagelijks-bankieren/zelf-bankieren" },
-        { text: "Betaaloplossingen", href: "https://mylife.bnpparibasfortis.be/nl/nieuwe-betaalmiddelen" },
-        { text: "Welke betaalkaart waar en wanneer gebruiken?", href: "https://mylife.bnpparibasfortis.be/nl/nieuwe-betaalmiddelen/betaal-optimaal-van-debetkaart-tot-kredietkaart" },
-        { text: "Advies op afstand of face-to-face", href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten" }
-      ]
+      content: [{
+        text: "Selfbanking met Easy Banking App en Web",
+        href: "/nl/public/particulieren/dagelijks-bankieren/zelf-bankieren"
+      }, {
+        text: "Betaaloplossingen",
+        href: "https://mylife.bnpparibasfortis.be/nl/nieuwe-betaalmiddelen"
+      }, {
+        text: "Welke betaalkaart waar en wanneer gebruiken?",
+        href: "https://mylife.bnpparibasfortis.be/nl/nieuwe-betaalmiddelen/betaal-optimaal-van-debetkaart-tot-kredietkaart"
+      }, {
+        text: "Advies op afstand of face-to-face",
+        href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten"
+      }]
     },
     banner: {
       title: "Wist u dat ...",
@@ -66,43 +106,83 @@ const BNPNavigation = () => {
     title: "Sparen en beleggen",
     sections: [{
       title: "Beleggen",
-      links: [
-        { text: "Beleggen met BNP Paribas Fortis", href: "/nl/public/particulieren/sparen-en-beleggen/investeren/bnp-paribas-fortis" },
-        { text: "Beleggen voor beginners", href: "/nl/public/particulieren/sparen-en-beleggen/investeren/starten" },
-        { text: "Beleggen zonder advies", href: "/nl/public/particulieren/sparen-en-beleggen/investeren/zelf" },
-        { text: "Beleggen met advies", href: "/nl/public/particulieren/sparen-en-beleggen/investeren/beleggingsadvies" }
-      ]
+      links: [{
+        text: "Beleggen met BNP Paribas Fortis",
+        href: "/nl/public/particulieren/sparen-en-beleggen/investeren/bnp-paribas-fortis"
+      }, {
+        text: "Beleggen voor beginners",
+        href: "/nl/public/particulieren/sparen-en-beleggen/investeren/starten"
+      }, {
+        text: "Beleggen zonder advies",
+        href: "/nl/public/particulieren/sparen-en-beleggen/investeren/zelf"
+      }, {
+        text: "Beleggen met advies",
+        href: "/nl/public/particulieren/sparen-en-beleggen/investeren/beleggingsadvies"
+      }]
     }, {
       title: "Sparen en beleggen met een doel",
-      links: [
-        { text: "Pensioensparen", href: "/nl/public/particulieren/sparen-en-beleggen/pensioensparen" },
-        { text: "Fiscaal sparen", href: "/nl/public/particulieren/sparen-en-beleggen/voordelen-pensioensparen" },
-        { text: "Financieel beschermen van uw dierbaren", href: "/nl/public/particulieren/sparen-en-beleggen/financiele-bescherming" }
-      ]
+      links: [{
+        text: "Pensioensparen",
+        href: "/nl/public/particulieren/sparen-en-beleggen/pensioensparen"
+      }, {
+        text: "Fiscaal sparen",
+        href: "/nl/public/particulieren/sparen-en-beleggen/voordelen-pensioensparen"
+      }, {
+        text: "Financieel beschermen van uw dierbaren",
+        href: "/nl/public/particulieren/sparen-en-beleggen/financiele-bescherming"
+      }]
     }, {
       title: "Onze beleggingsoplossingen",
-      links: [
-        { text: "Aanbod van de maand", href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsaanbod" },
-        { text: "Beleggingsnieuws", href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsnieuws" },
-        { text: "Spaarrekeningen", href: "/nl/public/particulieren/sparen-en-beleggen/spaarrekening-vergelijken" },
-        { text: "Aandelen", href: "/nl/public/particulieren/sparen-en-beleggen/aandelen" },
-        { text: "Beleggingsfondsen", href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsfondsen" },
-        { text: "Financiële levensverzekeringen", href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsverzekeringen" },
-        { text: "Kasbons", href: "/nl/public/particulieren/sparen-en-beleggen/kasbon" },
-        { text: "Obligaties", href: "/nl/public/particulieren/sparen-en-beleggen/obligaties" },
-        { text: "Gestructureerde producten", href: "/nl/public/particulieren/sparen-en-beleggen/gestructureerde-producten" },
-        { text: "Al onze oplossingen", href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsproducten" }
-      ]
+      links: [{
+        text: "Aanbod van de maand",
+        href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsaanbod"
+      }, {
+        text: "Beleggingsnieuws",
+        href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsnieuws"
+      }, {
+        text: "Spaarrekeningen",
+        href: "/nl/public/particulieren/sparen-en-beleggen/spaarrekening-vergelijken"
+      }, {
+        text: "Aandelen",
+        href: "/nl/public/particulieren/sparen-en-beleggen/aandelen"
+      }, {
+        text: "Beleggingsfondsen",
+        href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsfondsen"
+      }, {
+        text: "Financiële levensverzekeringen",
+        href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsverzekeringen"
+      }, {
+        text: "Kasbons",
+        href: "/nl/public/particulieren/sparen-en-beleggen/kasbon"
+      }, {
+        text: "Obligaties",
+        href: "/nl/public/particulieren/sparen-en-beleggen/obligaties"
+      }, {
+        text: "Gestructureerde producten",
+        href: "/nl/public/particulieren/sparen-en-beleggen/gestructureerde-producten"
+      }, {
+        text: "Al onze oplossingen",
+        href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsproducten"
+      }]
     }],
     expertise: {
       title: "Onze expertise",
-      content: [
-        { text: "Beginnen sparen of beleggen?", href: "https://mylife.bnpparibasfortis.be/nl/budget/starten-met-sparen-of-beleggen" },
-        { text: "Sparen voor uw pensioen : wat moet u weten?", href: "https://www.bnpparibasfortis.be/nl/public/article/sparen-en-beleggen/pensioensparen-wat-moet-u-weten" },
-        { text: "Expertise via Private Banking", href: "/nl/public/private-banking/vermogensbeheer/vermogensplanning" },
-        { text: "Priority Banking Exclusive", href: "/nl/public/particulieren/dagelijks-bankieren/priority-banking-exclusive" },
-        { text: "Advies op afstand of face-to-face", href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten" }
-      ]
+      content: [{
+        text: "Beginnen sparen of beleggen?",
+        href: "https://mylife.bnpparibasfortis.be/nl/budget/starten-met-sparen-of-beleggen"
+      }, {
+        text: "Sparen voor uw pensioen : wat moet u weten?",
+        href: "https://www.bnpparibasfortis.be/nl/public/article/sparen-en-beleggen/pensioensparen-wat-moet-u-weten"
+      }, {
+        text: "Expertise via Private Banking",
+        href: "/nl/public/private-banking/vermogensbeheer/vermogensplanning"
+      }, {
+        text: "Priority Banking Exclusive",
+        href: "/nl/public/particulieren/dagelijks-bankieren/priority-banking-exclusive"
+      }, {
+        text: "Advies op afstand of face-to-face",
+        href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten"
+      }]
     },
     banner: {
       title: "Wist u dat ...",
@@ -115,38 +195,68 @@ const BNPNavigation = () => {
     title: "Lenen",
     sections: [{
       title: "Lenen voor een vastgoedproject",
-      links: [
-        { text: "Hypothecair krediet", href: "/nl/public/particulieren/lenen/woonlening/hypothecaire-lening" },
-        { text: "Energielening", href: "/nl/public/particulieren/lenen/woonlening/energielening" },
-        { text: "Renovatielening", href: "/nl/public/particulieren/lenen/woonlening/renovatielening" },
-        { text: "Overbruggingskrediet", href: "/nl/public/particulieren/lenen/woonlening/overbruggingskrediet" },
-        { text: "Al onze oplossingen", href: "/nl/public/particulieren/lenen/woonlening" }
-      ]
+      links: [{
+        text: "Hypothecair krediet",
+        href: "/nl/public/particulieren/lenen/woonlening/hypothecaire-lening"
+      }, {
+        text: "Energielening",
+        href: "/nl/public/particulieren/lenen/woonlening/energielening"
+      }, {
+        text: "Renovatielening",
+        href: "/nl/public/particulieren/lenen/woonlening/renovatielening"
+      }, {
+        text: "Overbruggingskrediet",
+        href: "/nl/public/particulieren/lenen/woonlening/overbruggingskrediet"
+      }, {
+        text: "Al onze oplossingen",
+        href: "/nl/public/particulieren/lenen/woonlening"
+      }]
     }, {
       title: "Lenen voor een voertuig",
-      links: [
-        { text: "Lening op afbetaling voor een nieuw voertuig", href: "/nl/public/particulieren/lenen/autolening/simulatie" },
-        { text: "Lening op afbetaling voor een tweedehands voertuig", href: "/nl/public/particulieren/lenen/autolening/tweedehands" },
-        { text: "Lening op afbetaling voor een fiets en zachte mobiliteit", href: "/nl/public/particulieren/lenen/autolening/fietslening" },
-        { text: "Private lease", href: "/nl/public/particulieren/lenen/autolening/leasing" },
-        { text: "Al onze oplossingen", href: "/nl/public/particulieren/lenen/autolening" }
-      ]
+      links: [{
+        text: "Lening op afbetaling voor een nieuw voertuig",
+        href: "/nl/public/particulieren/lenen/autolening/simulatie"
+      }, {
+        text: "Lening op afbetaling voor een tweedehands voertuig",
+        href: "/nl/public/particulieren/lenen/autolening/tweedehands"
+      }, {
+        text: "Lening op afbetaling voor een fiets en zachte mobiliteit",
+        href: "/nl/public/particulieren/lenen/autolening/fietslening"
+      }, {
+        text: "Private lease",
+        href: "/nl/public/particulieren/lenen/autolening/leasing"
+      }, {
+        text: "Al onze oplossingen",
+        href: "/nl/public/particulieren/lenen/autolening"
+      }]
     }, {
       title: "Lenen voor een project",
-      links: [
-        { text: "Persoonlijke lening - Lening op afbetaling", href: "/nl/public/particulieren/lenen/persoonlijke-lening" },
-        { text: "Kredietopening", href: "/nl/public/particulieren/lenen/geldreserve" },
-        { text: "Al onze oplossingen", href: "/nl/public/particulieren/lenen/geldreserve" }
-      ]
+      links: [{
+        text: "Persoonlijke lening - Lening op afbetaling",
+        href: "/nl/public/particulieren/lenen/persoonlijke-lening"
+      }, {
+        text: "Kredietopening",
+        href: "/nl/public/particulieren/lenen/geldreserve"
+      }, {
+        text: "Al onze oplossingen",
+        href: "/nl/public/particulieren/lenen/geldreserve"
+      }]
     }],
     expertise: {
       title: "Onze expertise",
-      content: [
-        { text: "Alles weten over duurzaam wonen", href: "https://mylife.bnpparibasfortis.be/nl/uw-vastgoedproject" },
-        { text: "Alles weten over duurzame mobiliteit", href: "https://mylife.bnpparibasfortis.be/nl/mobiliteit" },
-        { text: "Alles weten over budgetbeheer", href: "https://mylife.bnpparibasfortis.be/nl/budget" },
-        { text: "Advies op afstand of face-to-face", href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten" }
-      ]
+      content: [{
+        text: "Alles weten over duurzaam wonen",
+        href: "https://mylife.bnpparibasfortis.be/nl/uw-vastgoedproject"
+      }, {
+        text: "Alles weten over duurzame mobiliteit",
+        href: "https://mylife.bnpparibasfortis.be/nl/mobiliteit"
+      }, {
+        text: "Alles weten over budgetbeheer",
+        href: "https://mylife.bnpparibasfortis.be/nl/budget"
+      }, {
+        text: "Advies op afstand of face-to-face",
+        href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten"
+      }]
     },
     banner: {
       title: "Een EPC-certificaat?",
@@ -159,49 +269,101 @@ const BNPNavigation = () => {
     title: "Verzekeren",
     sections: [{
       title: "Beschermen van uw gezin",
-      links: [
-        { text: "Familiale verzekering", href: "/nl/public/particulieren/verzekeren/familiale-verzekeringen/top-familiale" },
-        { text: "Globale rechtsbijstand", href: "/nl/public/particulieren/verzekeren/familiale-verzekeringen/providis-globale-rechtsbijstand" },
-        { text: "Hospitalisatieverzekering", href: "/nl/public/particulieren/verzekeren/hospitalisatieverzekering" },
-        { text: "Ongevallenverzekering", href: "/nl/public/particulieren/verzekeren/familiale-verzekeringen/ongevallenverzekering" },
-        { text: "Reisverzekering", href: "/nl/public/particulieren/verzekeren/reisverzekering" },
-        { text: "Levens- en overlijdensverzekeringen", href: "/nl/public/particulieren/verzekeren/levensverzekering" },
-        { text: "Al onze oplossingen", href: "/nl/public/particulieren/verzekeren/familie-verzekeringen" }
-      ]
+      links: [{
+        text: "Familiale verzekering",
+        href: "/nl/public/particulieren/verzekeren/familiale-verzekeringen/top-familiale"
+      }, {
+        text: "Globale rechtsbijstand",
+        href: "/nl/public/particulieren/verzekeren/familiale-verzekeringen/providis-globale-rechtsbijstand"
+      }, {
+        text: "Hospitalisatieverzekering",
+        href: "/nl/public/particulieren/verzekeren/hospitalisatieverzekering"
+      }, {
+        text: "Ongevallenverzekering",
+        href: "/nl/public/particulieren/verzekeren/familiale-verzekeringen/ongevallenverzekering"
+      }, {
+        text: "Reisverzekering",
+        href: "/nl/public/particulieren/verzekeren/reisverzekering"
+      }, {
+        text: "Levens- en overlijdensverzekeringen",
+        href: "/nl/public/particulieren/verzekeren/levensverzekering"
+      }, {
+        text: "Al onze oplossingen",
+        href: "/nl/public/particulieren/verzekeren/familie-verzekeringen"
+      }]
     }, {
       title: "Beschermen van uw woning",
-      links: [
-        { text: "Woningverzekering eigenaar", href: "/nl/public/particulieren/verzekeren/brandverzekeringen/eigenaar" },
-        { text: "Woningverzekering huurder", href: "/nl/public/particulieren/verzekeren/brandverzekeringen/huurder" },
-        { text: "Woningverzekering verhuurder", href: "/nl/public/particulieren/verzekeren/brandverzekeringen/verhuurder" },
-        { text: "Diefstalverzekering", href: "/nl/public/particulieren/verzekeren/brandverzekeringen/diefstalverzekering" },
-        { text: "Homiris telebewaking", href: "/nl/public/particulieren/verzekeren/homiris" },
-        { text: "Rechtsbijstandsverzekering", href: "/nl/public/particulieren/verzekeren/brandverzekeringen/rechtsbijstand" },
-        { text: "Al onze oplossingen", href: "/nl/public/particulieren/verzekeren/brandverzekeringen" }
-      ]
+      links: [{
+        text: "Woningverzekering eigenaar",
+        href: "/nl/public/particulieren/verzekeren/brandverzekeringen/eigenaar"
+      }, {
+        text: "Woningverzekering huurder",
+        href: "/nl/public/particulieren/verzekeren/brandverzekeringen/huurder"
+      }, {
+        text: "Woningverzekering verhuurder",
+        href: "/nl/public/particulieren/verzekeren/brandverzekeringen/verhuurder"
+      }, {
+        text: "Diefstalverzekering",
+        href: "/nl/public/particulieren/verzekeren/brandverzekeringen/diefstalverzekering"
+      }, {
+        text: "Homiris telebewaking",
+        href: "/nl/public/particulieren/verzekeren/homiris"
+      }, {
+        text: "Rechtsbijstandsverzekering",
+        href: "/nl/public/particulieren/verzekeren/brandverzekeringen/rechtsbijstand"
+      }, {
+        text: "Al onze oplossingen",
+        href: "/nl/public/particulieren/verzekeren/brandverzekeringen"
+      }]
     }, {
       title: "Beschermen van uw mobiliteit",
-      links: [
-        { text: "Autoverzekering", href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/auto/burgerlijke-aansprakelijkheid" },
-        { text: "Omniumverzekering auto", href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/auto/omnium" },
-        { text: "Rechtsbijstandsverzekering auto", href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/auto/rechtsbijstand" },
-        { text: "Fietsverzekering en zachte mobiliteit", href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/fietsverzekering" },
-        { text: "Motorverzekeringen", href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/motorverzekering" },
-        { text: "Bromfietsverzekeringen", href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/bromfietsverzekering" },
-        { text: "Pechverhelping", href: "/nl/public/particulieren/verzekeren/pechverhelping-bijstand-touring" },
-        { text: "Al onze oplossingen", href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen" }
-      ]
+      links: [{
+        text: "Autoverzekering",
+        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/auto/burgerlijke-aansprakelijkheid"
+      }, {
+        text: "Omniumverzekering auto",
+        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/auto/omnium"
+      }, {
+        text: "Rechtsbijstandsverzekering auto",
+        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/auto/rechtsbijstand"
+      }, {
+        text: "Fietsverzekering en zachte mobiliteit",
+        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/fietsverzekering"
+      }, {
+        text: "Motorverzekeringen",
+        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/motorverzekering"
+      }, {
+        text: "Bromfietsverzekeringen",
+        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/bromfietsverzekering"
+      }, {
+        text: "Pechverhelping",
+        href: "/nl/public/particulieren/verzekeren/pechverhelping-bijstand-touring"
+      }, {
+        text: "Al onze oplossingen",
+        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen"
+      }]
     }],
     expertise: {
       title: "Onze expertise",
-      content: [
-        { text: "Aangifte van een schadegeval", href: "/nl/public/particulieren/verzekeren/schadeaangifte" },
-        { text: "Gratis check-up van uw verzekeringen", href: "/nl/public/particulieren/campagne/check-up-verzekering" },
-        { text: "Beveilig uw thuis", href: "https://mylife.bnpparibasfortis.be/nl/beschermen-van-u-en-uw-woning" },
-        { text: "Bescherm uw gezin bij overlijden", href: "https://mylife.bnpparibasfortis.be/nl/family/bescherm-uw-familie-bij-overlijden" },
-        { text: "Preventietips natuurrampen", href: "https://mylife.bnpparibasfortis.be/nl/al-mijn-verzekeringen/preventie-natuurramp" },
-        { text: "Advies op afstand of face-to-face", href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten" }
-      ]
+      content: [{
+        text: "Aangifte van een schadegeval",
+        href: "/nl/public/particulieren/verzekeren/schadeaangifte"
+      }, {
+        text: "Gratis check-up van uw verzekeringen",
+        href: "/nl/public/particulieren/campagne/check-up-verzekering"
+      }, {
+        text: "Beveilig uw thuis",
+        href: "https://mylife.bnpparibasfortis.be/nl/beschermen-van-u-en-uw-woning"
+      }, {
+        text: "Bescherm uw gezin bij overlijden",
+        href: "https://mylife.bnpparibasfortis.be/nl/family/bescherm-uw-familie-bij-overlijden"
+      }, {
+        text: "Preventietips natuurrampen",
+        href: "https://mylife.bnpparibasfortis.be/nl/al-mijn-verzekeringen/preventie-natuurramp"
+      }, {
+        text: "Advies op afstand of face-to-face",
+        href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten"
+      }]
     },
     banner: {
       title: "Een EPC-certificaat?",
@@ -214,43 +376,83 @@ const BNPNavigation = () => {
     title: "Aan uw zijde",
     sections: [{
       title: "Uw behoeften",
-      links: [
-        { text: "Mobiliteit", href: "https://mylife.bnpparibasfortis.be/nl/mobiliteit" },
-        { text: "Wonen", href: "https://mylife.bnpparibasfortis.be/nl/uw-vastgoedproject" },
-        { text: "Budget", href: "https://mylife.bnpparibasfortis.be/nl/budget" },
-        { text: "Gezin", href: "https://mylife.bnpparibasfortis.be/nl/family" },
-        { text: "Betaalmiddelen", href: "https://mylife.bnpparibasfortis.be/nl/nieuwe-betaalmiddelen" },
-        { text: "Studeren in het buitenland", href: "https://mylife.bnpparibasfortis.be/nl/studeren-in-het-buitenland" },
-        { text: "Een overlijden aangeven", href: "/nl/public/particulieren/overlijden" }
-      ]
+      links: [{
+        text: "Mobiliteit",
+        href: "https://mylife.bnpparibasfortis.be/nl/mobiliteit"
+      }, {
+        text: "Wonen",
+        href: "https://mylife.bnpparibasfortis.be/nl/uw-vastgoedproject"
+      }, {
+        text: "Budget",
+        href: "https://mylife.bnpparibasfortis.be/nl/budget"
+      }, {
+        text: "Gezin",
+        href: "https://mylife.bnpparibasfortis.be/nl/family"
+      }, {
+        text: "Betaalmiddelen",
+        href: "https://mylife.bnpparibasfortis.be/nl/nieuwe-betaalmiddelen"
+      }, {
+        text: "Studeren in het buitenland",
+        href: "https://mylife.bnpparibasfortis.be/nl/studeren-in-het-buitenland"
+      }, {
+        text: "Een overlijden aangeven",
+        href: "/nl/public/particulieren/overlijden"
+      }]
     }, {
       title: "Aanpak op maat",
-      links: [
-        { text: "De bank voor jongeren", href: "/nl/public/particulieren/dagelijks-bankieren/bank-voor-jongeren" },
-        { text: "Priority Banking Exclusive", href: "/nl/public/particulieren/dagelijks-bankieren/priority-banking-exclusive" },
-        { text: "Expat in België", href: "/nl/public/particulieren/expats" },
-        { text: "Bank voor iedereen", href: "/nl/public/particulieren/toegankelijkheid-bank" }
-      ]
+      links: [{
+        text: "De bank voor jongeren",
+        href: "/nl/public/particulieren/dagelijks-bankieren/bank-voor-jongeren"
+      }, {
+        text: "Priority Banking Exclusive",
+        href: "/nl/public/particulieren/dagelijks-bankieren/priority-banking-exclusive"
+      }, {
+        text: "Expat in België",
+        href: "/nl/public/particulieren/expats"
+      }, {
+        text: "Bank voor iedereen",
+        href: "/nl/public/particulieren/toegankelijkheid-bank"
+      }]
     }, {
       title: "Online en mobiele bank",
-      links: [
-        { text: "Easy Banking App", href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app" },
-        { text: "Selfbanking met Easy Banking App en Web", href: "/nl/public/particulieren/dagelijks-bankieren/zelf-bankieren" },
-        { text: "Beheer uw budget met Easy Banking App", href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app/budgetbeheer-tool" },
-        { text: "Easy Banking Web", href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-web" },
-        { text: "Contactloos betalen", href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/mobiel-betalen" },
-        { text: "Veilig online", href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/online-veiligheid" }
-      ]
+      links: [{
+        text: "Easy Banking App",
+        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app"
+      }, {
+        text: "Selfbanking met Easy Banking App en Web",
+        href: "/nl/public/particulieren/dagelijks-bankieren/zelf-bankieren"
+      }, {
+        text: "Beheer uw budget met Easy Banking App",
+        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app/budgetbeheer-tool"
+      }, {
+        text: "Easy Banking Web",
+        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-web"
+      }, {
+        text: "Contactloos betalen",
+        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/mobiel-betalen"
+      }, {
+        text: "Veilig online",
+        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/online-veiligheid"
+      }]
     }],
     expertise: {
       title: "Contacteer ons",
-      content: [
-        { text: "Aangifte van een schadegeval", href: "/nl/public/particulieren/verzekeren/schadeaangifte" },
-        { text: "Advies op afstand of face-to-face", href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten" },
-        { text: "Uw adviseurs via videogesprek", href: "/nl/public/particulieren/dagelijks-bankieren/videogesprek" },
-        { text: "Een expert aan de lijn", href: "/nl/public/particulieren/dagelijks-bankieren/bankadviseur" },
-        { text: "CASH-punten netwerk", href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/bankautomaat/points-cash" }
-      ]
+      content: [{
+        text: "Aangifte van een schadegeval",
+        href: "/nl/public/particulieren/verzekeren/schadeaangifte"
+      }, {
+        text: "Advies op afstand of face-to-face",
+        href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten"
+      }, {
+        text: "Uw adviseurs via videogesprek",
+        href: "/nl/public/particulieren/dagelijks-bankieren/videogesprek"
+      }, {
+        text: "Een expert aan de lijn",
+        href: "/nl/public/particulieren/dagelijks-bankieren/bankadviseur"
+      }, {
+        text: "CASH-punten netwerk",
+        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/bankautomaat/points-cash"
+      }]
     },
     banner: {
       title: "Wist u dat ...",
@@ -271,11 +473,7 @@ const BNPNavigation = () => {
             {/* Logo */}
             <div className="flex items-center">
               <div className="flex items-center space-x-2">
-                <img 
-                  src="/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png" 
-                  alt="BNP Paribas Fortis Logo" 
-                  className="h-8 w-auto"
-                />
+                <img src="/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png" alt="BNP Paribas Fortis Logo" className="h-8 w-auto" />
               </div>
             </div>
 
@@ -341,11 +539,7 @@ const BNPNavigation = () => {
                 <div className="p-4 border-b">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                      <img 
-                        src="/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png" 
-                        alt="BNP Paribas Fortis Logo" 
-                        className="h-8 w-auto"
-                      />
+                      <img src="/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png" alt="BNP Paribas Fortis Logo" className="h-8 w-auto" />
                     </div>
                     <Button variant="ghost" onClick={() => setIsMobileMenuOpen(false)}>
                       <X className="w-6 h-6" />
@@ -407,7 +601,7 @@ const BNPNavigation = () => {
 
       {/* Primary Navigation - Bottom Row */}
       <div className="hidden md:block">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 ">
           <div className="flex items-center justify-between">
             {/* Navigation Menu */}
             <NavigationMenu>
