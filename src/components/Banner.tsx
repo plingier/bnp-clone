@@ -33,7 +33,7 @@ const Banner: React.FC<BannerProps> = ({
   return (
     <div className={`relative overflow-hidden rounded-lg group ${className}`}>
       {/* Large Desktop Layout - Image with overlay text */}
-      <div className="hidden xl:block">
+      <div className="hidden md:block">
         <div className={`relative ${variant === 'split' ? 'aspect-[2/1] xl:aspect-[9/4]' : 'aspect-[2/1] xl:aspect-[9/2]'}`}>
           <img 
             src={image} 
@@ -65,7 +65,7 @@ const Banner: React.FC<BannerProps> = ({
       </div>
 
       {/* Small Desktop, Tablet & Mobile Layout - Product Card Style */}
-      <div className="xl:hidden bg-card border border-border shadow-md">
+      <div className="md:hidden bg-card border border-border shadow-md">
         <div className="relative aspect-[4/1]">
           <img 
             src={image} 
