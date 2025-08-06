@@ -32,7 +32,7 @@ const Banner: React.FC<BannerProps> = ({
     <div className={`relative overflow-hidden rounded-lg group ${className}`}>
       {/* Desktop Layout - Image with overlay text */}
       <div className="hidden lg:block">
-        <div className="relative aspect-[2/1] lg:aspect-[5/2]">
+        <div className="relative aspect-[2/1] lg:aspect-[3/1]">
           <img 
             src={image} 
             alt="" 
