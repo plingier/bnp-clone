@@ -554,79 +554,41 @@ const BNPNavigation = () => {
 
                 {/* Mobile Navigation */}
                 <div className="flex-1 overflow-y-auto">
-                  {navigationItems.flatMap(item => item.sections).map((section, index) => 
-                    <div key={`${section.title}-${index}`} className="border-b">
+                  {navigationItems.map(item => (
+                    <div key={item.title} className="border-b">
                       <button 
-                        onClick={() => toggleMobileSection(section.title)} 
+                        onClick={() => toggleMobileSection(item.title)} 
                         className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
                       >
-                        <span className="font-medium text-gray-900">{section.title}</span>
-                        <ChevronRight className={`w-5 h-5 text-financial-green transition-transform ${expandedMobileSection === section.title ? 'rotate-90' : ''}`} />
+                        <span className="font-medium text-gray-900">{item.title}</span>
+                        <ChevronRight className={`w-5 h-5 text-financial-green transition-transform ${expandedMobileSection === item.title ? 'rotate-90' : ''}`} />
                       </button>
-                      {expandedMobileSection === section.title && (
-                        <div className="bg-gray-50 px-4 pb-4">
-                          {section.links.map((link, linkIdx) => (
-                            <a 
-                              key={linkIdx} 
-                              href={link.href} 
-                              className="block py-2 text-sm text-gray-600 hover:text-financial-green border-b border-gray-200 last:border-b-0"
-                            >
-                              {link.text}
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  )}
-                  
-                  {/* Add expertise and banner sections */}
-                  {navigationItems.map(item => (
-                    <div key={`expertise-${item.title}`}>
-                      {item.expertise && (
-                        <div className="border-b">
-                          <button 
-                            onClick={() => toggleMobileSection(item.expertise.title)} 
-                            className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
-                          >
-                            <span className="font-medium text-gray-900">{item.expertise.title}</span>
-                            <ChevronRight className={`w-5 h-5 text-financial-green transition-transform ${expandedMobileSection === item.expertise.title ? 'rotate-90' : ''}`} />
-                          </button>
-                          {expandedMobileSection === item.expertise.title && (
-                            <div className="bg-gray-50 px-4 pb-4">
-                              {item.expertise.content.map((content, idx) => (
-                                <a 
-                                  key={idx} 
-                                  href={content.href} 
-                                  className="block py-2 text-sm text-gray-600 hover:text-financial-green border-b border-gray-200 last:border-b-0"
-                                >
-                                  {content.text}
-                                </a>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      )}
-                      
-                      {item.banner && (
-                        <div className="border-b">
-                          <button 
-                            onClick={() => toggleMobileSection(item.banner.title)} 
-                            className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
-                          >
-                            <span className="font-medium text-gray-900">{item.banner.title}</span>
-                            <ChevronRight className={`w-5 h-5 text-financial-green transition-transform ${expandedMobileSection === item.banner.title ? 'rotate-90' : ''}`} />
-                          </button>
-                          {expandedMobileSection === item.banner.title && (
-                            <div className="bg-gray-50 px-4 pb-4">
-                              <p className="text-sm text-gray-600 mb-3">{item.banner.description}</p>
-                              <a 
-                                href={item.banner.href}
-                                className="inline-block bg-financial-green text-white px-4 py-2 rounded text-sm hover:bg-financial-green/90"
+                      {expandedMobileSection === item.title && (
+                        <div className="bg-gray-50">
+                          {item.sections.map((section, idx) => (
+                            <div key={idx} className="border-b border-gray-200 last:border-b-0">
+                              <button 
+                                onClick={() => toggleMobileSection(`${item.title}-${section.title}`)} 
+                                className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-100"
                               >
-                                {item.banner.cta}
-                              </a>
+                                <span className="font-medium text-gray-700">{section.title}</span>
+                                <ChevronRight className={`w-4 h-4 text-financial-green transition-transform ${expandedMobileSection === `${item.title}-${section.title}` ? 'rotate-90' : ''}`} />
+                              </button>
+                              {expandedMobileSection === `${item.title}-${section.title}` && (
+                                <div className="bg-gray-100 px-4 pb-3">
+                                  {section.links.map((link, linkIdx) => (
+                                    <a 
+                                      key={linkIdx} 
+                                      href={link.href} 
+                                      className="block py-2 text-sm text-gray-600 hover:text-financial-green border-b border-gray-300 last:border-b-0"
+                                    >
+                                      {link.text}
+                                    </a>
+                                  ))}
+                                </div>
+                              )}
                             </div>
-                          )}
+                          ))}
                         </div>
                       )}
                     </div>
