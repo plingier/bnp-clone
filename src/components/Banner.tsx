@@ -35,7 +35,7 @@ const Banner: React.FC<BannerProps> = ({
       {/* Single Banner (Full Variant) - Desktop & Tablet Layout */}
       {variant === 'full' && (
         <div className="hidden md:block">
-          <div className="relative aspect-[2/1] xl:aspect-[9/2]">
+          <div className="relative aspect-[9/2] xl:aspect-[9/2]">
             <img 
               src={image} 
               alt="" 
