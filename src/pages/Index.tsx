@@ -366,6 +366,7 @@ const Index = () => {
               <Banner
                 image="/lovable-uploads/84721fde-4535-4825-b301-ea1c05430448.png"
                 title="Win Airpods!"
+                description="Open deze zomer een gratis Welcome Pack-betaalrekening voor kinderen en tieners. En maak kans op AirPods!"
                 buttonText="Een rekening openen"
                 onButtonClick={() => console.log('Banner CTA clicked')}
               />
@@ -384,12 +385,14 @@ const Index = () => {
               <Banner
                 image="/lovable-uploads/45902985-98fa-4bb0-a81a-9fb9150b7aac.png"
                 title="Automatische extra controle op overschrijvingen via Easy Banking App maakt betalingen nog veiliger, betrouwbaarder en efficiënter"
+                description="Verificatie van de naam van de begunstigde start vanaf 30 juni"
                 buttonText="Lees er meer over"
                 onButtonClick={() => console.log('Banking banner clicked')}
               />
               <Banner
                 image="/lovable-uploads/45902985-98fa-4bb0-a81a-9fb9150b7aac.png"
                 title="Uw tiener leren omgaan met zakgeld?"
+                description="Ontdek hoe andere ouders kijken naar dit topic."
                 buttonText="Naar het artikel"
                 onButtonClick={() => console.log('Teen banking banner clicked')}
               />

@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 interface BannerProps {
   image: string;
   title: string;
+  description?: string;
   buttonText: string;
   onButtonClick?: () => void;
   buttonHref?: string;
@@ -13,6 +14,7 @@ interface BannerProps {
 const Banner: React.FC<BannerProps> = ({
   image,
   title,
+  description,
   buttonText,
   onButtonClick,
   buttonHref,
@@ -40,10 +42,15 @@ const Banner: React.FC<BannerProps> = ({
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
         
         {/* Text Box - Bottom Left */}
-        <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white/95 backdrop-blur-sm rounded-lg p-4 md:p-6 max-w-xs md:max-w-sm shadow-lg">
+        <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white/95 backdrop-blur-sm rounded-lg p-4 md:p-6 max-w-sm md:max-w-md lg:max-w-lg shadow-lg">
           <h3 className="text-lg md:text-xl font-bold text-foreground mb-3 leading-tight">
             {title}
           </h3>
+          {description && (
+            <p className="text-sm md:text-base text-muted-foreground mb-4 leading-relaxed">
+              {description}
+            </p>
+          )}
           <Button 
             onClick={handleClick}
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-4 py-2 rounded-md transition-all duration-200"
@@ -77,7 +84,7 @@ const BannerContainer: React.FC<BannerContainerProps> = ({
 
   return (
     <div className={`px-4 md:px-8 lg:px-16 ${className}`}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
         {children}
       </div>
     </div>
