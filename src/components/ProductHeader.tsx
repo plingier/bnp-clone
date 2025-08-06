@@ -1,5 +1,5 @@
 import { Phone } from "lucide-react";
-const heroImage = "/lovable-uploads/4d9b0298-f3f2-425f-927e-dc2df46d839d.png";
+import heroImage from "@/assets/mortgage-hero.jpg";
 
 interface ProductBlock {
   label: string;
