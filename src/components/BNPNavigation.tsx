@@ -562,8 +562,8 @@ const BNPNavigation = () => {
                 </div>
 
                 {/* Mobile Search */}
-                <div className="border-b bg-gray-50 px-4 py-2">
-                  <Input placeholder="Wat zoekt u?" className="w-full" />
+                <div className="border-b bg-gray-50 px-3 py-1">
+                  <Input placeholder="Wat zoekt u?" className="w-full h-8 text-sm" />
                 </div>
 
                 {/* Mobile Navigation */}
@@ -588,7 +588,7 @@ const BNPNavigation = () => {
                       <div className="border-b bg-gray-50">
                         <button 
                           onClick={handleBackToMain}
-                          className="w-full px-4 py-3 text-left flex items-center text-financial-green hover:bg-gray-100"
+                          className="w-full px-4 py-2 text-left flex items-center text-financial-green hover:bg-gray-100"
                         >
                           <ChevronRight className="w-4 h-4 rotate-180 mr-2" />
                           <span className="text-sm">Terug</span>
@@ -596,8 +596,8 @@ const BNPNavigation = () => {
                       </div>
                       
                       {/* Category title */}
-                      <div className="px-4 py-4 bg-white border-b-2 border-financial-green">
-                        <h3 className="text-lg font-bold text-gray-900 uppercase tracking-wide">{selectedMainCategory.title}</h3>
+                      <div className="px-4 py-2 bg-white border-b-2 border-financial-green">
+                        <h3 className="text-base font-bold text-gray-900 uppercase tracking-wide">{selectedMainCategory.title}</h3>
                       </div>
 
                       {/* Sections */}
