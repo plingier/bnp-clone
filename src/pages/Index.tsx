@@ -1,5 +1,7 @@
 import BNPNavigation from "@/components/BNPNavigation";
 import ProductHeader from "@/components/ProductHeader";
+import TitleWidth from "@/components/TitleWidth";
+import { MessageSquare, Calendar, Phone } from "lucide-react";
 
 const Index = () => {
   return (
@@ -7,16 +9,37 @@ const Index = () => {
       <BNPNavigation />
       <ProductHeader />
       
-      {/* Additional content can go here */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-4">
-            Meer informatie over hypothecair krediet
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Ontdek alle mogelijkheden voor uw woonproject met onze professionele begeleiding.
-          </p>
-        </div>
+      {/* TitleWidth Component Examples */}
+      <div className="space-y-16 py-16">
+        {/* Example 1: With Links */}
+        <TitleWidth
+          label="WELKOM"
+          title="Hoe kunnen we u helpen?"
+          links={[
+            {
+              text: "Een antwoord vinden",
+              icon: MessageSquare,
+              href: "#"
+            },
+            {
+              text: "Een afspraak maken",
+              icon: Calendar,
+              href: "#"
+            },
+            {
+              text: "02 762 60 00",
+              icon: Phone,
+              href: "tel:0276260000"
+            }
+          ]}
+        />
+        
+        {/* Example 2: With Description */}
+        <TitleWidth
+          label="DAGELIJKS BANKIEREN"
+          title="Vergelijk onze packs"
+          description="Een of twee houders, met debet- en/of kredietkaarten*, toegang tot online en mobiel bankieren ... Ontdek de basisinhoud van onze verschillende betaalrekeningen, die u naar wens kunt personaliseren."
+        />
       </div>
     </div>
   );
