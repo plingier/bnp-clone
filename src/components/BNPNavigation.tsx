@@ -640,7 +640,7 @@ const BNPNavigation = () => {
                             <Button 
                               variant="secondary" 
                               size="sm" 
-                              className="bg-white text-financial-green hover:bg-gray-50 font-medium rounded-lg px-4 py-2 transition-colors whitespace-nowrap text-xs" 
+                              className="bg-white text-financial-green hover:bg-gray-50 font-medium rounded-lg px-4 py-2 transition-colors" 
                               asChild
                             >
                               <a href={item.banner.href}>{item.banner.cta}</a>
