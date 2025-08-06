@@ -1,6 +1,6 @@
 import BNPNavigation from "@/components/BNPNavigation";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, Smartphone, CreditCard, PiggyBank, Car, Heart, Home as HomeIcon, Calculator } from "lucide-react";
+import { Search, ArrowRight, Gift } from "lucide-react";
 
 const Index = () => {
   return (
@@ -9,288 +9,192 @@ const Index = () => {
       
       {/* Main Content */}
       <main className="space-y-0">
-        {/* Hero Section */}
-        <section 
-          className="relative bg-cover bg-center h-[600px] flex items-center"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/lovable-uploads/a0888249-34a7-4a64-8aeb-174b84b4edb1.png')`
-          }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
-            <div className="max-w-2xl">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+        {/* Welcome Hero Section */}
+        <section className="bg-primary/5 py-16">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="mb-8">
+              <span className="text-sm text-muted-foreground tracking-wider uppercase mb-4 block">WELKOM</span>
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-8">
                 Hoe kunnen we u helpen?
               </h1>
-              <p className="text-xl mb-8 opacity-90">
-                Ontdek onze diensten en producten die perfect aansluiten bij uw behoeften
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <div className="bg-card border rounded-lg p-6 hover:shadow-md transition-shadow">
+                <Search className="w-8 h-8 text-primary mx-auto mb-4" />
+                <h3 className="font-semibold mb-2">Een antwoord vinden</h3>
+              </div>
+              <div className="bg-card border rounded-lg p-6 hover:shadow-md transition-shadow">
+                <div className="w-8 h-8 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">📅</span>
+                </div>
+                <h3 className="font-semibold mb-2">Een afspraak maken</h3>
+              </div>
+              <div className="bg-card border rounded-lg p-6 hover:shadow-md transition-shadow">
+                <div className="w-8 h-8 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">📞</span>
+                </div>
+                <h3 className="font-semibold mb-2">02 762 60 00</h3>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+              <Button variant="link" className="h-auto p-2 text-primary">
+                Kredietkaarten
+              </Button>
+              <Button variant="link" className="h-auto p-2 text-primary">
+                Online en mobiel bankieren
+              </Button>
+              <Button variant="link" className="h-auto p-2 text-primary">
+                Wonen
+              </Button>
+              <Button variant="link" className="h-auto p-2 text-primary">
+                Woningverzekering
+              </Button>
+              <Button variant="link" className="h-auto p-2 text-primary">
+                Pensioen
+              </Button>
+              <Button variant="link" className="h-auto p-2 text-primary">
+                Online veiligheid
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Special Offer Banner */}
+        <section className="bg-gradient-to-r from-blue-500 to-purple-600 py-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <Gift className="w-12 h-12 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold mb-4">Win Airpods!</h2>
+            <p className="text-lg mb-6">
+              Open deze zomer een gratis Welcome Pack-betaalrekening voor kinderen en tieners. En
+              maak kans op AirPods!
+            </p>
+            <Button className="bg-white text-blue-600 hover:bg-gray-100">
+              Meer info
+            </Button>
+          </div>
+        </section>
+
+        {/* Green Investment Banner */}
+        <section className="bg-green-50 py-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="inline-flex items-center bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              🌱 GROEN BELEGGEN
+            </div>
+            <h2 className="text-2xl font-bold text-green-800 mb-4">
+              Beleggen met respect voor mens en milieu? Dat kan met ons ESG-aanbod.
+            </h2>
+            <Button className="bg-green-600 hover:bg-green-700 text-white">
+              Ontdek ons ESG-aanbod
+            </Button>
+          </div>
+        </section>
+
+        {/* Investment Report Section */}
+        <section className="bg-blue-50 py-12">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-blue-800 mb-4">
+                Rapport Beleggingsproducten Particulieren
+              </h2>
+              <p className="text-blue-700">
+                Ontdek transparante informatie over onze beleggingsproducten.
               </p>
             </div>
-          </div>
-        </section>
 
-        {/* Wij Kunnen Section */}
-        <section className="bg-primary/5 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-4xl font-bold text-foreground mb-6">Wij kunnen!</h2>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Van een nieuw spaarboekje tot een woonkrediet, van beleggen tot verzekeringen: 
-                  wij staan voor u klaar met advies op maat.
-                </p>
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  Ontdek wat we doen
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
+            <div className="bg-white rounded-lg shadow-sm border overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-blue-100">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-blue-900">
+                        Productgroep
+                      </th>
+                      <th className="px-6 py-4 text-center text-sm font-semibold text-blue-900">
+                        Aantal producten
+                      </th>
+                      <th className="px-6 py-4 text-center text-sm font-semibold text-blue-900">
+                        Gemiddelde jaarlijkse kosten (%)
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr>
+                      <td className="px-6 py-4 text-sm text-gray-900">Beleggingsfondsen</td>
+                      <td className="px-6 py-4 text-center text-sm text-gray-900">245</td>
+                      <td className="px-6 py-4 text-center text-sm text-gray-900">1.85%</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="px-6 py-4 text-sm text-gray-900">Gestructureerde producten</td>
+                      <td className="px-6 py-4 text-center text-sm text-gray-900">89</td>
+                      <td className="px-6 py-4 text-center text-sm text-gray-900">2.10%</td>
+                    </tr>
+                    <tr>
+                      <td className="px-6 py-4 text-sm text-gray-900">Aandelen</td>
+                      <td className="px-6 py-4 text-center text-sm text-gray-900">1.200+</td>
+                      <td className="px-6 py-4 text-center text-sm text-gray-900">0.65%</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="bg-card border rounded-lg p-6 text-center">
-                  <Smartphone className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">Easy Banking App</h3>
-                  <p className="text-sm text-muted-foreground">Bankieren waar en wanneer het u uitkomt</p>
-                </div>
-                <div className="bg-card border rounded-lg p-6 text-center">
-                  <CreditCard className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">Dagelijks bankieren</h3>
-                  <p className="text-sm text-muted-foreground">Alles voor uw dagelijkse financiële behoeften</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Services Grid */}
-        <section className="py-16 bg-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-card border rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer">
-                <PiggyBank className="w-12 h-12 text-primary mb-4" />
-                <h3 className="font-semibold text-foreground mb-2">Sparen & beleggen</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Laat uw geld werken met onze spaar- en beleggingsoplossingen
-                </p>
-                <Button variant="link" size="sm" className="h-auto p-0 text-primary">
-                  Meer info <ArrowRight className="w-4 h-4 ml-1" />
-                </Button>
-              </div>
-
-              <div className="bg-card border rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer">
-                <HomeIcon className="w-12 h-12 text-primary mb-4" />
-                <h3 className="font-semibold text-foreground mb-2">Wonen</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Woonkrediet, verzekeringen en advies voor uw droomhuis
-                </p>
-                <Button variant="link" size="sm" className="h-auto p-0 text-primary">
-                  Meer info <ArrowRight className="w-4 h-4 ml-1" />
-                </Button>
-              </div>
-
-              <div className="bg-card border rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer">
-                <Calculator className="w-12 h-12 text-primary mb-4" />
-                <h3 className="font-semibold text-foreground mb-2">Krediet</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Persoonlijke lening of kredietkaart voor uw projecten
-                </p>
-                <Button variant="link" size="sm" className="h-auto p-0 text-primary">
-                  Meer info <ArrowRight className="w-4 h-4 ml-1" />
-                </Button>
-              </div>
-
-              <div className="bg-card border rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer">
-                <Heart className="w-12 h-12 text-primary mb-4" />
-                <h3 className="font-semibold text-foreground mb-2">Verzekeren</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Bescherm wat u dierbaar is met onze verzekeringen
-                </p>
-                <Button variant="link" size="sm" className="h-auto p-0 text-primary">
-                  Meer info <ArrowRight className="w-4 h-4 ml-1" />
+              <div className="px-6 py-4 bg-gray-50 text-center">
+                <Button variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-50">
+                  Download volledig rapport
+                  <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Blijf op de hoogte Section */}
-        <section className="bg-muted/30 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Blijf op de hoogte</h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-card border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-blue-400 to-blue-600"></div>
-                <div className="p-6">
-                  <h3 className="font-semibold text-foreground mb-2">Uw fiscale attest in enkele klikken</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Haal uw fiscaal attest op via Easy Banking Web of de app
-                  </p>
-                  <Button variant="link" size="sm" className="h-auto p-0 text-primary">
-                    Meer informatie <ArrowRight className="w-4 h-4 ml-1" />
-                  </Button>
-                </div>
+        {/* Investment Costs Section */}
+        <section className="py-12 bg-background">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-2xl font-bold text-foreground mb-6">
+              Beleggingskosten in perspectief
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-card border rounded-lg p-6">
+                <div className="text-3xl font-bold text-primary mb-2">0.65%</div>
+                <div className="text-sm text-muted-foreground">Gemiddelde kosten aandelen</div>
               </div>
-
-              <div className="bg-card border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-green-400 to-green-600"></div>
-                <div className="p-6">
-                  <h3 className="font-semibold text-foreground mb-2">Pas op voor Fraudie via Teams</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Let goed op voor frauduleuze berichten via Teams
-                  </p>
-                  <Button variant="link" size="sm" className="h-auto p-0 text-primary">
-                    Lees meer <ArrowRight className="w-4 h-4 ml-1" />
-                  </Button>
-                </div>
+              <div className="bg-card border rounded-lg p-6">
+                <div className="text-3xl font-bold text-primary mb-2">1.85%</div>
+                <div className="text-sm text-muted-foreground">Gemiddelde kosten fondsen</div>
               </div>
-
-              <div className="bg-card border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-purple-400 to-purple-600"></div>
-                <div className="p-6">
-                  <h3 className="font-semibold text-foreground mb-2">Werk uw gegevens bij via ons CRM-portaal</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Update eenvoudig uw contactgegevens
-                  </p>
-                  <Button variant="link" size="sm" className="h-auto p-0 text-primary">
-                    Meer info <ArrowRight className="w-4 h-4 ml-1" />
-                  </Button>
-                </div>
-              </div>
-
-              <div className="bg-card border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-orange-400 to-orange-600"></div>
-                <div className="p-6">
-                  <h3 className="font-semibold text-foreground mb-2">Touring CardStart, onze tankkaart</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Ontdek de voordelen van onze tankkaart
-                  </p>
-                  <Button variant="link" size="sm" className="h-auto p-0 text-primary">
-                    Ontdek voordelen <ArrowRight className="w-4 h-4 ml-1" />
-                  </Button>
-                </div>
+              <div className="bg-card border rounded-lg p-6">
+                <div className="text-3xl font-bold text-primary mb-2">100%</div>
+                <div className="text-sm text-muted-foreground">Transparantie gegarandeerd</div>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Easy Banking App Section */}
-        <section className="py-16 bg-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="order-2 lg:order-1">
-                <div className="bg-muted/50 rounded-lg p-8 h-96 flex items-center justify-center">
-                  <Smartphone className="w-32 h-32 text-primary" />
-                </div>
-              </div>
-              <div className="order-1 lg:order-2">
-                <h2 className="text-3xl font-bold text-foreground mb-6">
-                  Easy Banking App, uw bank binnen handbereik
-                </h2>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-start gap-3">
-                    <Star className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">Uw saldo en bewegingen raadplegen</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Star className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">Overschrijvingen uitvoeren</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Star className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">Facturen betalen via QR-code</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Star className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">Contactloos betalen met uw smartphone</span>
-                  </li>
-                </ul>
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  Download Easy Banking App
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Talk About It Section */}
-        <section className="bg-muted/30 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">
-                En wat als het tijd was om erover te praten?
-              </h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-card border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-end p-6">
-                  <h3 className="text-white font-bold text-xl">Woning</h3>
-                </div>
-                <div className="p-6">
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Droomt u van een eigen huis of appartement? Wij helpen u bij de financiering.
-                  </p>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Ontdek
-                  </Button>
-                </div>
-              </div>
-
-              <div className="bg-card border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-end p-6">
-                  <h3 className="text-white font-bold text-xl">Budgetbeheer</h3>
-                </div>
-                <div className="p-6">
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Houd uw financiën onder controle met onze budgettools en spaaroplossingen.
-                  </p>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Ontdek
-                  </Button>
-                </div>
-              </div>
-
-              <div className="bg-card border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-end p-6">
-                  <h3 className="text-white font-bold text-xl">Familie</h3>
-                </div>
-                <div className="p-6">
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Verzeker de toekomst van uw gezin met onze familie-oplossingen.
-                  </p>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Ontdek
-                  </Button>
-                </div>
-              </div>
-
-              <div className="bg-card border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-end p-6">
-                  <h3 className="text-white font-bold text-xl">Mobiliteit</h3>
-                </div>
-                <div className="p-6">
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Autofinanciering, verzekeringen en alles voor uw mobiliteit.
-                  </p>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Ontdek
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section className="bg-primary/5 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Nog vragen?</h2>
-            <p className="text-muted-foreground mb-8">
-              Neem contact op met onze experts. We helpen u graag verder.
+            <p className="text-muted-foreground mb-6">
+              Wij geloven in volledige transparantie over beleggingskosten. Ontdek hoe onze tarieven 
+              zich verhouden tot de markt en maak een geïnformeerde keuze.
             </p>
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
-              Maak een afspraak
+            <Button className="bg-primary hover:bg-primary/90">
+              Vergelijk onze tarieven
             </Button>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="bg-primary text-white py-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-2xl font-bold mb-4">
+              Klaar om te starten met beleggen?
+            </h2>
+            <p className="text-lg mb-6 opacity-90">
+              Maak een afspraak met onze beleggingsexperts en ontdek welke strategie het beste bij u past.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="bg-white text-primary hover:bg-gray-100">
+                Maak een afspraak
+              </Button>
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
+                Download brochure
+              </Button>
+            </div>
           </div>
         </section>
       </main>
