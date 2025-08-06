@@ -492,8 +492,8 @@ const BNPNavigation = () => {
             </div>
 
             {/* Right side utility items */}
-            <div className="hidden md:flex items-center space-x-6">
-              <span className="text-sm text-gray-600">Deze sectie van de site is voor</span>
+            <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
+              <span className="text-xs xl:text-sm text-gray-600">Deze sectie van de site is voor</span>
               
               {/* Segment Switcher */}
               <DropdownMenu>
@@ -545,7 +545,7 @@ const BNPNavigation = () => {
             {/* Mobile menu trigger */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" className="md:hidden p-2">
+                <Button variant="ghost" className="lg:hidden p-2">
                   <Menu className="w-6 h-6" />
                 </Button>
               </SheetTrigger>
@@ -709,7 +709,7 @@ const BNPNavigation = () => {
       </div>
 
       {/* Primary Navigation - Bottom Row */}
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 ">
           <div className="flex items-center justify-between">
             {/* Navigation Menu */}
@@ -723,10 +723,10 @@ const BNPNavigation = () => {
                       <div className="grid grid-cols-5 gap-6 p-6 w-screen max-w-7xl">
                         {/* Columns 1-3: Main content */}
                         {item.sections.map((section, idx) => <div key={idx} className="space-y-3">
-                            <h4 className="font-semibold text-gray-900">{section.title}</h4>
+                            <h4 className="font-semibold text-gray-900 text-sm lg:text-base">{section.title}</h4>
                             <ul className="space-y-2">
                               {section.links.map((link, linkIdx) => <li key={linkIdx}>
-                                  <a href={link.href} className="text-sm text-gray-600 hover:text-financial-green block">
+                                  <a href={link.href} className="text-xs lg:text-sm text-gray-600 hover:text-financial-green block leading-relaxed">
                                     {link.text}
                                   </a>
                                 </li>)}
