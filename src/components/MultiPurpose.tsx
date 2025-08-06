@@ -1,3 +1,4 @@
+import React, { memo, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
@@ -19,9 +20,22 @@ interface MultiPurposeGridProps {
   className?: string;
 }
 
-export const MultiPurpose = ({ title, description, button, className }: MultiPurposeProps) => {
+export const MultiPurpose = memo(({ title, description, button, className }: MultiPurposeProps) => {
+  const handleClick = useCallback(() => {
+    if (button.onClick) {
+      button.onClick();
+    }
+  }, [button.onClick]);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleClick();
+    }
+  }, [handleClick]);
+
   return (
-    <div className={cn(
+    <article className={cn(
       "bg-card border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 group h-full flex flex-col",
       className
     )}>
@@ -40,27 +54,32 @@ export const MultiPurpose = ({ title, description, button, className }: MultiPur
         {button.href ? (
           <a
             href={button.href}
-            onClick={button.onClick}
-            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors group/link"
+            onClick={handleClick}
+            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors group/link focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            aria-label={button.text}
           >
             <span>{button.text}</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+            <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" aria-hidden="true" />
           </a>
         ) : (
           <button
-            onClick={button.onClick}
-            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors group/link"
+            onClick={handleClick}
+            onKeyDown={handleKeyDown}
+            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors group/link focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            aria-label={button.text}
           >
             <span>{button.text}</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+            <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" aria-hidden="true" />
           </button>
         )}
       </div>
-    </div>
+    </article>
   );
-};
+});
 
-export const MultiPurposeGrid = ({ items, itemsPerRow = 3, className }: MultiPurposeGridProps) => {
+MultiPurpose.displayName = 'MultiPurpose';
+
+export const MultiPurposeGrid = memo(({ items, itemsPerRow = 3, className }: MultiPurposeGridProps) => {
   const getGridColumns = () => {
     switch (itemsPerRow) {
       case 1:
@@ -88,15 +107,21 @@ export const MultiPurposeGrid = ({ items, itemsPerRow = 3, className }: MultiPur
   };
 
   return (
-    <div className={cn(
-      "grid gap-6",
-      getGridColumns(),
-      getMaxWidth(),
-      className
-    )}>
+    <div 
+      className={cn(
+        "grid gap-6",
+        getGridColumns(),
+        getMaxWidth(),
+        className
+      )}
+      role="region"
+      aria-label="Multi-purpose content grid"
+    >
       {items.map((item, index) => (
-        <MultiPurpose key={index} {...item} />
+        <MultiPurpose key={`${item.title}-${index}`} {...item} />
       ))}
     </div>
   );
-};
+});
+
+MultiPurposeGrid.displayName = 'MultiPurposeGrid';

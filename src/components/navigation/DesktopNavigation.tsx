@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 
@@ -25,7 +25,7 @@ interface DesktopNavigationProps {
   navigationItems: NavigationItem[];
 }
 
-const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navigationItems }) => {
+const DesktopNavigation: React.FC<DesktopNavigationProps> = memo(({ navigationItems }) => {
   return (
     <div className="hidden lg:block">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
@@ -142,6 +142,8 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navigationItems }
       </div>
     </div>
   );
-};
+});
+
+DesktopNavigation.displayName = 'DesktopNavigation';
 
 export default DesktopNavigation;

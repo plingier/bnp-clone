@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Search, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,7 +15,7 @@ interface NavigationHeaderProps {
   languages: string[];
 }
 
-const NavigationHeader: React.FC<NavigationHeaderProps> = ({
+const NavigationHeader: React.FC<NavigationHeaderProps> = memo(({
   selectedSegment,
   setSelectedSegment,
   selectedLanguage,
@@ -137,6 +137,8 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
       </div>
     </div>
   );
-};
+});
+
+NavigationHeader.displayName = 'NavigationHeader';
 
 export default NavigationHeader;

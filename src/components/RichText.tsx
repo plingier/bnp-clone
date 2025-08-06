@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import { Check, LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -30,7 +30,7 @@ interface RichTextProps {
   className?: string;
 }
 
-const RichText: React.FC<RichTextProps> = ({
+const RichText: React.FC<RichTextProps> = memo(({
   image,
   title,
   description,
@@ -41,8 +41,14 @@ const RichText: React.FC<RichTextProps> = ({
 }) => {
   const isImageLeft = imagePosition === 'left';
 
+  const handleCtaClick = useCallback(() => {
+    if (callToAction?.onClick) {
+      callToAction.onClick();
+    }
+  }, [callToAction?.onClick]);
+
   return (
-    <div className={cn("w-full", className)}>
+    <section className={cn("w-full", className)} aria-label="Rich text content">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={cn(
           "grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center",
@@ -62,6 +68,7 @@ const RichText: React.FC<RichTextProps> = ({
                   image.className
                 )}
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -83,18 +90,22 @@ const RichText: React.FC<RichTextProps> = ({
 
             {/* Checklist */}
             {checklist.length > 0 && (
-              <div className="space-y-3">
+              <ul className="space-y-3" role="list" aria-label="Feature checklist">
                 {checklist.map((item, index) => (
-                  <div key={index} className="flex items-start gap-3">
+                  <li key={`${item.text}-${index}`} className="flex items-start gap-3">
                     <div className="flex-shrink-0 mt-1">
-                      <div className={cn(
-                        "w-5 h-5 rounded-full flex items-center justify-center",
-                        item.checked !== false 
-                          ? "bg-[hsl(var(--financial-green))]" 
-                          : "border-2 border-muted-foreground"
-                      )}>
+                      <div 
+                        className={cn(
+                          "w-5 h-5 rounded-full flex items-center justify-center",
+                          item.checked !== false 
+                            ? "bg-[hsl(var(--financial-green))]" 
+                            : "border-2 border-muted-foreground"
+                        )}
+                        role="img"
+                        aria-label={item.checked !== false ? "Completed" : "Not completed"}
+                      >
                         {item.checked !== false && (
-                          <Check className="w-3 h-3 text-white" />
+                          <Check className="w-3 h-3 text-white" aria-hidden="true" />
                         )}
                       </div>
                     </div>
@@ -104,9 +115,9 @@ const RichText: React.FC<RichTextProps> = ({
                     )}>
                       {item.text}
                     </span>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             )}
 
             {/* Call to Action */}
@@ -118,9 +129,14 @@ const RichText: React.FC<RichTextProps> = ({
                     variant={callToAction.variant || 'default'}
                     className="animate-fade-in"
                   >
-                    <a href={callToAction.href} onClick={callToAction.onClick} className="bg-primary text-primary-foreground hover:bg-primary/90">
+                    <a 
+                      href={callToAction.href} 
+                      onClick={handleCtaClick} 
+                      className="bg-primary text-primary-foreground hover:bg-primary/90"
+                      aria-label={callToAction.text}
+                    >
                       {callToAction.icon && (
-                        <callToAction.icon className="w-4 h-4 mr-2" />
+                        <callToAction.icon className="w-4 h-4 mr-2" aria-hidden="true" />
                       )}
                       {callToAction.text}
                     </a>
@@ -128,11 +144,12 @@ const RichText: React.FC<RichTextProps> = ({
                 ) : (
                   <Button
                     variant={callToAction.variant || 'default'}
-                    onClick={callToAction.onClick}
+                    onClick={handleCtaClick}
                     className="animate-fade-in"
+                    aria-label={callToAction.text}
                   >
                     {callToAction.icon && (
-                      <callToAction.icon className="w-4 h-4 mr-2" />
+                      <callToAction.icon className="w-4 h-4 mr-2" aria-hidden="true" />
                     )}
                     {callToAction.text}
                   </Button>
@@ -142,8 +159,10 @@ const RichText: React.FC<RichTextProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
+});
+
+RichText.displayName = 'RichText';
 
 export default RichText;

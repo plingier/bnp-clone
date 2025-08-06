@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 
 interface BannerProps {
@@ -12,7 +12,7 @@ interface BannerProps {
   className?: string;
 }
 
-const Banner: React.FC<BannerProps> = ({
+const Banner: React.FC<BannerProps> = memo(({
   image,
   title,
   description,
@@ -22,24 +22,26 @@ const Banner: React.FC<BannerProps> = ({
   variant = 'full',
   className = ''
 }) => {
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     if (onButtonClick) {
       onButtonClick();
     } else if (buttonHref) {
       window.open(buttonHref, '_blank');
     }
-  };
+  }, [onButtonClick, buttonHref]);
 
   return (
-    <div className={`relative overflow-hidden rounded-lg group ${className}`}>
+    <article className={`relative overflow-hidden rounded-lg group ${className}`} role="banner">
       {/* Single Banner (Full Variant) - Desktop & Tablet Layout */}
       {variant === 'full' && (
         <div className="hidden md:block">
           <div className="relative aspect-[45/14] xl:aspect-[45/14]">
             <img 
               src={image} 
-              alt="" 
+              alt={title} 
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
             />
             
             {/* Overlay for better text readability */}
@@ -57,7 +59,8 @@ const Banner: React.FC<BannerProps> = ({
               )}
               <Button 
                 onClick={handleClick}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-4 py-2 rounded-md transition-all duration-200"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-4 py-2 rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                aria-label={buttonText}
               >
                 {buttonText}
               </Button>
@@ -72,8 +75,10 @@ const Banner: React.FC<BannerProps> = ({
           <div className="relative aspect-[4/3] xl:aspect-[20/9]">
             <img 
               src={image} 
-              alt="" 
+              alt={title} 
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
             />
             
             {/* Overlay for better text readability */}
@@ -106,8 +111,10 @@ const Banner: React.FC<BannerProps> = ({
           <div className="relative aspect-[6/1]">
             <img 
               src={image} 
-              alt="" 
+              alt={title} 
               className="w-full h-full object-cover object-top"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           
@@ -137,8 +144,10 @@ const Banner: React.FC<BannerProps> = ({
           <div className="relative aspect-[6/1]">
             <img 
               src={image} 
-              alt="" 
+              alt={title} 
               className="w-full h-full object-cover object-top"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           
@@ -161,9 +170,11 @@ const Banner: React.FC<BannerProps> = ({
           </div>
         </div>
       )}
-    </div>
+    </article>
   );
-};
+});
+
+Banner.displayName = 'Banner';
 
 interface BannerContainerProps {
   children: React.ReactNode;
@@ -171,7 +182,7 @@ interface BannerContainerProps {
   className?: string;
 }
 
-const BannerContainer: React.FC<BannerContainerProps> = ({
+const BannerContainer: React.FC<BannerContainerProps> = memo(({
   children,
   variant = 'full',
   className = ''
@@ -191,6 +202,8 @@ const BannerContainer: React.FC<BannerContainerProps> = ({
       </div>
     </div>
   );
-};
+});
+
+BannerContainer.displayName = 'BannerContainer';
 
 export { Banner, BannerContainer };

@@ -1,3 +1,4 @@
+import React, { memo, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -22,9 +23,15 @@ interface ProductCardGridProps {
   className?: string;
 }
 
-export const ProductCard = ({ image, title, description, button, className }: ProductCardProps) => {
+export const ProductCard = memo(({ image, title, description, button, className }: ProductCardProps) => {
+  const handleClick = useCallback(() => {
+    if (button.onClick) {
+      button.onClick();
+    }
+  }, [button.onClick]);
+
   return (
-    <div className={cn(
+    <article className={cn(
       "bg-card border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group",
       className
     )}>
@@ -35,6 +42,7 @@ export const ProductCard = ({ image, title, description, button, className }: Pr
           alt={image.alt}
           className="w-full h-32 md:h-32 lg:h-full object-cover object-[center_33%] transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
+          decoding="async"
         />
       </div>
       
@@ -54,22 +62,32 @@ export const ProductCard = ({ image, title, description, button, className }: Pr
         <div className="pt-2">
           {button.href ? (
             <Button asChild className="w-full">
-              <a href={button.href} onClick={button.onClick}>
+              <a 
+                href={button.href} 
+                onClick={handleClick}
+                aria-label={button.text}
+              >
                 {button.text}
               </a>
             </Button>
           ) : (
-            <Button onClick={button.onClick} className="w-full">
+            <Button 
+              onClick={handleClick} 
+              className="w-full"
+              aria-label={button.text}
+            >
               {button.text}
             </Button>
           )}
         </div>
       </div>
-    </div>
+    </article>
   );
-};
+});
 
-export const ProductCardGrid = ({ cards, cardsPerRow = 3, className }: ProductCardGridProps) => {
+ProductCard.displayName = 'ProductCard';
+
+export const ProductCardGrid = memo(({ cards, cardsPerRow = 3, className }: ProductCardGridProps) => {
   const getGridColumns = () => {
     switch (cardsPerRow) {
       case 2:
@@ -84,15 +102,21 @@ export const ProductCardGrid = ({ cards, cardsPerRow = 3, className }: ProductCa
   };
 
   return (
-    <div className={cn(
-      "grid gap-6",
-      getGridColumns(),
-      cardsPerRow === 2 ? "max-w-4xl mx-auto" : cardsPerRow === 3 ? "max-w-6xl mx-auto" : "max-w-7xl mx-auto",
-      className
-    )}>
+    <div 
+      className={cn(
+        "grid gap-6",
+        getGridColumns(),
+        cardsPerRow === 2 ? "max-w-4xl mx-auto" : cardsPerRow === 3 ? "max-w-6xl mx-auto" : "max-w-7xl mx-auto",
+        className
+      )}
+      role="region"
+      aria-label="Product cards grid"
+    >
       {cards.map((card, index) => (
-        <ProductCard key={index} {...card} className="w-full" />
+        <ProductCard key={`${card.title}-${index}`} {...card} className="w-full" />
       ))}
     </div>
   );
-};
+});
+
+ProductCardGrid.displayName = 'ProductCardGrid';

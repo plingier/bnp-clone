@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, memo } from "react";
 import { Search, ChevronDown, Menu, X, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-const BNPNavigation = () => {
+const BNPNavigation = memo(() => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedSegment, setSelectedSegment] = useState("Particulieren");
   const [selectedLanguage, setSelectedLanguage] = useState("Nederlands");
@@ -15,6 +15,24 @@ const BNPNavigation = () => {
   const [selectedMainCategory, setSelectedMainCategory] = useState<any>(null);
   const segments = ["Particulieren", "Ondernemingen", "Private Banking"];
   const languages = ["Nederlands", "Frans", "Engels"];
+
+  const handleMainCategoryClick = useCallback((item: any) => {
+    setSelectedMainCategory(item);
+    setCurrentMobileView('sections');
+    setExpandedMobileSection(null);
+  }, []);
+
+  const handleBackToMain = useCallback(() => {
+    setCurrentMobileView('main');
+    setSelectedMainCategory(null);
+    setExpandedMobileSection(null);
+  }, []);
+
+  const handleToggleMobileSection = useCallback((sectionTitle: string) => {
+    setExpandedMobileSection(
+      expandedMobileSection === sectionTitle ? null : sectionTitle
+    );
+  }, [expandedMobileSection]);
   const navigationItems = [{
     title: "Dagelijks bankieren",
     sections: [{
@@ -467,19 +485,8 @@ const BNPNavigation = () => {
   const toggleMobileSection = (title: string) => {
     setExpandedMobileSection(expandedMobileSection === title ? null : title);
   };
-
-  const handleMainCategoryClick = (item: any) => {
-    setSelectedMainCategory(item);
-    setCurrentMobileView('sections');
-    setExpandedMobileSection(null);
-  };
-
-  const handleBackToMain = () => {
-    setCurrentMobileView('main');
-    setSelectedMainCategory(null);
-    setExpandedMobileSection(null);
-  };
-  return <div className="w-full bg-white border-b shadow-sm sticky top-0 z-50">
+  return (
+    <div className="w-full bg-white border-b shadow-sm sticky top-0 z-50">
       {/* Utility Navigation - Top Row */}
       <div className="border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -487,7 +494,15 @@ const BNPNavigation = () => {
             {/* Logo */}
             <div className="flex items-center">
               <div className="flex items-center space-x-2">
-                <img src="/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png" alt="BNP Paribas Fortis Logo" className="h-10 w-auto" />
+                <img 
+                  src="/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png" 
+                  alt="BNP Paribas Fortis Logo" 
+                  className="h-10 w-auto"
+                  width="120"
+                  height="40"
+                  loading="eager"
+                  decoding="async"
+                />
               </div>
             </div>
 
@@ -604,7 +619,7 @@ const BNPNavigation = () => {
                       {selectedMainCategory.sections.map((section: any, idx: number) => (
                         <div key={idx} className="border-b">
                           <button 
-                            onClick={() => toggleMobileSection(section.title)} 
+                            onClick={() => handleToggleMobileSection(section.title)} 
                             className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
                           >
                             <span className="font-medium text-gray-900">{section.title}</span>
@@ -630,7 +645,7 @@ const BNPNavigation = () => {
                       {selectedMainCategory.expertise && (
                         <div className="border-b">
                           <button 
-                            onClick={() => toggleMobileSection('expertise')} 
+                            onClick={() => handleToggleMobileSection('expertise')} 
                             className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
                           >
                             <span className="font-medium text-gray-900">{selectedMainCategory.expertise.title}</span>
@@ -656,7 +671,7 @@ const BNPNavigation = () => {
                       {selectedMainCategory.banner && (
                         <div className="border-b">
                           <button 
-                            onClick={() => toggleMobileSection('banner')} 
+                            onClick={() => handleToggleMobileSection('banner')} 
                             className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
                           >
                             <span className="font-medium text-gray-900">{selectedMainCategory.banner.title}</span>
@@ -773,6 +788,10 @@ const BNPNavigation = () => {
           </div>
         </div>
       </div>
-    </div>;
-};
+    </div>
+  );
+});
+
+BNPNavigation.displayName = 'BNPNavigation';
+
 export default BNPNavigation;

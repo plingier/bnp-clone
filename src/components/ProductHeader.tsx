@@ -1,3 +1,4 @@
+import React, { memo } from "react";
 import { Phone } from "lucide-react";
 import heroImage from "@/assets/mortgage-hero.jpg";
 
@@ -8,7 +9,7 @@ interface ProductBlock {
   phone?: string;
 }
 
-const ProductHeader = () => {
+const ProductHeader = memo(() => {
   const productBlocks: ProductBlock[] = [
     {
       label: "PRAKTISCH",
@@ -29,11 +30,13 @@ const ProductHeader = () => {
   ];
 
   return (
-    <div className="w-full bg-background">
+    <header className="w-full bg-background">
       {/* Hero Header */}
       <div 
         className="relative h-80 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
+        role="banner"
+        aria-label="Hypothecair krediet hero sectie"
       >
         {/* Content with Green Banner */}
         <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,12 +56,12 @@ const ProductHeader = () => {
       </div>
 
       {/* Product Blocks */}
-      <div className="relative -mt-16 z-10">
+      <section className="relative -mt-16 z-10" aria-label="Product informatie blokken">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {productBlocks.map((block, index) => (
-              <div
-                key={index}
+              <article
+                key={`${block.label}-${index}`}
                 className="bg-white rounded-none p-8 shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <div className="mb-4">
@@ -77,23 +80,26 @@ const ProductHeader = () => {
                 
                 {block.phone && (
                   <div className="flex items-center gap-2 text-foreground">
-                    <Phone className="w-4 h-4" />
+                    <Phone className="w-4 h-4" aria-hidden="true" />
                     <a 
                       href={`tel:${block.phone}`}
-                      className="font-semibold hover:underline"
+                      className="font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                       style={{ color: 'hsl(var(--financial-green))' }}
+                      aria-label={`Bel ons op ${block.phone.replace('+32', '0').replace(/(\d{2})(\d{3})(\d{2})(\d{2})/, '$1 $2 $3 $4')}`}
                     >
                       {block.phone.replace('+32', '0').replace(/(\d{2})(\d{3})(\d{2})(\d{2})/, '$1 $2 $3 $4')}
                     </a>
                   </div>
                 )}
-              </div>
+              </article>
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </header>
   );
-};
+});
+
+ProductHeader.displayName = 'ProductHeader';
 
 export default ProductHeader;
