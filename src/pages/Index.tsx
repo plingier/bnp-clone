@@ -3,6 +3,7 @@ import ProductHeader from "@/components/ProductHeader";
 import bankingAppImage from "@/assets/banking-app-phone.jpg";
 import TitleWidth from "@/components/TitleWidth";
 import RichText from "@/components/RichText";
+import { ProductCardGrid } from "@/components/ProductCard";
 import { MessageSquare, Calendar, Phone, ArrowRight, CreditCard } from "lucide-react";
 
 const Index = () => {
@@ -89,6 +90,57 @@ const Index = () => {
               onClick: () => console.log("App download clicked")
             }}
             imagePosition="right"
+          />
+        </div>
+        
+        {/* ProductCard Component Examples */}
+        <div className="space-y-8">
+          <TitleWidth
+            label="VERZEKERINGEN"
+            title="Onze populaire verzekeringen"
+            description="Bescherm uzelf en uw bezittingen met onze uitgebreide verzekeringspakketten."
+          />
+          
+          <ProductCardGrid
+            cardsPerRow={3}
+            cards={[
+              {
+                image: {
+                  src: "/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png",
+                  alt: "Top Woning diefstalverzekering"
+                },
+                title: "Top Woning diefstalverzekering van AG",
+                description: "Deze aanvullende waarborg voorziet een tussenkomst bij diefstal of bij schade veroorzaakt door een poging tot diefstal.",
+                button: {
+                  text: "Deze waarborg ontdekken",
+                  href: "#"
+                }
+              },
+              {
+                image: {
+                  src: "/lovable-uploads/4d9b0298-f3f2-425f-927e-dc2df46d839d.png",
+                  alt: "Rechtsbijstand Brandverzekering"
+                },
+                title: "Rechtsbijstand Brandverzekering van AG",
+                description: "Met deze aanvullende rechtsbijstandsverzekering kunt u rekenen op juridische bijstand bij een probleem met uw woning.",
+                button: {
+                  text: "Deze waarborg ontdekken",
+                  href: "#"
+                }
+              },
+              {
+                image: {
+                  src: bankingAppImage,
+                  alt: "Homiris alarmsysteem"
+                },
+                title: "Homiris alarmsysteem",
+                description: "Homiris beschermt uw huis en uw dierbaren 24/7 tegen inbraak en brand. Abonnement inclusief levering, installatie en onderhoud.",
+                button: {
+                  text: "Alles over Homiris",
+                  href: "#"
+                }
+              }
+            ]}
           />
         </div>
       </div>
