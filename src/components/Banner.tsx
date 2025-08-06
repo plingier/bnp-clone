@@ -32,9 +32,9 @@ const Banner: React.FC<BannerProps> = ({
 
   return (
     <div className={`relative overflow-hidden rounded-lg group ${className}`}>
-      {/* Desktop Layout - Image with overlay text */}
-      <div className="hidden lg:block">
-        <div className={`relative ${variant === 'split' ? 'aspect-[2/1] lg:aspect-[9/4]' : 'aspect-[2/1] lg:aspect-[9/2]'}`}>
+      {/* Large Desktop Layout - Image with overlay text */}
+      <div className="hidden xl:block">
+        <div className={`relative ${variant === 'split' ? 'aspect-[2/1] xl:aspect-[9/4]' : 'aspect-[2/1] xl:aspect-[9/2]'}`}>
           <img 
             src={image} 
             alt="" 
@@ -64,8 +64,8 @@ const Banner: React.FC<BannerProps> = ({
         </div>
       </div>
 
-      {/* Mobile/Tablet Layout - Product Card Style */}
-      <div className="lg:hidden bg-card border border-border shadow-md">
+      {/* Small Desktop, Tablet & Mobile Layout - Product Card Style */}
+      <div className="xl:hidden bg-card border border-border shadow-md">
         <div className="relative aspect-[4/1]">
           <img 
             src={image} 
@@ -86,7 +86,7 @@ const Banner: React.FC<BannerProps> = ({
           )}
           <Button 
             onClick={handleClick}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-4 py-2 rounded-md transition-all duration-200 w-full"
+            className={`bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-4 py-2 rounded-md transition-all duration-200 ${variant === 'split' ? 'w-full md:w-auto' : 'w-full'}`}
           >
             {buttonText}
           </Button>
