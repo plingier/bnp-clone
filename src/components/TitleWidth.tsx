@@ -35,7 +35,7 @@ const TitleWidth: React.FC<TitleWidthProps> = memo(({
   }, []);
   
   return (
-    <header className={cn("w-full max-w-4xl mx-auto px-3 py-0", baseClasses, className)}>
+    <header className={cn("w-full max-w-4xl mx-auto px-3 py-10", baseClasses, className)}>
       {label && (
         <div className="mb-2">
           <span className="inline-block text-xs font-semibold tracking-wider uppercase text-primary/80 border-l-2 border-primary pl-2">

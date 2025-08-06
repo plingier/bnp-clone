@@ -5,16 +5,32 @@ import { Input } from "@/components/ui/input";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useLanguage, Language } from "@/contexts/LanguageContext";
+
 const BNPNavigation = memo(() => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedSegment, setSelectedSegment] = useState("Particulieren");
-  const [selectedLanguage, setSelectedLanguage] = useState("Nederlands");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
   const [currentMobileView, setCurrentMobileView] = useState<'main' | 'sections'>('main');
   const [selectedMainCategory, setSelectedMainCategory] = useState<any>(null);
   const segments = ["Particulieren", "Ondernemingen", "Private Banking"];
-  const languages = ["Nederlands", "Frans", "Engels"];
+  
+  const { language, setLanguage, t } = useLanguage();
+  
+  const languages = [
+    { code: 'nl', name: 'Nederlands' },
+    { code: 'fr', name: 'Français' },
+    { code: 'en', name: 'English' }
+  ];
+
+  const getLanguageName = (code: Language) => {
+    return languages.find(lang => lang.code === code)?.name || code;
+  };
+
+  const handleLanguageChange = (langCode: Language) => {
+    setLanguage(langCode);
+  };
 
   const handleMainCategoryClick = useCallback((item: any) => {
     setSelectedMainCategory(item);
@@ -531,13 +547,19 @@ const BNPNavigation = memo(() => {
               {/* Language Selector */}
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center space-x-1 text-sm text-gray-900 hover:text-financial-green">
-                  <span>{selectedLanguage}</span>
+                  <span>{getLanguageName(language)}</span>
                   <ChevronDown className="w-4 h-4" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  {languages.map(language => <DropdownMenuItem key={language} onClick={() => setSelectedLanguage(language)} className={selectedLanguage === language ? "bg-gray-100" : ""}>
-                      {language}
-                    </DropdownMenuItem>)}
+                  {languages.map(lang => (
+                    <DropdownMenuItem
+                      key={lang.code}
+                      onClick={() => handleLanguageChange(lang.code as Language)}
+                      className={language === lang.code ? "bg-gray-100" : ""}
+                    >
+                      {lang.name}
+                    </DropdownMenuItem>
+                  ))}
                 </DropdownMenuContent>
               </DropdownMenu>
 
@@ -711,8 +733,8 @@ const BNPNavigation = memo(() => {
                     </select>
                     <div className="flex space-x-4">
                       <a href="/contact" className="text-sm text-financial-green">Contacteer ons</a>
-                      <select value={selectedLanguage} onChange={e => setSelectedLanguage(e.target.value)} className="text-sm border border-gray-300 rounded px-2 py-1">
-                        {languages.map(language => <option key={language} value={language}>{language}</option>)}
+                      <select value={language} onChange={e => handleLanguageChange(e.target.value as Language)} className="text-sm border border-gray-300 rounded px-2 py-1">
+                        {languages.map(lang => <option key={lang.code} value={lang.code}>{lang.name}</option>)}
                       </select>
                     </div>
                   </div>
