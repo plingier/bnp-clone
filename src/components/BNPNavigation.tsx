@@ -596,8 +596,8 @@ const BNPNavigation = () => {
                       </div>
                       
                       {/* Category title */}
-                      <div className="px-4 py-3 bg-gray-50 border-b">
-                        <h3 className="font-semibold text-gray-900">{selectedMainCategory.title}</h3>
+                      <div className="px-4 py-4 bg-white border-b-2 border-financial-green">
+                        <h3 className="text-lg font-bold text-gray-900 uppercase tracking-wide">{selectedMainCategory.title}</h3>
                       </div>
 
                       {/* Sections */}
