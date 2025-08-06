@@ -26,7 +26,7 @@ interface ProductCardGridProps {
 export const ProductCard = ({ image, title, description, button, className, cardsPerRow }: ProductCardProps) => {
   const getImageClasses = () => {
     if (cardsPerRow === 2) {
-      return "w-full h-20 md:h-24 lg:h-28 object-cover object-[center_33%] transition-transform duration-300 group-hover:scale-105";
+      return "w-full h-48 md:h-56 lg:h-64 object-cover object-[center_33%] transition-transform duration-300 group-hover:scale-105";
     }
     return "w-full h-32 md:h-32 lg:h-full object-cover object-[center_33%] transition-transform duration-300 group-hover:scale-105";
   };
