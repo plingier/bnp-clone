@@ -562,7 +562,7 @@ const BNPNavigation = () => {
                 </div>
 
                 {/* Mobile Search */}
-                <div className="p-4 border-b bg-gray-50">
+                <div className="border-b bg-gray-50 px-4 py-2">
                   <Input placeholder="Wat zoekt u?" className="w-full" />
                 </div>
 
