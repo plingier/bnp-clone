@@ -94,7 +94,7 @@ const Index = () => {
         </div>
         
         {/* ProductCard Component Examples */}
-        <div className="px-4 md:px-6 lg:px-8">
+        <div className="px-6 md:px-10 lg:px-12">
           <div className="space-y-16">
             {/* 3 Cards Grid */}
             <div className="space-y-8">

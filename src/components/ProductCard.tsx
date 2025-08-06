@@ -14,15 +14,23 @@ interface ProductCardProps {
     onClick?: () => void;
   };
   className?: string;
+  cardsPerRow?: 2 | 3 | 4;
 }
 
 interface ProductCardGridProps {
-  cards: ProductCardProps[];
+  cards: Omit<ProductCardProps, 'cardsPerRow'>[];
   cardsPerRow?: 2 | 3 | 4;
   className?: string;
 }
 
-export const ProductCard = ({ image, title, description, button, className }: ProductCardProps) => {
+export const ProductCard = ({ image, title, description, button, className, cardsPerRow }: ProductCardProps) => {
+  const getImageClasses = () => {
+    if (cardsPerRow === 2) {
+      return "w-full h-20 md:h-24 lg:h-28 object-cover object-[center_33%] transition-transform duration-300 group-hover:scale-105";
+    }
+    return "w-full h-32 md:h-32 lg:h-full object-cover object-[center_33%] transition-transform duration-300 group-hover:scale-105";
+  };
+
   return (
     <div className={cn(
       "bg-card border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group",
@@ -33,7 +41,7 @@ export const ProductCard = ({ image, title, description, button, className }: Pr
         <img
           src={image.src}
           alt={image.alt}
-          className="w-full h-32 md:h-32 lg:h-full object-cover object-[center_33%] transition-transform duration-300 group-hover:scale-105"
+          className={getImageClasses()}
           loading="lazy"
         />
       </div>
@@ -90,7 +98,7 @@ export const ProductCardGrid = ({ cards, cardsPerRow = 3, className }: ProductCa
       className
     )}>
       {cards.map((card, index) => (
-        <ProductCard key={index} {...card} />
+        <ProductCard key={index} {...card} cardsPerRow={cardsPerRow} />
       ))}
     </div>
   );
