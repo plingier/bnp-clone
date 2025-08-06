@@ -1,5 +1,6 @@
 import BNPNavigation from "@/components/BNPNavigation";
 import ProductHeader from "@/components/ProductHeader";
+import bankingAppImage from "@/assets/banking-app-phone.jpg";
 import TitleWidth from "@/components/TitleWidth";
 import RichText from "@/components/RichText";
 import { MessageSquare, Calendar, Phone, ArrowRight, CreditCard } from "lucide-react";
@@ -46,8 +47,8 @@ const Index = () => {
         <div className="space-y-16">
           <RichText
             image={{
-              src: "https://www.bnpparibasfortis.be/public/media/images/R2/credit-habitation6.jpg",
-              alt: "Credit habitation - BNP Paribas Fortis"
+              src: bankingAppImage,
+              alt: "Person holding phone with easy banking app interface"
             }}
             title="Maak uw droomhuis werkelijkheid"
             description="Met ons hypothecair krediet kunt u tot 100% van de waarde van uw woning financieren. Profiteer van concurrerende rentevoeten en flexibele terugbetalingsopties die aangepast zijn aan uw financiële situatie."
