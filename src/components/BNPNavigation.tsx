@@ -74,10 +74,11 @@ const BNPNavigation = () => {
             {/* Logo */}
             <div className="flex items-center">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-financial-green rounded flex items-center justify-center bg-[#56ab56]">
-                  <span className="text-white font-bold text-sm">BNP</span>
-                </div>
-                <span className="font-bold text-gray-900">BNP PARIBAS FORTIS</span>
+                <img 
+                  src="/placeholder-logo.png" 
+                  alt="BNP Paribas Fortis Logo" 
+                  className="h-8 w-auto"
+                />
               </div>
             </div>
 
@@ -143,10 +144,11 @@ const BNPNavigation = () => {
                 <div className="p-4 border-b">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-financial-green rounded flex items-center justify-center">
-                        <span className="text-white font-bold text-sm">BNP</span>
-                      </div>
-                      <span className="font-bold text-gray-900">PARIBAS FORTIS</span>
+                      <img 
+                        src="/placeholder-logo.png" 
+                        alt="BNP Paribas Fortis Logo" 
+                        className="h-8 w-auto"
+                      />
                     </div>
                     <Button variant="ghost" onClick={() => setIsMobileMenuOpen(false)}>
                       <X className="w-6 h-6" />
