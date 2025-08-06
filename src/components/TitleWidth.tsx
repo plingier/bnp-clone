@@ -57,10 +57,10 @@ const TitleWidth: React.FC<TitleWidthProps> = ({
               <div className="flex items-center justify-center md:justify-start gap-3 p-4 rounded-lg border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-md group cursor-pointer w-full max-w-sm md:max-w-none">
                 {link.icon && (
                   <div className="flex-shrink-0">
-                    <link.icon className="w-5 h-5 text-primary group-hover:text-primary/80 transition-colors" />
+                    <link.icon className="w-5 h-5 text-[hsl(var(--financial-green))] group-hover:text-[hsl(var(--financial-green-dark))] transition-colors" />
                   </div>
                 )}
-                <span className="text-foreground font-medium group-hover:text-primary transition-colors">
+                <span className="text-foreground font-medium group-hover:text-[hsl(var(--financial-green))] transition-colors">
                   {link.text}
                 </span>
               </div>
