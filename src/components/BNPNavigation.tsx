@@ -75,7 +75,7 @@ const BNPNavigation = () => {
             <div className="flex items-center">
               <div className="flex items-center space-x-2">
                 <img 
-                  src="/placeholder-logo.png" 
+                  src="/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png" 
                   alt="BNP Paribas Fortis Logo" 
                   className="h-8 w-auto"
                 />
