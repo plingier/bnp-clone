@@ -6,6 +6,7 @@ import RichText from "@/components/RichText";
 import { ProductCardGrid } from "@/components/ProductCard";
 import { MultiPurposeGrid } from "@/components/MultiPurpose";
 import { StickyCTA } from "@/components/StickyCTA";
+import { Banner, BannerContainer } from "@/components/Banner";
 import { MessageSquare, Calendar, Phone, ArrowRight, CreditCard } from "lucide-react";
 
 const Index = () => {
@@ -348,6 +349,51 @@ const Index = () => {
                 ]}
               />
             </div>
+          </div>
+        </div>
+
+        {/* Banner Component Examples */}
+        <div className="space-y-16">
+          {/* Full Width Banner */}
+          <div className="space-y-8">
+            <TitleWidth
+              label="PROMOTIONS"
+              title="Special Offers"
+              description="Ontdek onze exclusieve aanbiedingen en win geweldige prijzen."
+            />
+            
+            <BannerContainer variant="full">
+              <Banner
+                image="/lovable-uploads/84721fde-4535-4825-b301-ea1c05430448.png"
+                title="Win Airpods!"
+                buttonText="Een rekening openen"
+                onButtonClick={() => console.log('Banner CTA clicked')}
+              />
+            </BannerContainer>
+          </div>
+
+          {/* Two Banner Split Layout */}
+          <div className="space-y-8">
+            <TitleWidth
+              label="FINANCIAL TIPS"
+              title="Discover Our Services"
+              description="Leer meer over onze digitale diensten en financiële tips voor jongeren."
+            />
+            
+            <BannerContainer variant="split">
+              <Banner
+                image="/lovable-uploads/45902985-98fa-4bb0-a81a-9fb9150b7aac.png"
+                title="Automatische extra controle op overschrijvingen via Easy Banking App maakt betalingen nog veiliger, betrouwbaarder en efficiënter"
+                buttonText="Lees er meer over"
+                onButtonClick={() => console.log('Banking banner clicked')}
+              />
+              <Banner
+                image="/lovable-uploads/45902985-98fa-4bb0-a81a-9fb9150b7aac.png"
+                title="Uw tiener leren omgaan met zakgeld?"
+                buttonText="Naar het artikel"
+                onButtonClick={() => console.log('Teen banking banner clicked')}
+              />
+            </BannerContainer>
           </div>
         </div>
       </div>
