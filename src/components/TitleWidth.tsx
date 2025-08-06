@@ -51,10 +51,10 @@ const TitleWidth: React.FC<TitleWidthProps> = ({
       )}
       
       {links && links.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 justify-items-center md:justify-items-stretch">
           {links.map((link, index) => {
             const LinkContent = () => (
-              <div className="flex items-center gap-3 p-4 rounded-lg border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-md group cursor-pointer">
+              <div className="flex items-center justify-center md:justify-start gap-3 p-4 rounded-lg border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-md group cursor-pointer w-full max-w-sm md:max-w-none">
                 {link.icon && (
                   <div className="flex-shrink-0">
                     <link.icon className="w-5 h-5 text-primary group-hover:text-primary/80 transition-colors" />
