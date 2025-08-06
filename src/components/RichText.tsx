@@ -58,7 +58,7 @@ const RichText: React.FC<RichTextProps> = ({
                 src={image.src}
                 alt={image.alt}
                 className={cn(
-                  "w-full h-auto rounded-lg shadow-lg object-cover",
+                  "w-full h-auto lg:h-96 xl:h-[28rem] rounded-lg shadow-lg object-cover",
                   image.className
                 )}
                 loading="lazy"
