@@ -69,7 +69,7 @@ const Banner: React.FC<BannerProps> = ({
       {/* Two Banner (Split Variant) - Large Desktop Layout */}
       {variant === 'split' && (
         <div className="hidden xl:block">
-          <div className="relative aspect-[2/1] xl:aspect-[12/3]">
+          <div className="relative aspect-[2/1] xl:aspect-[10/3]">
             <img 
               src={image} 
               alt="" 
