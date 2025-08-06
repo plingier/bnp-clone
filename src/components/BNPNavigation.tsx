@@ -550,12 +550,12 @@ const BNPNavigation = () => {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-full max-w-md p-0 flex flex-col h-full">
-                <div className="p-4 border-b">
-                  <div className="flex items-center justify-between">
+                <div className="border-b border-gray-100">
+                  <div className="flex items-center justify-between h-12 px-4">
                     <div className="flex items-center space-x-2">
-                      <img src="/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png" alt="BNP Paribas Fortis Logo" className="h-8 w-auto" />
+                      <img src="/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png" alt="BNP Paribas Fortis Logo" className="h-10 w-auto" />
                     </div>
-                    <Button variant="ghost" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Button variant="ghost" onClick={() => setIsMobileMenuOpen(false)} className="p-2">
                       <X className="w-6 h-6" />
                     </Button>
                   </div>
