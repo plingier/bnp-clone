@@ -588,7 +588,7 @@ const BNPNavigation = () => {
                       <div className="border-b bg-gray-50">
                         <button 
                           onClick={handleBackToMain}
-                          className="w-full px-4 py-2 text-left flex items-center text-financial-green hover:bg-gray-100"
+                          className="w-full px-4 py-1.5 text-left flex items-center text-financial-green hover:bg-gray-100"
                         >
                           <ChevronRight className="w-4 h-4 rotate-180 mr-2" />
                           <span className="text-sm">Terug</span>
