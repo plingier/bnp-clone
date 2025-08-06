@@ -643,7 +643,7 @@ const BNPNavigation = () => {
                               className="bg-white text-financial-green hover:bg-gray-50 font-medium rounded-lg px-4 py-2 transition-colors" 
                               asChild
                             >
-                              <a href={item.banner.href}>{item.banner.cta}</a>
+                              <a href={item.banner.href} className="max-w-full truncate block">{item.banner.cta}</a>
                             </Button>
                           </div>}
                       </div>
