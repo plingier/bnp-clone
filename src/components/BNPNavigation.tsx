@@ -549,7 +549,7 @@ const BNPNavigation = () => {
                   <Menu className="w-6 h-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full max-w-md p-0">
+              <SheetContent side="right" className="w-full max-w-md p-0 flex flex-col h-full">
                 <div className="p-4 border-b">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
