@@ -610,9 +610,9 @@ const BNPNavigation = () => {
                     <NavigationMenuTrigger className="text-gray-900 hover:text-financial-green font-medium">
                       {item.title}
                     </NavigationMenuTrigger>
-                     <NavigationMenuContent className="bg-white border border-gray-200 shadow-lg">
-                       <div className="grid grid-cols-5 gap-6 p-6 w-[1200px] bg-white">
-                         {/* Columns 1-3: Main content */}
+                    <NavigationMenuContent>
+                      <div className="grid grid-cols-5 gap-6 p-6 w-screen max-w-7xl">
+                        {/* Columns 1-3: Main content */}
                         {item.sections.map((section, idx) => <div key={idx} className="space-y-3">
                             <h4 className="font-semibold text-gray-900">{section.title}</h4>
                             <ul className="space-y-2">
@@ -633,14 +633,14 @@ const BNPNavigation = () => {
                           </div>}
                         
                         {/* Column 5: Banner */}
-                        {item.banner && <div className="bg-financial-green text-white p-4 rounded-lg space-y-3 max-w-xs">
+                        {item.banner && <div className="bg-financial-green text-white p-6 rounded-lg space-y-4">
                             <div className="text-xs font-bold tracking-wide uppercase">{item.banner.title}</div>
-                            {item.banner.subtitle && <h4 className="font-semibold text-sm">{item.banner.subtitle}</h4>}
-                            <p className="text-xs leading-relaxed">{item.banner.description}</p>
+                            {item.banner.subtitle && <h4 className="font-semibold text-base">{item.banner.subtitle}</h4>}
+                            <p className="text-sm leading-relaxed">{item.banner.description}</p>
                             <Button 
                               variant="secondary" 
                               size="sm" 
-                              className="bg-white text-financial-green hover:bg-gray-50 font-medium rounded px-3 py-1 text-xs w-full" 
+                              className="bg-white text-financial-green hover:bg-gray-50 font-medium rounded-lg px-4 py-2 transition-colors" 
                               asChild
                             >
                               <a href={item.banner.href}>{item.banner.cta}</a>
