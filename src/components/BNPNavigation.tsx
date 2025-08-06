@@ -11,6 +11,8 @@ const BNPNavigation = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("Nederlands");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
+  const [currentMobileView, setCurrentMobileView] = useState<'main' | 'sections'>('main');
+  const [selectedMainCategory, setSelectedMainCategory] = useState<any>(null);
   const segments = ["Particulieren", "Ondernemingen", "Private Banking"];
   const languages = ["Nederlands", "Frans", "Engels"];
   const navigationItems = [{
@@ -465,6 +467,18 @@ const BNPNavigation = () => {
   const toggleMobileSection = (title: string) => {
     setExpandedMobileSection(expandedMobileSection === title ? null : title);
   };
+
+  const handleMainCategoryClick = (item: any) => {
+    setSelectedMainCategory(item);
+    setCurrentMobileView('sections');
+    setExpandedMobileSection(null);
+  };
+
+  const handleBackToMain = () => {
+    setCurrentMobileView('main');
+    setSelectedMainCategory(null);
+    setExpandedMobileSection(null);
+  };
   return <div className="w-full bg-white border-b shadow-sm relative z-50">
       {/* Utility Navigation - Top Row */}
       <div className="border-b border-gray-100">
@@ -554,45 +568,115 @@ const BNPNavigation = () => {
 
                 {/* Mobile Navigation */}
                 <div className="flex-1 overflow-y-auto">
-                  {navigationItems.map(item => (
+                  {/* Main Categories View */}
+                  {currentMobileView === 'main' && navigationItems.map(item => (
                     <div key={item.title} className="border-b">
                       <button 
-                        onClick={() => toggleMobileSection(item.title)} 
+                        onClick={() => handleMainCategoryClick(item)}
                         className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
                       >
                         <span className="font-medium text-gray-900">{item.title}</span>
-                        <ChevronRight className={`w-5 h-5 text-financial-green transition-transform ${expandedMobileSection === item.title ? 'rotate-90' : ''}`} />
+                        <ChevronRight className="w-5 h-5 text-financial-green" />
                       </button>
-                      {expandedMobileSection === item.title && (
-                        <div className="bg-gray-50">
-                          {item.sections.map((section, idx) => (
-                            <div key={idx} className="border-b border-gray-200 last:border-b-0">
-                              <button 
-                                onClick={() => toggleMobileSection(`${item.title}-${section.title}`)} 
-                                className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-100"
-                              >
-                                <span className="font-medium text-gray-700">{section.title}</span>
-                                <ChevronRight className={`w-4 h-4 text-financial-green transition-transform ${expandedMobileSection === `${item.title}-${section.title}` ? 'rotate-90' : ''}`} />
-                              </button>
-                              {expandedMobileSection === `${item.title}-${section.title}` && (
-                                <div className="bg-gray-100 px-4 pb-3">
-                                  {section.links.map((link, linkIdx) => (
-                                    <a 
-                                      key={linkIdx} 
-                                      href={link.href} 
-                                      className="block py-2 text-sm text-gray-600 hover:text-financial-green border-b border-gray-300 last:border-b-0"
-                                    >
-                                      {link.text}
-                                    </a>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      )}
                     </div>
                   ))}
+
+                  {/* Sections View */}
+                  {currentMobileView === 'sections' && selectedMainCategory && (
+                    <>
+                      {/* Back button */}
+                      <div className="border-b bg-gray-50">
+                        <button 
+                          onClick={handleBackToMain}
+                          className="w-full px-4 py-3 text-left flex items-center text-financial-green hover:bg-gray-100"
+                        >
+                          <ChevronRight className="w-4 h-4 rotate-180 mr-2" />
+                          <span className="text-sm">Terug</span>
+                        </button>
+                      </div>
+                      
+                      {/* Category title */}
+                      <div className="px-4 py-3 bg-gray-50 border-b">
+                        <h3 className="font-semibold text-gray-900">{selectedMainCategory.title}</h3>
+                      </div>
+
+                      {/* Sections */}
+                      {selectedMainCategory.sections.map((section: any, idx: number) => (
+                        <div key={idx} className="border-b">
+                          <button 
+                            onClick={() => toggleMobileSection(section.title)} 
+                            className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
+                          >
+                            <span className="font-medium text-gray-900">{section.title}</span>
+                            <ChevronRight className={`w-4 h-4 text-financial-green transition-transform ${expandedMobileSection === section.title ? 'rotate-90' : ''}`} />
+                          </button>
+                          {expandedMobileSection === section.title && (
+                            <div className="bg-gray-50 border-t border-gray-200">
+                              {section.links.map((link: any, linkIdx: number) => (
+                                <a 
+                                  key={linkIdx} 
+                                  href={link.href} 
+                                  className="block px-4 py-3 text-sm text-gray-600 hover:text-financial-green hover:bg-gray-100 border-b border-gray-200 last:border-b-0"
+                                >
+                                  {link.text}
+                                </a>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+
+                      {/* Expertise section */}
+                      {selectedMainCategory.expertise && (
+                        <div className="border-b">
+                          <button 
+                            onClick={() => toggleMobileSection('expertise')} 
+                            className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
+                          >
+                            <span className="font-medium text-gray-900">{selectedMainCategory.expertise.title}</span>
+                            <ChevronRight className={`w-4 h-4 text-financial-green transition-transform ${expandedMobileSection === 'expertise' ? 'rotate-90' : ''}`} />
+                          </button>
+                          {expandedMobileSection === 'expertise' && (
+                            <div className="bg-gray-50 border-t border-gray-200">
+                              {selectedMainCategory.expertise.content.map((content: any, idx: number) => (
+                                <a 
+                                  key={idx} 
+                                  href={content.href} 
+                                  className="block px-4 py-3 text-sm text-gray-600 hover:text-financial-green hover:bg-gray-100 border-b border-gray-200 last:border-b-0"
+                                >
+                                  {content.text}
+                                </a>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Banner section */}
+                      {selectedMainCategory.banner && (
+                        <div className="border-b">
+                          <button 
+                            onClick={() => toggleMobileSection('banner')} 
+                            className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
+                          >
+                            <span className="font-medium text-gray-900">{selectedMainCategory.banner.title}</span>
+                            <ChevronRight className={`w-4 h-4 text-financial-green transition-transform ${expandedMobileSection === 'banner' ? 'rotate-90' : ''}`} />
+                          </button>
+                          {expandedMobileSection === 'banner' && (
+                            <div className="bg-gray-50 border-t border-gray-200 px-4 py-4">
+                              <p className="text-sm text-gray-600 mb-3">{selectedMainCategory.banner.description}</p>
+                              <a 
+                                href={selectedMainCategory.banner.href}
+                                className="inline-block bg-financial-green text-white px-4 py-2 rounded text-sm hover:bg-financial-green/90"
+                              >
+                                {selectedMainCategory.banner.cta}
+                              </a>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
 
                 {/* Mobile CTAs */}
