@@ -73,24 +73,25 @@ export const ProductCardGrid = ({ cards, cardsPerRow = 3, className }: ProductCa
   const getGridColumns = () => {
     switch (cardsPerRow) {
       case 2:
-        return "grid-cols-1 md:grid-cols-2 justify-items-center";
+        return "grid-cols-1 md:grid-cols-2 md:justify-center";
       case 3:
-        return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center";
+        return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:justify-center";
       case 4:
         return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
       default:
-        return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center";
+        return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:justify-center";
     }
   };
 
   return (
     <div className={cn(
-      "grid gap-6 max-w-7xl mx-auto",
+      "grid gap-6",
       getGridColumns(),
+      cardsPerRow === 2 ? "max-w-4xl mx-auto" : cardsPerRow === 3 ? "max-w-6xl mx-auto" : "max-w-7xl mx-auto",
       className
     )}>
       {cards.map((card, index) => (
-        <ProductCard key={index} {...card} className="w-full max-w-sm mx-auto" />
+        <ProductCard key={index} {...card} className="w-full" />
       ))}
     </div>
   );
