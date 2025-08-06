@@ -8,6 +8,7 @@ interface BannerProps {
   buttonText: string;
   onButtonClick?: () => void;
   buttonHref?: string;
+  variant?: 'full' | 'split';
   className?: string;
 }
 
@@ -18,6 +19,7 @@ const Banner: React.FC<BannerProps> = ({
   buttonText,
   onButtonClick,
   buttonHref,
+  variant = 'full',
   className = ''
 }) => {
   const handleClick = () => {
@@ -32,7 +34,7 @@ const Banner: React.FC<BannerProps> = ({
     <div className={`relative overflow-hidden rounded-lg group ${className}`}>
       {/* Desktop Layout - Image with overlay text */}
       <div className="hidden lg:block">
-        <div className="relative aspect-[2/1] lg:aspect-[9/2]">
+        <div className={`relative ${variant === 'split' ? 'aspect-[2/1] lg:aspect-[9/4]' : 'aspect-[2/1] lg:aspect-[9/2]'}`}>
           <img 
             src={image} 
             alt="" 

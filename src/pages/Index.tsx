@@ -387,6 +387,7 @@ const Index = () => {
                 title="Automatische extra controle op overschrijvingen via Easy Banking App maakt betalingen nog veiliger, betrouwbaarder en efficiënter"
                 description="Verificatie van de naam van de begunstigde start vanaf 30 juni"
                 buttonText="Lees er meer over"
+                variant="split"
                 onButtonClick={() => console.log('Banking banner clicked')}
               />
               <Banner
@@ -394,6 +395,7 @@ const Index = () => {
                 title="Uw tiener leren omgaan met zakgeld?"
                 description="Ontdek hoe andere ouders kijken naar dit topic."
                 buttonText="Naar het artikel"
+                variant="split"
                 onButtonClick={() => console.log('Teen banking banner clicked')}
               />
             </BannerContainer>
