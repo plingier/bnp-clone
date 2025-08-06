@@ -479,7 +479,7 @@ const BNPNavigation = () => {
     setSelectedMainCategory(null);
     setExpandedMobileSection(null);
   };
-  return <div className="w-full bg-white border-b shadow-sm relative z-50">
+  return <div className="w-full bg-white border-b shadow-sm sticky top-0 z-50">
       {/* Utility Navigation - Top Row */}
       <div className="border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
