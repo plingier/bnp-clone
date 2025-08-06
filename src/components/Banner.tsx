@@ -103,7 +103,7 @@ const Banner: React.FC<BannerProps> = ({
       {/* Single Banner Mobile Layout - Product Card Style */}
       {variant === 'full' && (
         <div className="md:hidden bg-card border border-border shadow-md">
-          <div className="relative aspect-[4/1]">
+          <div className="relative aspect-[6/1]">
             <img 
               src={image} 
               alt="" 
@@ -134,7 +134,7 @@ const Banner: React.FC<BannerProps> = ({
       {/* Two Banner Small Desktop, Tablet & Mobile Layout - Product Card Style */}
       {variant === 'split' && (
         <div className="xl:hidden bg-card border border-border shadow-md">
-          <div className="relative aspect-[4/1]">
+          <div className="relative aspect-[6/1]">
             <img 
               src={image} 
               alt="" 
