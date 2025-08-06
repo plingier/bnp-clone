@@ -1,8 +1,10 @@
+import BNPNavigation from "@/components/BNPNavigation";
 import ProductHeader from "@/components/ProductHeader";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <BNPNavigation />
       <ProductHeader />
       
       {/* Additional content can go here */}
