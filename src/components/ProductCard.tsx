@@ -14,23 +14,15 @@ interface ProductCardProps {
     onClick?: () => void;
   };
   className?: string;
-  cardsPerRow?: 2 | 3 | 4;
 }
 
 interface ProductCardGridProps {
-  cards: Omit<ProductCardProps, 'cardsPerRow'>[];
+  cards: ProductCardProps[];
   cardsPerRow?: 2 | 3 | 4;
   className?: string;
 }
 
-export const ProductCard = ({ image, title, description, button, className, cardsPerRow }: ProductCardProps) => {
-  const getImageClasses = () => {
-    if (cardsPerRow === 2) {
-      return "w-full h-48 md:h-56 lg:h-64 object-cover object-[center_33%] transition-transform duration-300 group-hover:scale-105";
-    }
-    return "w-full h-32 md:h-32 lg:h-full object-cover object-[center_33%] transition-transform duration-300 group-hover:scale-105";
-  };
-
+export const ProductCard = ({ image, title, description, button, className }: ProductCardProps) => {
   return (
     <div className={cn(
       "bg-card border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group",
@@ -41,7 +33,7 @@ export const ProductCard = ({ image, title, description, button, className, card
         <img
           src={image.src}
           alt={image.alt}
-          className={getImageClasses()}
+          className="w-full h-32 md:h-32 lg:h-full object-cover object-[center_33%] transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
         />
       </div>
@@ -81,24 +73,24 @@ export const ProductCardGrid = ({ cards, cardsPerRow = 3, className }: ProductCa
   const getGridColumns = () => {
     switch (cardsPerRow) {
       case 2:
-        return "grid-cols-1 md:grid-cols-2";
+        return "grid-cols-1 md:grid-cols-2 justify-items-center";
       case 3:
-        return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
+        return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center";
       case 4:
         return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
       default:
-        return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
+        return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center";
     }
   };
 
   return (
     <div className={cn(
-      "grid gap-6",
+      "grid gap-6 max-w-7xl mx-auto",
       getGridColumns(),
       className
     )}>
       {cards.map((card, index) => (
-        <ProductCard key={index} {...card} cardsPerRow={cardsPerRow} />
+        <ProductCard key={index} {...card} className="w-full max-w-sm" />
       ))}
     </div>
   );
