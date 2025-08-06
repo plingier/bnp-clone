@@ -37,18 +37,18 @@ All colors MUST be HSL.
     --ring: 217 71% 53%;
 
     /* Professional financial theme colors */
-    --financial-navy: 217 91% 15%;
-    --financial-blue: 217 71% 53%;
-    --financial-light: 217 71% 97%;
+    --financial-green: 142 70% 45%;
+    --financial-green-dark: 142 70% 35%;
+    --financial-light: 0 0% 98%;
     --financial-accent: 44 87% 65%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--financial-navy)), hsl(var(--financial-blue)));
-    --gradient-overlay: linear-gradient(135deg, hsl(var(--financial-navy) / 0.8), hsl(var(--financial-blue) / 0.6));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--financial-green)), hsl(var(--financial-green-dark)));
+    --gradient-overlay: linear-gradient(90deg, hsl(var(--financial-green) / 0.95), hsl(var(--financial-green) / 0.8));
     
     /* Shadows */
-    --shadow-card: 0 4px 6px -1px hsl(var(--financial-navy) / 0.1);
-    --shadow-elevated: 0 20px 25px -5px hsl(var(--financial-navy) / 0.1);
+    --shadow-card: 0 4px 6px -1px hsl(var(--financial-green) / 0.1);
+    --shadow-elevated: 0 20px 25px -5px hsl(var(--financial-green) / 0.1);
     
     /* Animation */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
