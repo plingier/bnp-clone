@@ -38,7 +38,7 @@ const TitleWidth: React.FC<TitleWidthProps> = ({
         </div>
       )}
       
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 break-words overflow-wrap-anywhere">
         {title}
       </h2>
       
