@@ -62,7 +62,39 @@ This project is built with:
 
 ## How can I deploy this project?
 
+### Automatic Deployment (GitHub Actions)
+
+This project includes GitHub Actions workflows for automatic deployment to GitHub Pages:
+
+1. **Main Deployment**: Uses the latest GitHub Pages deployment method
+   - File: `.github/workflows/deploy.yml`
+   - Automatically deploys when you push to the `main` branch
+   - Uses GitHub's built-in Pages deployment
+
+2. **Legacy Deployment**: Alternative method using peaceiris/actions-gh-pages
+   - File: `.github/workflows/deploy-legacy.yml`
+   - Can be used as a backup or alternative deployment method
+
+### Manual Deployment
+
 Simply open [Lovable](https://lovable.dev/projects/0fcc1d86-3fe7-4231-8502-05b6dde9bdcf) and click on Share -> Publish.
+
+### Local Build
+
+To build the project locally:
+
+```bash
+npm run build
+```
+
+This will create a `dist` folder with the production build.
+
+## GitHub Pages Configuration
+
+The project is configured for GitHub Pages deployment at:
+- **URL**: https://plingier.github.io/bnp-clone/
+- **Base Path**: `/bnp-clone/`
+- **Source**: GitHub Actions (automatic deployment)
 
 ## Can I connect a custom domain to my Lovable project?
 
