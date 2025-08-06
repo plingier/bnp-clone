@@ -5,6 +5,7 @@ import TitleWidth from "@/components/TitleWidth";
 import RichText from "@/components/RichText";
 import { ProductCardGrid } from "@/components/ProductCard";
 import { MultiPurposeGrid } from "@/components/MultiPurpose";
+import { StickyCTA } from "@/components/StickyCTA";
 import { MessageSquare, Calendar, Phone, ArrowRight, CreditCard } from "lucide-react";
 
 const Index = () => {
@@ -350,6 +351,13 @@ const Index = () => {
           </div>
         </div>
       </div>
+      
+      {/* Sticky CTA Component */}
+      <StickyCTA 
+        description="Klaar om uw verzekering aan te passen? Neem contact op voor persoonlijk advies en offerte op maat."
+        buttonText="Contact opnemen"
+        onButtonClick={() => console.log('CTA clicked')}
+      />
     </div>
   );
 };
