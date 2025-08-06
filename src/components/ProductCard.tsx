@@ -90,7 +90,7 @@ export const ProductCardGrid = ({ cards, cardsPerRow = 3, className }: ProductCa
       className
     )}>
       {cards.map((card, index) => (
-        <ProductCard key={index} {...card} className="w-full max-w-sm" />
+        <ProductCard key={index} {...card} className="w-full max-w-sm mx-auto" />
       ))}
     </div>
   );
