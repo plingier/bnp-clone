@@ -33,7 +33,7 @@ export const ProductCard = ({ image, title, description, button, className }: Pr
         <img
           src={image.src}
           alt={image.alt}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-32 md:h-32 lg:h-full object-cover object-[center_33%] transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
         />
       </div>

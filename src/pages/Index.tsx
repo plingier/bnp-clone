@@ -94,54 +94,161 @@ const Index = () => {
         </div>
         
         {/* ProductCard Component Examples */}
-        <div className="space-y-8">
-          <TitleWidth
-            label="VERZEKERINGEN"
-            title="Onze populaire verzekeringen"
-            description="Bescherm uzelf en uw bezittingen met onze uitgebreide verzekeringspakketten."
-          />
+        <div className="px-4 md:px-6 lg:px-8">
+          <div className="space-y-16">
+            {/* 3 Cards Grid */}
+            <div className="space-y-8">
+              <TitleWidth
+                label="VERZEKERINGEN"
+                title="Onze populaire verzekeringen"
+                description="Bescherm uzelf en uw bezittingen met onze uitgebreide verzekeringspakketten."
+              />
           
-          <ProductCardGrid
-            cardsPerRow={3}
-            cards={[
-              {
-                image: {
-                  src: "/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png",
-                  alt: "Top Woning diefstalverzekering"
-                },
-                title: "Top Woning diefstalverzekering van AG",
-                description: "Deze aanvullende waarborg voorziet een tussenkomst bij diefstal of bij schade veroorzaakt door een poging tot diefstal.",
-                button: {
-                  text: "Deze waarborg ontdekken",
-                  href: "#"
-                }
-              },
-              {
-                image: {
-                  src: "/lovable-uploads/4d9b0298-f3f2-425f-927e-dc2df46d839d.png",
-                  alt: "Rechtsbijstand Brandverzekering"
-                },
-                title: "Rechtsbijstand Brandverzekering van AG",
-                description: "Met deze aanvullende rechtsbijstandsverzekering kunt u rekenen op juridische bijstand bij een probleem met uw woning.",
-                button: {
-                  text: "Deze waarborg ontdekken",
-                  href: "#"
-                }
-              },
-              {
-                image: {
-                  src: bankingAppImage,
-                  alt: "Homiris alarmsysteem"
-                },
-                title: "Homiris alarmsysteem",
-                description: "Homiris beschermt uw huis en uw dierbaren 24/7 tegen inbraak en brand. Abonnement inclusief levering, installatie en onderhoud.",
-                button: {
-                  text: "Alles over Homiris",
-                  href: "#"
-                }
-              }
-            ]}
-          />
+              <ProductCardGrid
+                cardsPerRow={3}
+                cards={[
+                  {
+                    image: {
+                      src: bankingAppImage,
+                      alt: "Top Woning diefstalverzekering"
+                    },
+                    title: "Top Woning diefstalverzekering van AG",
+                    description: "Deze aanvullende waarborg voorziet een tussenkomst bij diefstal of bij schade veroorzaakt door een poging tot diefstal.",
+                    button: {
+                      text: "Deze waarborg ontdekken",
+                      href: "#"
+                    }
+                  },
+                  {
+                    image: {
+                      src: bankingAppImage,
+                      alt: "Rechtsbijstand Brandverzekering"
+                    },
+                    title: "Rechtsbijstand Brandverzekering van AG",
+                    description: "Met deze aanvullende rechtsbijstandsverzekering kunt u rekenen op juridische bijstand bij een probleem met uw woning.",
+                    button: {
+                      text: "Deze waarborg ontdekken",
+                      href: "#"
+                    }
+                  },
+                  {
+                    image: {
+                      src: bankingAppImage,
+                      alt: "Homiris alarmsysteem"
+                    },
+                    title: "Homiris alarmsysteem",
+                    description: "Homiris beschermt uw huis en uw dierbaren 24/7 tegen inbraak en brand. Abonnement inclusief levering, installatie en onderhoud.",
+                    button: {
+                      text: "Alles over Homiris",
+                      href: "#"
+                    }
+                  }
+                ]}
+              />
+            </div>
+            
+            {/* 2 Cards Grid */}
+            <div className="space-y-8">
+              <TitleWidth
+                label="KREDIET"
+                title="Financieringsoplossingen"
+                description="Realiseer uw projecten met onze flexibele kredietoplossingen."
+              />
+              
+              <ProductCardGrid
+                cardsPerRow={2}
+                cards={[
+                  {
+                    image: {
+                      src: bankingAppImage,
+                      alt: "Persoonlijk krediet"
+                    },
+                    title: "Persoonlijk krediet",
+                    description: "Financier uw persoonlijke projecten met onze voordelige rentevoeten en flexibele terugbetalingsopties.",
+                    button: {
+                      text: "Meer informatie",
+                      href: "#"
+                    }
+                  },
+                  {
+                    image: {
+                      src: bankingAppImage,
+                      alt: "Autolening"
+                    },
+                    title: "Autolening",
+                    description: "Koop uw droomauto met onze speciale autofinancieringsproducten. Concurrerende tarieven gegarandeerd.",
+                    button: {
+                      text: "Simulatie starten",
+                      href: "#"
+                    }
+                  }
+                ]}
+              />
+            </div>
+            
+            {/* 4 Cards Grid */}
+            <div className="space-y-8">
+              <TitleWidth
+                label="DIGITALE DIENSTEN"
+                title="Onze mobiele en online diensten"
+                description="Beheer uw financiën eenvoudig met onze digitale tools en applicaties."
+              />
+              
+              <ProductCardGrid
+                cardsPerRow={4}
+                cards={[
+                  {
+                    image: {
+                      src: bankingAppImage,
+                      alt: "Mobile Banking"
+                    },
+                    title: "Mobile Banking",
+                    description: "Bankieren op elk moment, waar u ook bent.",
+                    button: {
+                      text: "Download app",
+                      href: "#"
+                    }
+                  },
+                  {
+                    image: {
+                      src: bankingAppImage,
+                      alt: "Online Banking"
+                    },
+                    title: "Online Banking",
+                    description: "Veilig en gebruiksvriendelijk internetbankieren.",
+                    button: {
+                      text: "Inloggen",
+                      href: "#"
+                    }
+                  },
+                  {
+                    image: {
+                      src: bankingAppImage,
+                      alt: "Investment Platform"
+                    },
+                    title: "Investment Platform",
+                    description: "Beheer uw beleggingen online.",
+                    button: {
+                      text: "Ontdekken",
+                      href: "#"
+                    }
+                  },
+                  {
+                    image: {
+                      src: bankingAppImage,
+                      alt: "Digital Wallet"
+                    },
+                    title: "Digital Wallet",
+                    description: "Contactloos betalen met uw smartphone.",
+                    button: {
+                      text: "Meer info",
+                      href: "#"
+                    }
+                  }
+                ]}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
