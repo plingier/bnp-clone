@@ -1,414 +1,544 @@
 import BNPNavigation from "@/components/BNPNavigation";
-import ProductHeader from "@/components/ProductHeader";
 import bankingAppImage from "@/assets/banking-app-phone.jpg";
 import TitleWidth from "@/components/TitleWidth";
-import RichText from "@/components/RichText";
-import { ProductCardGrid } from "@/components/ProductCard";
 import { MultiPurposeGrid } from "@/components/MultiPurpose";
-import { StickyCTA } from "@/components/StickyCTA";
-import { Banner, BannerContainer } from "@/components/Banner";
-import { MessageSquare, Calendar, Phone, ArrowRight, CreditCard } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <BNPNavigation />
-      <ProductHeader />
       
-      {/* TitleWidth Component Examples */}
-      <div className="space-y-16 py-16">
-        {/* Example 1: With Links */}
-        <TitleWidth
-          label="WELKOM"
-          title="Hoe kunnen we u helpen?"
-          links={[
-            {
-              text: "Een antwoord vinden",
-              icon: MessageSquare,
-              href: "#"
-            },
-            {
-              text: "Een afspraak maken",
-              icon: Calendar,
-              href: "#"
-            },
-            {
-              text: "02 762 60 00",
-              icon: Phone,
-              href: "tel:0276260000"
-            }
-          ]}
-        />
-        
-        {/* Example 2: With Description */}
-        <TitleWidth
-          label="DAGELIJKS BANKIEREN"
-          title="Vergelijk onze packs"
-          description="Een of twee houders, met debet- en/of kredietkaarten*, toegang tot online en mobiel bankieren ... Ontdek de basisinhoud van onze verschillende betaalrekeningen, die u naar wens kunt personaliseren."
-        />
-        
-        {/* RichText Component Examples */}
-        <div className="space-y-16">
-          <RichText
-            image={{
-              src: bankingAppImage,
-              alt: "Person holding phone with easy banking app interface"
-            }}
-            title="Maak uw droomhuis werkelijkheid"
-            description="Met ons hypothecair krediet kunt u tot 100% van de waarde van uw woning financieren. Profiteer van concurrerende rentevoeten en flexibele terugbetalingsopties die aangepast zijn aan uw financiële situatie."
-            checklist={[
-              { text: "Tot 100% financiering mogelijk" },
-              { text: "Concurrerende rentevoeten" },
-              { text: "Flexibele terugbetalingsopties" },
-              { text: "Persoonlijke begeleiding" },
-              { text: "Online simulatie beschikbaar" }
-            ]}
-            callToAction={{
-              text: "Start uw simulatie",
-              variant: "default",
-              icon: ArrowRight,
-              href: "#simulatie"
-            }}
-            imagePosition="left"
-          />
-          
-          <RichText
-            image={{
-              src: "/lovable-uploads/4d9b0298-f3f2-425f-927e-dc2df46d839d.png",
-              alt: "Banking services illustration"
-            }}
-            title="Digitaal bankieren gemaakt eenvoudig"
-            description="Beheer al uw bankzaken online of via onze mobiele app. Van dagelijkse transacties tot investeringen, alles is binnen handbereik met onze geavanceerde digitale tools."
-            checklist={[
-              { text: "24/7 toegang tot uw rekeningen" },
-              { text: "Veilige online betalingen" },
-              { text: "Mobiele app voor iOS en Android" },
-              { text: "Real-time notificaties" },
-              { text: "Uitgavenanalyse en budgettering", checked: false }
-            ]}
-            callToAction={{
-              text: "Ontdek onze app",
-              variant: "outline",
-              icon: CreditCard,
-              onClick: () => console.log("App download clicked")
-            }}
-            imagePosition="right"
-          />
-        </div>
-        
-        {/* ProductCard Component Examples */}
-        <div className="px-6 md:px-10 lg:px-12">
-          <div className="space-y-16">
-            {/* 3 Cards Grid */}
-            <div className="space-y-8">
-              <TitleWidth
-                label="VERZEKERINGEN"
-                title="Onze populaire verzekeringen"
-                description="Bescherm uzelf en uw bezittingen met onze uitgebreide verzekeringspakketten."
-              />
-          
-              <ProductCardGrid
-                cardsPerRow={3}
-                cards={[
-                  {
-                    image: {
-                      src: bankingAppImage,
-                      alt: "Top Woning diefstalverzekering"
-                    },
-                    title: "Top Woning diefstalverzekering van AG",
-                    description: "Deze aanvullende waarborg voorziet een tussenkomst bij diefstal of bij schade veroorzaakt door een poging tot diefstal.",
-                    button: {
-                      text: "Deze waarborg ontdekken",
-                      href: "#"
-                    }
-                  },
-                  {
-                    image: {
-                      src: bankingAppImage,
-                      alt: "Rechtsbijstand Brandverzekering"
-                    },
-                    title: "Rechtsbijstand Brandverzekering van AG",
-                    description: "Met deze aanvullende rechtsbijstandsverzekering kunt u rekenen op juridische bijstand bij een probleem met uw woning.",
-                    button: {
-                      text: "Deze waarborg ontdekken",
-                      href: "#"
-                    }
-                  },
-                  {
-                    image: {
-                      src: bankingAppImage,
-                      alt: "Homiris alarmsysteem"
-                    },
-                    title: "Homiris alarmsysteem",
-                    description: "Homiris beschermt uw huis en uw dierbaren 24/7 tegen inbraak en brand. Abonnement inclusief levering, installatie en onderhoud.",
-                    button: {
-                      text: "Alles over Homiris",
-                      href: "#"
-                    }
-                  }
-                ]}
-              />
+      {/* Main Content */}
+      <main className="space-y-12 py-8">
+        {/* Banking Categories - Main Navigation Content */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            
+            {/* Dagelijks bankieren */}
+            <div className="space-y-6">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                  <img 
+                    src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/AccountsPacks_HandWithGraph/BNPPF.svg"
+                    alt="Rekeningen illustratie"
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <h2 className="text-xl font-bold text-foreground mb-6">Dagelijks bankieren</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Rekeningen</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Betaalrekeningen vergelijken</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Betaalrekening voor jongeren</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Betaalrekening voor kinderen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Spaarrekeningen – Algemene info</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Onze spaarrekeningen</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <div className="w-12 h-12 mb-3 flex items-center justify-center">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/Cards/BNPPF.svg"
+                      alt="Bankkaarten illustratie"
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Bankkaarten</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Bancontact-Visa Debit-debetkaart</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Vergelijk onze kredietkaarten</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Visa kredietkaart</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Mastercard Gold kredietkaart</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Kredietkaart voor jongeren</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Al onze oplossingen</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <div className="w-12 h-12 mb-3 flex items-center justify-center">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/ApplePay/BNPPF.svg"
+                      alt="Betalen illustratie"
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Betalen</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Met Easy Banking App</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Met Easy Banking Web</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Contactloos betalen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">CASH-punten netwerk</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">In het buitenland</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Overschrijven, IBAN, domiciliëring, Zoomit ...</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Veilig online</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Onze expertise</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Selfbanking met Easy Banking App en Web</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Betaaloplossingen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Welke betaalkaart waar en wanneer gebruiken?</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Advies op afstand of face-to-face</a></li>
+                  </ul>
+                </div>
+                
+                <div className="bg-primary text-primary-foreground p-4 rounded-lg">
+                  <div className="mb-3">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/images/R2/easy-banking-app-2.jpg"
+                      alt="Easy Banking App"
+                      className="w-full h-20 object-cover rounded"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h4 className="text-xs font-bold tracking-wide uppercase mb-2">Wist u dat ...</h4>
+                  <p className="text-sm mb-3">Easy Banking App, eenmaal gebruiken en u bent verkocht</p>
+                  <a href="#" className="text-sm underline hover:no-underline">Download Easy Banking App</a>
+                </div>
+              </div>
             </div>
             
-            {/* 2 Cards Grid */}
-            <div className="space-y-8">
-              <TitleWidth
-                label="KREDIET"
-                title="Financieringsoplossingen"
-                description="Realiseer uw projecten met onze flexibele kredietoplossingen."
-              />
+            {/* Sparen en beleggen */}
+            <div className="space-y-6">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                  <img 
+                    src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/PhoneInvestGraph/BNPPF.svg"
+                    alt="Sparen en beleggen illustratie"
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <h2 className="text-xl font-bold text-foreground mb-6">Sparen en beleggen</h2>
+              </div>
               
-              <ProductCardGrid
-                cardsPerRow={2}
-                cards={[
-                  {
-                    image: {
-                      src: bankingAppImage,
-                      alt: "Persoonlijk krediet"
-                    },
-                    title: "Persoonlijk krediet",
-                    description: "Financier uw persoonlijke projecten met onze voordelige rentevoeten en flexibele terugbetalingsopties.",
-                    button: {
-                      text: "Meer informatie",
-                      href: "#"
-                    }
-                  },
-                  {
-                    image: {
-                      src: bankingAppImage,
-                      alt: "Autolening"
-                    },
-                    title: "Autolening",
-                    description: "Koop uw droomauto met onze speciale autofinancieringsproducten. Concurrerende tarieven gegarandeerd.",
-                    button: {
-                      text: "Simulatie starten",
-                      href: "#"
-                    }
-                  }
-                ]}
-              />
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Beleggen</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Beleggen met BNP Paribas Fortis</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Beleggen voor beginners</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Beleggen zonder advies</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Beleggen met advies</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <div className="w-12 h-12 mb-3 flex items-center justify-center">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/SavingPurpose_HandWithPlant/BNPPF.svg"
+                      alt="Sparen met doel illustratie"
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Sparen en beleggen met een doel</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Pensioensparen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Fiscaal sparen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Financieel beschermen van uw dierbaren</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <div className="w-12 h-12 mb-3 flex items-center justify-center">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/Invest_PhoneMonitorGraphs/BNPPF.svg"
+                      alt="Beleggingsoplossingen illustratie"
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Onze beleggingsoplossingen</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Aanbod van de maand</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Beleggingsnieuws</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Spaarrekeningen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Aandelen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Beleggingsfondsen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Financiële levensverzekeringen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Kasbons</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Obligaties</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Gestructureerde producten</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Al onze oplossingen</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Onze expertise</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Beginnen sparen of beleggen?</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Sparen voor uw pensioen : wat moet u weten?</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Expertise via Private Banking</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Priority Banking Exclusive</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Advies op afstand of face-to-face</a></li>
+                  </ul>
+                </div>
+                
+                <div className="bg-primary text-primary-foreground p-4 rounded-lg">
+                  <div className="mb-3">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/images/R2/actualite-financiere4.jpg"
+                      alt="Financiële actualiteit"
+                      className="w-full h-20 object-cover rounded"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h4 className="text-xs font-bold tracking-wide uppercase mb-2">Wist u dat ...</h4>
+                  <p className="text-sm mb-3">u de financiële actualiteit kan volgen?</p>
+                  <a href="#" className="text-sm underline hover:no-underline">Volg het beleggingsnieuws op de voet</a>
+                </div>
+              </div>
             </div>
             
-            {/* 4 Cards Grid */}
-            <div className="space-y-8">
-              <TitleWidth
-                label="DIGITALE DIENSTEN"
-                title="Onze mobiele en online diensten"
-                description="Beheer uw financiën eenvoudig met onze digitale tools en applicaties."
-              />
+            {/* Lenen */}
+            <div className="space-y-6">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                  <img 
+                    src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/HouseProject/BNPPF.svg"
+                    alt="Lenen illustratie"
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <h2 className="text-xl font-bold text-foreground mb-2">Lenen</h2>
+                <a href="#" className="text-sm text-primary hover:underline">Onze financieringsmogelijkheden</a>
+              </div>
               
-              <ProductCardGrid
-                cardsPerRow={4}
-                cards={[
-                  {
-                    image: {
-                      src: bankingAppImage,
-                      alt: "Mobile Banking"
-                    },
-                    title: "Mobile Banking",
-                    description: "Bankieren op elk moment, waar u ook bent.",
-                    button: {
-                      text: "Download app",
-                      href: "#"
-                    }
-                  },
-                  {
-                    image: {
-                      src: bankingAppImage,
-                      alt: "Online Banking"
-                    },
-                    title: "Online Banking",
-                    description: "Veilig en gebruiksvriendelijk internetbankieren.",
-                    button: {
-                      text: "Inloggen",
-                      href: "#"
-                    }
-                  },
-                  {
-                    image: {
-                      src: bankingAppImage,
-                      alt: "Investment Platform"
-                    },
-                    title: "Investment Platform",
-                    description: "Beheer uw beleggingen online.",
-                    button: {
-                      text: "Ontdekken",
-                      href: "#"
-                    }
-                  },
-                  {
-                    image: {
-                      src: bankingAppImage,
-                      alt: "Digital Wallet"
-                    },
-                    title: "Digital Wallet",
-                    description: "Contactloos betalen met uw smartphone.",
-                    button: {
-                      text: "Meer info",
-                      href: "#"
-                    }
-                  }
-                ]}
-              />
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Lenen voor een vastgoedproject</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Hypothecair krediet</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Energielening</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Renovatielening</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Overbruggingskrediet</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Al onze oplossingen</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <div className="w-12 h-12 mb-3 flex items-center justify-center">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/CamperVanCarTruck/BNPPF.svg"
+                      alt="Voertuig lening illustratie"
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Lenen voor een voertuig</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Lening op afbetaling voor een nieuw voertuig</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Lening op afbetaling voor een tweedehands voertuig</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Lening op afbetaling voor een fiets en zachte mobiliteit</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Private lease</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Al onze oplossingen</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <div className="w-12 h-12 mb-3 flex items-center justify-center">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/Dreams_PresentPalmtreeSofaRingInCloud/BNPPF.svg"
+                      alt="Project lening illustratie"
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Lenen voor een project</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Persoonlijke lening - Lening op afbetaling</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Kredietopening</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Al onze oplossingen</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Onze expertise</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Alles weten over duurzaam wonen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Alles weten over duurzame mobiliteit</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Alles weten over budgetbeheer</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Advies op afstand of face-to-face</a></li>
+                  </ul>
+                </div>
+                
+                <div className="bg-primary text-primary-foreground p-4 rounded-lg">
+                  <div className="mb-3">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/images/R2/so-simply-p.jpg"
+                      alt="SoSimply EPC certificaat"
+                      className="w-full h-20 object-cover rounded"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h4 className="text-xs font-bold tracking-wide uppercase mb-2">Een EPC-certificaat?</h4>
+                  <p className="text-sm mb-3">Reken op de experts van SoSimply.</p>
+                  <a href="#" className="text-sm underline hover:no-underline">Meer weten</a>
+                </div>
+              </div>
+            </div>
+            
+            {/* Verzekeren */}
+            <div className="space-y-6">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                  <img 
+                    src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/FamilyPortratitPhoto/BNPPF.svg"
+                    alt="Verzekeren illustratie"
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <h2 className="text-xl font-bold text-foreground mb-2">Verzekeren</h2>
+                <a href="#" className="text-sm text-primary hover:underline">Onze verzekeringsoplossingen</a>
+              </div>
+              
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Beschermen van uw gezin</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Familiale verzekering</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Globale rechtsbijstand</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Hospitalisatieverzekering</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Ongevallenverzekering</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Reisverzekering</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Levens- en overlijdensverzekeringen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Al onze oplossingen</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <div className="w-12 h-12 mb-3 flex items-center justify-center">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/HouseUmbrellaSignals/BNPPF.svg"
+                      alt="Woningverzekering illustratie"
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Beschermen van uw woning</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Woningverzekering eigenaar</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Woningverzekering huurder</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Woningverzekering verhuurder</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Diefstalverzekering</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Homiris telebewaking</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Rechtsbijstandsverzekering</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Al onze oplossingen</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <div className="w-12 h-12 mb-3 flex items-center justify-center">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/CarAndTool/BNPPF.svg"
+                      alt="Mobiliteitsverzekering illustratie"
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Beschermen van uw mobiliteit</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Autoverzekering</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Omniumverzekering auto</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Rechtsbijstandsverzekering auto</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Fietsverzekering en zachte mobiliteit</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Motorverzekeringen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Bromfietsverzekeringen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Pechverhelping</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Al onze oplossingen</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Onze expertise</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Aangifte van een schadegeval</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Gratis check-up van uw verzekeringen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Beveilig uw thuis</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Bescherm uw gezin bij overlijden</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Preventietips natuurrampen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Advies op afstand of face-to-face</a></li>
+                  </ul>
+                </div>
+                
+                <div className="bg-primary text-primary-foreground p-4 rounded-lg">
+                  <div className="mb-3">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/images/R2/so-simply-p.jpg"
+                      alt="SoSimply EPC certificaat"
+                      className="w-full h-20 object-cover rounded"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h4 className="text-xs font-bold tracking-wide uppercase mb-2">Een EPC-certificaat?</h4>
+                  <p className="text-sm mb-3">Reken op de experts van SoSimply.</p>
+                  <a href="#" className="text-sm underline hover:no-underline">Meer weten</a>
+                </div>
+              </div>
+            </div>
+            
+            {/* Aan uw zijde */}
+            <div className="space-y-6">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                  <img 
+                    src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/HandSeedPlanting/BNPPF.svg"
+                    alt="Aan uw zijde illustratie"
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <h2 className="text-xl font-bold text-foreground mb-6">Aan uw zijde</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Uw behoeften</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Mobiliteit</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Wonen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Budget</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Gezin</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Betaalmiddelen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Studeren in het buitenland</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Een overlijden aangeven</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <div className="w-12 h-12 mb-3 flex items-center justify-center">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/HandAdjustingFilters/BNPPF.svg"
+                      alt="Aanpak op maat illustratie"
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Aanpak op maat</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">De bank voor jongeren</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Priority Banking Exclusive</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Expat in België</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Bank voor iedereen</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <div className="w-12 h-12 mb-3 flex items-center justify-center">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/Illustrations/Advisor/BNPPF.svg"
+                      alt="Online en mobiele bank illustratie"
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Online en mobiele bank</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Easy Banking App</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Selfbanking met Easy Banking App en Web</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Beheer uw budget met Easy Banking App</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Easy Banking Web</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Contactloos betalen</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Veilig online</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">Contacteer ons</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Aangifte van een schadegeval</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Advies op afstand of face-to-face</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Uw adviseurs via videogesprek</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Een expert aan de lijn</a></li>
+                    <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">CASH-punten netwerk</a></li>
+                  </ul>
+                </div>
+                
+                <div className="bg-primary text-primary-foreground p-4 rounded-lg">
+                  <div className="mb-3">
+                    <img 
+                      src="https://www.bnpparibasfortis.be/public/ebw/media/images/R2/happy-nest-p.jpg"
+                      alt="Happy Nest"
+                      className="w-full h-20 object-cover rounded"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h4 className="text-xs font-bold tracking-wide uppercase mb-2">Wist u dat ...</h4>
+                  <p className="text-sm mb-3">u van BNP Paribas Fortis heel wat interessante artikels kan lezen?</p>
+                  <a href="#" className="text-sm underline hover:no-underline">Ontdek onze tips en adviezen</a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* MultiPurpose Component Examples */}
-        <div className="px-6 md:px-10 lg:px-12">
-          <div className="space-y-16">
-            {/* Single Column Layout */}
-            <div className="space-y-8">
-              <TitleWidth
-                label="SINGLE COLUMN"
-                title="Pakket Diefstal+"
-                description="Uitgebreide dekking voor al uw bezittingen met onze premium verzekeringspakketten."
-              />
-              
-              <MultiPurposeGrid
-                itemsPerRow={1}
-                items={[
-                  {
-                    title: "Pack Diefstal+",
-                    description: "Voeg dit optionele pack toe aan uw verzekering Top Woning van AG en profiteer van extra waarborgen en dienstverlening bij diefstal.",
-                    button: {
-                      text: "Commercieel document",
-                      href: "#"
-                    }
-                  }
-                ]}
-              />
-            </div>
-
-            {/* Two Column Layout */}
-            <div className="space-y-8">
-              <TitleWidth
-                label="TWO COLUMNS"
-                title="Dual Protection Packages"
-                description="Kies uit onze populaire verzekeringspakketten voor optimale bescherming."
-              />
-              
-              <MultiPurposeGrid
-                itemsPerRow={2}
-                items={[
-                  {
-                    title: "Pack Diefstal+",
-                    description: "Voeg dit optionele pack toe aan uw verzekering Top Woning van AG en profiteer van extra waarborgen en dienstverlening bij diefstal.",
-                    button: {
-                      text: "Commercieel document",
-                      href: "#"
-                    }
-                  },
-                  {
-                    title: "Pack Tuin",
-                    description: "Met Pack Tuin breidt u de waarborgen van uw verzekering Top Woning van AG uit naar uw tuin en/of het ingericht terras van uw appartement.",
-                    button: {
-                      text: "Commercieel document",
-                      href: "#"
-                    }
-                  }
-                ]}
-              />
-            </div>
-
-            {/* Three Column Layout */}
-            <div className="space-y-8">
-              <TitleWidth
-                label="THREE COLUMNS"
-                title="Complete Protection Suite"
-                description="Ontdek onze volledige range van verzekeringspakketten voor elke situatie."
-              />
-              
-              <MultiPurposeGrid
-                itemsPerRow={3}
-                items={[
-                  {
-                    title: "Pack Diefstal+",
-                    description: "Voeg dit optionele pack toe aan uw verzekering Top Woning van AG en profiteer van extra waarborgen en dienstverlening bij diefstal.",
-                    button: {
-                      text: "Commercieel document",
-                      href: "#"
-                    }
-                  },
-                  {
-                    title: "Pack Tuin",
-                    description: "Met Pack Tuin breidt u de waarborgen van uw verzekering Top Woning van AG uit naar uw tuin en/of het ingericht terras van uw appartement.",
-                    button: {
-                      text: "Commercieel document",
-                      href: "#"
-                    }
-                  },
-                  {
-                    title: "Waarborg Alle Risico's Woning van AG",
-                    description: "Deze waarborg is een optionele aanvulling op de brandverzekering Top Woning van AG voor eigenaars. Hij dekt alle mogelijke materiële schade, ongeacht de oorzaak.",
-                    button: {
-                      text: "Ontdek de waarborg Alle Risico's Woning van AG",
-                      href: "#"
-                    }
-                  }
-                ]}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Banner Component Examples */}
-        <div className="space-y-16">
-          {/* Full Width Banner */}
+        </section>
+        
+        {/* Promotional Banners Section */}
+        <section className="px-6 md:px-10 lg:px-12">
           <div className="space-y-8">
             <TitleWidth
-              label="PROMOTIONS"
-              title="Special Offers"
-              description="Ontdek onze exclusieve aanbiedingen en win geweldige prijzen."
+              label="AANBOD"
+              title="Ontdek onze huidige aanbiedingen"
+              description="Profiteer van onze speciale voorwaarden en kortingen op diverse bankproducten."
+              centerAlign={true}
             />
             
-            <BannerContainer variant="full">
-              <Banner
-                image={bankingAppImage}
-                title="Win Airpods!"
-                description="Open deze zomer een gratis Welcome Pack-betaalrekening voor kinderen en tieners. En maak kans op AirPods!"
-                buttonText="Een rekening openen"
-                onButtonClick={() => console.log('Banner CTA clicked')}
-              />
-            </BannerContainer>
-          </div>
-
-          {/* Two Banner Split Layout */}
-          <div className="space-y-8">
-            <TitleWidth
-              label="FINANCIAL TIPS"
-              title="Discover Our Services"
-              description="Leer meer over onze digitale diensten en financiële tips voor jongeren."
+            <MultiPurposeGrid
+              itemsPerRow={2}
+              items={[
+                {
+                  title: "Gratis betaalrekening",
+                  description: "Open een nieuwe betaalrekening en profiteer van gratis bankieren gedurende de eerste 6 maanden. Inclusief debetkaart en toegang tot Easy Banking.",
+                  button: {
+                    text: "Rekening openen",
+                    href: "#"
+                  }
+                },
+                {
+                  title: "Voordelige hypotheekrente",
+                  description: "Realiseer uw droomhuis met onze scherpe hypotheekrente. Gratis waardering van uw woning en persoonlijk advies van onze experts.",
+                  button: {
+                    text: "Simulatie maken",
+                    href: "#"
+                  }
+                }
+              ]}
             />
-            
-            <BannerContainer variant="split">
-              <Banner
-                image={bankingAppImage}
-                title="Automatische extra controle op overschrijvingen via Easy Banking App maakt betalingen nog veiliger, betrouwbaarder en efficiënter"
-                description="Verificatie van de naam van de begunstigde start vanaf 30 juni"
-                buttonText="Lees er meer over"
-                variant="split"
-                onButtonClick={() => console.log('Banking banner clicked')}
-              />
-              <Banner
-                image={bankingAppImage}
-                title="Uw tiener leren omgaan met zakgeld?"
-                description="Ontdek hoe andere ouders kijken naar dit topic."
-                buttonText="Naar het artikel"
-                variant="split"
-                onButtonClick={() => console.log('Teen banking banner clicked')}
-              />
-            </BannerContainer>
           </div>
-        </div>
-      </div>
-      
-      {/* Sticky CTA Component */}
-      <StickyCTA 
-        description="Klaar om uw verzekering aan te passen? Neem contact op voor persoonlijk advies en offerte op maat."
-        buttonText="Contact opnemen"
-        onButtonClick={() => console.log('CTA clicked')}
-      />
+        </section>
+      </main>
     </div>
   );
 };
