@@ -29,7 +29,7 @@ const TitleWidth: React.FC<TitleWidthProps> = ({
   const baseClasses = centerAlign ? "text-center" : "text-left";
   
   return (
-    <div className={cn("w-full max-w-4xl mx-auto px-4 py-4", baseClasses, className)}>
+    <div className={cn("w-full max-w-4xl mx-auto px-4 py-0", baseClasses, className)}>
       {label && (
         <div className="mb-4">
           <span className="inline-block text-xs font-semibold tracking-wider uppercase text-muted-foreground">
