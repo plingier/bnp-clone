@@ -118,7 +118,7 @@ const RichText: React.FC<RichTextProps> = ({
                     variant={callToAction.variant || 'default'}
                     className="animate-fade-in"
                   >
-                    <a href={callToAction.href} onClick={callToAction.onClick} className="text-primary hover:text-primary/80">
+                    <a href={callToAction.href} onClick={callToAction.onClick} className="bg-primary text-primary-foreground hover:bg-primary/90">
                       {callToAction.icon && (
                         <callToAction.icon className="w-4 h-4 mr-2" />
                       )}
