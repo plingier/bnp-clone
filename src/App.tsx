@@ -17,12 +17,11 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.PROD ? '/bnp-clone' : '/'}>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/test" element={<Test />} />
             <Route path="/hypothecair-krediet" element={<Mortgage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
