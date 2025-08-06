@@ -20,48 +20,109 @@ const BNPNavigation = () => {
       links: ["Betaalrekeningen vergelijken", "Betaalrekening voor jongeren", "Betaalrekening voor kinderen", "Spaarrekeningen – Algemene info", "Onze spaarrekeningen"]
     }, {
       title: "Bankkaarten",
-      links: ["Bancontact-Visa Debit-debetkaart", "Vergelijk onze kredietkaarten", "Visa kredietkaart", "Mastercard Gold kredietkaart", "Kredietkaart voor jongeren"]
+      links: ["Bancontact-Visa Debit-debetkaart", "Vergelijk onze kredietkaarten", "Visa kredietkaart", "Mastercard Gold kredietkaart", "Kredietkaart voor jongeren", "Al onze oplossingen"]
     }, {
       title: "Betalen",
-      links: ["Met Easy Banking App", "Met Easy Banking Web", "Contactloos betalen", "CASH-punten netwerk", "In het buitenland", "Overschrijven, IBAN, domiciliëring. Zoomit ...", "Veilig online"]
+      links: ["Met Easy Banking App", "Met Easy Banking Web", "Contactloos betalen", "CASH-punten netwerk", "In het buitenland", "Overschrijven, IBAN, domiciliëring, Zoomit ...", "Veilig online"]
     }],
     expertise: {
       title: "Onze expertise",
       content: ["Selfbanking met Easy Banking App en Web", "Betaaloplossingen", "Welke betaalkaart waar en wanneer gebruiken?", "Advies op afstand of face-to-face"]
     },
     banner: {
-      title: "1. DOWNLOAD EASY BANKING APP",
-      subtitle: "Wist u dat ...",
+      title: "Wist u dat ...",
+      subtitle: "",
       description: "Easy Banking App, eenmaal gebruiken en u bent verkocht",
       cta: "Download Easy Banking App"
     }
   }, {
     title: "Sparen en beleggen",
     sections: [{
-      title: "Sparen",
-      links: ["Spaarrekening", "Termijnrekening", "Spaarplan"]
-    }, {
       title: "Beleggen",
-      links: ["Beleggingsfondsen", "Aandelen", "Obligaties"]
-    }]
+      links: ["Beleggen met BNP Paribas Fortis", "Beleggen voor beginners", "Beleggen zonder advies", "Beleggen met advies"]
+    }, {
+      title: "Sparen en beleggen met een doel",
+      links: ["Pensioensparen", "Fiscaal sparen", "Financieel beschermen van uw dierbaren"]
+    }, {
+      title: "Onze beleggingsoplossingen",
+      links: ["Aanbod van de maand", "Beleggingsnieuws", "Spaarrekeningen", "Aandelen", "Beleggingsfondsen", "Financiële levensverzekeringen", "Kasbons", "Obligaties", "Gestructureerde producten", "Al onze oplossingen"]
+    }],
+    expertise: {
+      title: "Onze expertise",
+      content: ["Beginnen sparen of beleggen?", "Sparen voor uw pensioen : wat moet u weten?", "Expertise via Private Banking", "Priority Banking Exclusive", "Advies op afstand of face-to-face"]
+    },
+    banner: {
+      title: "Wist u dat ...",
+      subtitle: "",
+      description: "u de financiële actualiteit kan volgen?",
+      cta: "Volg het beleggingsnieuws op de voet"
+    }
   }, {
     title: "Lenen",
     sections: [{
-      title: "Kredieten",
-      links: ["Persoonlijke lening", "Hypothecair krediet", "Renovatiekrediet"]
-    }]
+      title: "Lenen voor een vastgoedproject",
+      links: ["Hypothecair krediet", "Energielening", "Renovatielening", "Overbruggingskrediet", "Al onze oplossingen"]
+    }, {
+      title: "Lenen voor een voertuig",
+      links: ["Lening op afbetaling voor een nieuw voertuig", "Lening op afbetaling voor een tweedehands voertuig", "Lening op afbetaling voor een fiets en zachte mobiliteit", "Private lease", "Al onze oplossingen"]
+    }, {
+      title: "Lenen voor een project",
+      links: ["Persoonlijke lening - Lening op afbetaling", "Kredietopening", "Al onze oplossingen"]
+    }],
+    expertise: {
+      title: "Onze expertise",
+      content: ["Alles weten over duurzaam wonen", "Alles weten over duurzame mobiliteit", "Alles weten over budgetbeheer", "Advies op afstand of face-to-face"]
+    },
+    banner: {
+      title: "Een EPC-certificaat?",
+      subtitle: "",
+      description: "Reken op de experts van SoSimply.",
+      cta: "Meer weten"
+    }
   }, {
     title: "Verzekeren",
     sections: [{
-      title: "Verzekeringen",
-      links: ["Autoverzekering", "Brandverzekering", "Reisverzekering"]
-    }]
+      title: "Beschermen van uw gezin",
+      links: ["Familiale verzekering", "Globale rechtsbijstand", "Hospitalisatieverzekering", "Ongevallenverzekering", "Reisverzekering", "Levens- en overlijdensverzekeringen", "Al onze oplossingen"]
+    }, {
+      title: "Beschermen van uw woning",
+      links: ["Woningverzekering eigenaar", "Woningverzekering huurder", "Woningverzekering verhuurder", "Diefstalverzekering", "Homiris telebewaking", "Rechtsbijstandsverzekering", "Al onze oplossingen"]
+    }, {
+      title: "Beschermen van uw mobiliteit",
+      links: ["Autoverzekering", "Omniumverzekering auto", "Rechtsbijstandsverzekering auto", "Fietsverzekering en zachte mobiliteit", "Motorverzekeringen", "Bromfietsverzekeringen", "Pechverhelping", "Al onze oplossingen"]
+    }],
+    expertise: {
+      title: "Onze expertise",
+      content: ["Aangifte van een schadegeval", "Gratis check-up van uw verzekeringen", "Beveilig uw thuis", "Bescherm uw gezin bij overlijden", "Preventietips natuurrampen", "Advies op afstand of face-to-face"]
+    },
+    banner: {
+      title: "Een EPC-certificaat?",
+      subtitle: "",
+      description: "Reken op de experts van SoSimply.",
+      cta: "Meer weten"
+    }
   }, {
     title: "Aan uw zijde",
     sections: [{
-      title: "Service",
-      links: ["Kantoren", "Contact", "FAQ"]
-    }]
+      title: "Uw behoeften",
+      links: ["Mobiliteit", "Wonen", "Budget", "Gezin", "Betaalmiddelen", "Studeren in het buitenland", "Een overlijden aangeven"]
+    }, {
+      title: "Aanpak op maat",
+      links: ["De bank voor jongeren", "Priority Banking Exclusive", "Expat in België", "Bank voor iedereen"]
+    }, {
+      title: "Online en mobiele bank",
+      links: ["Easy Banking App", "Selfbanking met Easy Banking App en Web", "Beheer uw budget met Easy Banking App", "Easy Banking Web", "Contactloos betalen", "Veilig online"]
+    }],
+    expertise: {
+      title: "Contacteer ons",
+      content: ["Aangifte van een schadegeval", "Advies op afstand of face-to-face", "Uw adviseurs via videogesprek", "Een expert aan de lijn", "CASH-punten netwerk"]
+    },
+    banner: {
+      title: "Wist u dat ...",
+      subtitle: "",
+      description: "u nu kan huren, en later kopen?",
+      cta: "Ontdek HappyNest"
+    }
   }];
   const toggleMobileSection = (title: string) => {
     setExpandedMobileSection(expandedMobileSection === title ? null : title);
