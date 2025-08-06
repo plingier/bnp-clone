@@ -46,8 +46,8 @@ const Index = () => {
         <div className="space-y-16">
           <RichText
             image={{
-              src: "/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png",
-              alt: "Financial planning illustration"
+              src: "https://www.bnpparibasfortis.be/public/media/images/R2/credit-habitation6.jpg",
+              alt: "Credit habitation - BNP Paribas Fortis"
             }}
             title="Maak uw droomhuis werkelijkheid"
             description="Met ons hypothecair krediet kunt u tot 100% van de waarde van uw woning financieren. Profiteer van concurrerende rentevoeten en flexibele terugbetalingsopties die aangepast zijn aan uw financiële situatie."
