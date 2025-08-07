@@ -6,7 +6,7 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import BNPPFlogo from "@/assets/BNPPFlogo.png";
 
 const BNPNavigation = memo(() => {
@@ -19,6 +19,7 @@ const BNPNavigation = memo(() => {
   
   const { language, setLanguage, t, getLocalizedUrl } = useLanguage();
   const navigate = useNavigate();
+  const location = useLocation();
   
   const languages = [
     { code: 'nl', name: 'Nederlands' },
@@ -48,8 +49,8 @@ const BNPNavigation = memo(() => {
   const handleLanguageChange = (langCode: Language) => {
     setLanguage(langCode);
     
-    // Get the current path
-    const currentPath = window.location.pathname;
+    // Get the current pathname from React Router
+    const currentPath = location.pathname;
     
     // Handle both development and production basenames
     const basename = import.meta.env.PROD ? '/bnp-clone' : '';
@@ -77,11 +78,11 @@ const BNPNavigation = memo(() => {
       routePath = `/${routePath}`;
     }
     
-    // Generate the new URL with the selected language
-    const newPath = `${basename}/${langCode}${routePath}`;
+    // Construct the new path - just the language and route, let React Router handle the basename
+    const newPath = `/${langCode}${routePath}`;
     
     // Navigate to the new path
-    navigate(newPath);
+    navigate(newPath, { replace: true });
   };
 
   const handleMainCategoryClick = useCallback((item: any) => {
