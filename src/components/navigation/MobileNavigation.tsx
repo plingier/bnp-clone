@@ -3,6 +3,7 @@ import { Menu, X, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import BNPPFlogo from "@/assets/BNPPFlogo.png";
 
 interface NavigationItem {
   title: string;
@@ -86,7 +87,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
           <div className="flex items-center justify-between h-12 px-4">
             <div className="flex items-center space-x-2">
               <img 
-                src="/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png" 
+                src={BNPPFlogo} 
                 alt="BNP Paribas Fortis Logo" 
                 className="h-10 w-auto"
                 width="120"

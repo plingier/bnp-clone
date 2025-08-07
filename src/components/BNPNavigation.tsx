@@ -1,4 +1,4 @@
-import React, { useState, useCallback, memo } from "react";
+import React, { useState, useCallback, memo, useMemo, useEffect } from "react";
 import { Search, ChevronDown, Menu, X, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,23 +6,40 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
+import { useNavigate } from "react-router-dom";
+import BNPPFlogo from "@/assets/BNPPFlogo.png";
 
 const BNPNavigation = memo(() => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [selectedSegment, setSelectedSegment] = useState("Particulieren");
+  const [selectedSegment, setSelectedSegment] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
   const [currentMobileView, setCurrentMobileView] = useState<'main' | 'sections'>('main');
   const [selectedMainCategory, setSelectedMainCategory] = useState<any>(null);
-  const segments = ["Particulieren", "Ondernemingen", "Private Banking"];
   
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage, t, getLocalizedUrl } = useLanguage();
+  const navigate = useNavigate();
   
   const languages = [
     { code: 'nl', name: 'Nederlands' },
     { code: 'fr', name: 'Français' },
-    { code: 'en', name: 'English' }
+    { code: 'en', name: 'English' },
+    { code: 'pl', name: 'Polski' }
   ];
+
+  // Generate translated segments based on current language
+  const segments = useMemo(() => [
+    t('nav.segments.particulieren'),
+    t('nav.segments.ondernemingen'),
+    t('nav.segments.privateBanking')
+  ], [t]);
+
+  // Update selectedSegment when language changes
+  useEffect(() => {
+    if (segments.length > 0 && !segments.includes(selectedSegment)) {
+      setSelectedSegment(segments[0]);
+    }
+  }, [segments, selectedSegment]);
 
   const getLanguageName = (code: Language) => {
     return languages.find(lang => lang.code === code)?.name || code;
@@ -30,6 +47,36 @@ const BNPNavigation = memo(() => {
 
   const handleLanguageChange = (langCode: Language) => {
     setLanguage(langCode);
+    
+    // Get the current path and extract the route without language prefix
+    const currentPath = window.location.pathname;
+    let routePath = '';
+    
+    // Handle both development and production basenames
+    const basename = import.meta.env.PROD ? '/bnp-clone' : '';
+    const pathWithoutBasename = basename ? currentPath.replace(basename, '') : currentPath;
+    
+    // Extract the route path (remove language prefix)
+    const langMatch = pathWithoutBasename.match(/^\/([a-z]{2})(\/.*)?$/);
+    
+    if (langMatch) {
+      // If there's a language prefix, extract the route part
+      routePath = langMatch[2] || '';
+    } else {
+      // If no language prefix, use the full path
+      routePath = pathWithoutBasename;
+    }
+    
+    // Ensure routePath starts with / if it's not empty
+    if (routePath && !routePath.startsWith('/')) {
+      routePath = `/${routePath}`;
+    }
+    
+    // Generate the new URL with the selected language
+    const newPath = `${basename}/${langCode}${routePath}`;
+    
+    // Navigate to the new path
+    navigate(newPath);
   };
 
   const handleMainCategoryClick = useCallback((item: any) => {
@@ -49,455 +96,456 @@ const BNPNavigation = memo(() => {
       expandedMobileSection === sectionTitle ? null : sectionTitle
     );
   }, [expandedMobileSection]);
-  const navigationItems = [{
-    title: "Dagelijks bankieren",
-    sections: [{
-      title: "Rekeningen",
-      links: [{
-        text: "Betaalrekeningen vergelijken",
-        href: "/nl/public/particulieren/dagelijks-bankieren/bankrekeningen/zichtrekening-vergelijken"
+
+  // Generate navigation items based on current language
+  const navigationItems = useMemo(() => {
+    const getLocalizedHref = (baseHref: string) => {
+      // Replace language prefix in URLs
+      const langPrefix = language === 'nl' ? 'nl' : language === 'fr' ? 'fr' : language === 'en' ? 'en' : 'pl';
+      return baseHref.replace(/^\/[a-z]{2}\//, `/${langPrefix}/`);
+    };
+
+    return [{
+      title: t('nav.dailyBanking'),
+      sections: [{
+        title: t('nav.accounts'),
+        links: [{
+          text: t('nav.compareAccounts'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/bankrekeningen/zichtrekening-vergelijken")
+        }, {
+          text: t('nav.youthAccount'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/bankrekeningen/zichtrekening/hello4you")
+        }, {
+          text: t('nav.childrenAccount'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/bankrekeningen/zichtrekening/jongerenrekening")
+        }, {
+          text: t('nav.savingsInfo'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/spaarinfo")
+        }, {
+          text: t('nav.ourSavings'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/spaarrekening-vergelijken")
+        }]
       }, {
-        text: "Betaalrekening voor jongeren",
-        href: "/nl/public/particulieren/dagelijks-bankieren/bankrekeningen/zichtrekening/hello4you"
+        title: t('nav.cards'),
+        links: [{
+          text: t('nav.debitCard'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/bankkaarten/debetkaart/visa-debit")
+        }, {
+          text: t('nav.compareCards'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart")
+        }, {
+          text: t('nav.visaCard'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart/visa-classic")
+        }, {
+          text: t('nav.mastercardGold'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart/mastercard-gold")
+        }, {
+          text: t('nav.youthCard'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart/visa-hello")
+        }, {
+          text: t('nav.allSolutions'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/bankkaarten")
+        }]
       }, {
-        text: "Betaalrekening voor kinderen",
-        href: "/nl/public/particulieren/dagelijks-bankieren/bankrekeningen/zichtrekening/jongerenrekening"
-      }, {
-        text: "Spaarrekeningen – Algemene info",
-        href: "/nl/public/particulieren/sparen-en-beleggen/spaarinfo"
-      }, {
-        text: "Onze spaarrekeningen",
-        href: "/nl/public/particulieren/sparen-en-beleggen/spaarrekening-vergelijken"
-      }]
+        title: t('nav.payments'),
+        links: [{
+          text: t('nav.easyBankingApp'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app")
+        }, {
+          text: t('nav.easyBankingWeb'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-web")
+        }, {
+          text: t('nav.contactlessPay'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/mobiel-betalen")
+        }, {
+          text: t('nav.cashNetwork'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/bankautomaat/points-cash")
+        }, {
+          text: t('nav.abroad'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/betalen-buitenland")
+        }, {
+          text: t('nav.paymentMethods'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/soorten-betaalmiddelen")
+        }, {
+          text: t('nav.secureOnline'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/online-veiligheid")
+        }]
+      }],
+      expertise: {
+        title: t('nav.ourExpertise'),
+        content: [{
+          text: t('nav.selfBanking'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/zelf-bankieren")
+        }, {
+          text: t('nav.paymentSolutions'),
+          href: "https://mylife.bnpparibasfortis.be/nl/nieuwe-betaalmiddelen"
+        }, {
+          text: t('nav.cardUsage'),
+          href: "https://mylife.bnpparibasfortis.be/nl/nieuwe-betaalmiddelen/betaal-optimaal-van-debetkaart-tot-kredietkaart"
+        }, {
+          text: t('nav.remoteAdvice'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/onze-diensten")
+        }]
+      },
+      banner: {
+        title: "Wist u dat ...",
+        subtitle: "",
+        description: "Easy Banking App, eenmaal gebruiken en u bent verkocht",
+        cta: "Download Easy Banking App",
+        href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app")
+      }
     }, {
-      title: "Bankkaarten",
-      links: [{
-        text: "Bancontact-Visa Debit-debetkaart",
-        href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/debetkaart/visa-debit"
+      title: t('nav.savingsInvesting'),
+      sections: [{
+        title: t('nav.investing'),
+        links: [{
+          text: t('nav.investingWithBNP'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/investeren/bnp-paribas-fortis")
+        }, {
+          text: t('nav.investingBeginners'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/investeren/starten")
+        }, {
+          text: t('nav.investingNoAdvice'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/investeren/zelf")
+        }, {
+          text: t('nav.investingWithAdvice'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/investeren/beleggingsadvies")
+        }]
       }, {
-        text: "Vergelijk onze kredietkaarten",
-        href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart"
+        title: t('nav.savingsGoals'),
+        links: [{
+          text: t('nav.pensionSaving'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/pensioensparen")
+        }, {
+          text: t('nav.taxSaving'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/voordelen-pensioensparen")
+        }, {
+          text: t('nav.financialProtection'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/financiele-bescherming")
+        }]
       }, {
-        text: "Visa kredietkaart",
-        href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart/visa-classic"
-      }, {
-        text: "Mastercard Gold kredietkaart",
-        href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart/mastercard-gold"
-      }, {
-        text: "Kredietkaart voor jongeren",
-        href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten/kredietkaart/visa-hello"
-      }, {
-        text: "Al onze oplossingen",
-        href: "/nl/public/particulieren/dagelijks-bankieren/bankkaarten"
-      }]
+        title: t('nav.investmentSolutions'),
+        links: [{
+          text: t('nav.monthlyOffer'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/beleggingsaanbod")
+        }, {
+          text: t('nav.investmentNews'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/beleggingsnieuws")
+        }, {
+          text: t('nav.savingsAccounts'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/spaarrekening-vergelijken")
+        }, {
+          text: t('nav.stocks'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/aandelen")
+        }, {
+          text: t('nav.investmentFunds'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/beleggingsfondsen")
+        }, {
+          text: t('nav.lifeInsurance'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/beleggingsverzekeringen")
+        }, {
+          text: t('nav.certificates'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/kasbon")
+        }, {
+          text: t('nav.bonds'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/obligaties")
+        }, {
+          text: t('nav.structuredProducts'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/gestructureerde-producten")
+        }, {
+          text: t('nav.allSolutions'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/beleggingsproducten")
+        }]
+      }],
+      expertise: {
+        title: t('nav.ourExpertise'),
+        content: [{
+          text: t('nav.investingWithBNP'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/investeren/bnp-paribas-fortis")
+        }, {
+          text: t('nav.investingBeginners'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/investeren/starten")
+        }, {
+          text: t('nav.investingNoAdvice'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/investeren/zelf")
+        }, {
+          text: t('nav.investingWithAdvice'),
+          href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/investeren/beleggingsadvies")
+        }]
+      },
+      banner: {
+        title: "Wist u dat ...",
+        subtitle: "",
+        description: "Beleggen kan ook eenvoudig zijn",
+        cta: "Ontdek onze oplossingen",
+        href: getLocalizedHref("/nl/public/particulieren/sparen-en-beleggen/beleggingsproducten")
+      }
     }, {
-      title: "Betalen",
-      links: [{
-        text: "Met Easy Banking App",
-        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app"
+      title: t('nav.lending'),
+      sections: [{
+        title: t('nav.realEstate'),
+        links: [{
+          text: t('nav.mortgageCredit'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/hypothecaire-lening")
+        }, {
+          text: t('nav.energyLoan'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/energielening")
+        }, {
+          text: t('nav.renovationLoan'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/renovatielening")
+        }, {
+          text: t('nav.bridgingCredit'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/overbruggingskrediet")
+        }, {
+          text: t('nav.allSolutions'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening")
+        }]
       }, {
-        text: "Met Easy Banking Web",
-        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-web"
+        title: t('nav.vehicle'),
+        links: [{
+          text: t('nav.newVehicleLoan'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/autolening/simulatie")
+        }, {
+          text: t('nav.usedVehicleLoan'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/autolening/tweedehands")
+        }, {
+          text: t('nav.bikeLoan'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/autolening/fietslening")
+        }, {
+          text: t('nav.privateLease'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/autolening/leasing")
+        }, {
+          text: t('nav.allSolutions'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/autolening")
+        }]
       }, {
-        text: "Contactloos betalen",
-        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/mobiel-betalen"
-      }, {
-        text: "CASH-punten netwerk",
-        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/bankautomaat/points-cash"
-      }, {
-        text: "In het buitenland",
-        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/betalen-buitenland"
-      }, {
-        text: "Overschrijven, IBAN, domiciliëring, Zoomit ...",
-        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/soorten-betaalmiddelen"
-      }, {
-        text: "Veilig online",
-        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/online-veiligheid"
-      }]
-    }],
-    expertise: {
-      title: "Onze expertise",
-      content: [{
-        text: "Selfbanking met Easy Banking App en Web",
-        href: "/nl/public/particulieren/dagelijks-bankieren/zelf-bankieren"
-      }, {
-        text: "Betaaloplossingen",
-        href: "https://mylife.bnpparibasfortis.be/nl/nieuwe-betaalmiddelen"
-      }, {
-        text: "Welke betaalkaart waar en wanneer gebruiken?",
-        href: "https://mylife.bnpparibasfortis.be/nl/nieuwe-betaalmiddelen/betaal-optimaal-van-debetkaart-tot-kredietkaart"
-      }, {
-        text: "Advies op afstand of face-to-face",
-        href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten"
-      }]
-    },
-    banner: {
-      title: "Wist u dat ...",
-      subtitle: "",
-      description: "Easy Banking App, eenmaal gebruiken en u bent verkocht",
-      cta: "Download Easy Banking App",
-      href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app"
-    }
-  }, {
-    title: "Sparen en beleggen",
-    sections: [{
-      title: "Beleggen",
-      links: [{
-        text: "Beleggen met BNP Paribas Fortis",
-        href: "/nl/public/particulieren/sparen-en-beleggen/investeren/bnp-paribas-fortis"
-      }, {
-        text: "Beleggen voor beginners",
-        href: "/nl/public/particulieren/sparen-en-beleggen/investeren/starten"
-      }, {
-        text: "Beleggen zonder advies",
-        href: "/nl/public/particulieren/sparen-en-beleggen/investeren/zelf"
-      }, {
-        text: "Beleggen met advies",
-        href: "/nl/public/particulieren/sparen-en-beleggen/investeren/beleggingsadvies"
-      }]
+        title: t('nav.project'),
+        links: [{
+          text: t('nav.personalLoan'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/persoonlijke-lening")
+        }, {
+          text: t('nav.creditOpening'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/geldreserve")
+        }, {
+          text: t('nav.allSolutions'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/geldreserve")
+        }]
+      }],
+      expertise: {
+        title: t('nav.ourExpertise'),
+        content: [{
+          text: t('nav.mortgageCredit'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/hypothecaire-lening")
+        }, {
+          text: t('nav.energyLoan'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/energielening")
+        }, {
+          text: t('nav.renovationLoan'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/renovatielening")
+        }, {
+          text: t('nav.bridgingCredit'),
+          href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/overbruggingskrediet")
+        }]
+      },
+      banner: {
+        title: "Wist u dat ...",
+        subtitle: "",
+        description: "u ook kunt lenen voor energiebesparende werken?",
+        cta: "Ontdek onze energielening",
+        href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/energielening")
+      }
     }, {
-      title: "Sparen en beleggen met een doel",
-      links: [{
-        text: "Pensioensparen",
-        href: "/nl/public/particulieren/sparen-en-beleggen/pensioensparen"
+      title: t('nav.insurance'),
+      sections: [{
+        title: t('nav.familyProtection'),
+        links: [{
+          text: t('nav.familyInsurance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/familiale-verzekeringen/top-familiale")
+        }, {
+          text: t('nav.legalAssistance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/familiale-verzekeringen/providis-globale-rechtsbijstand")
+        }, {
+          text: t('nav.hospitalization'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/hospitalisatieverzekering")
+        }, {
+          text: t('nav.accidentInsurance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/familiale-verzekeringen/ongevallenverzekering")
+        }, {
+          text: t('nav.travelInsurance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/reisverzekering")
+        }, {
+          text: t('nav.lifeDeathInsurance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/levensverzekering")
+        }, {
+          text: t('nav.allSolutions'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/familie-verzekeringen")
+        }]
       }, {
-        text: "Fiscaal sparen",
-        href: "/nl/public/particulieren/sparen-en-beleggen/voordelen-pensioensparen"
+        title: t('nav.homeProtection'),
+        links: [{
+          text: t('nav.homeInsuranceOwner'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/brandverzekeringen/eigenaar")
+        }, {
+          text: t('nav.homeInsuranceTenant'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/brandverzekeringen/huurder")
+        }, {
+          text: t('nav.homeInsuranceLandlord'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/brandverzekeringen/verhuurder")
+        }, {
+          text: t('nav.theftInsurance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/brandverzekeringen/diefstalverzekering")
+        }, {
+          text: t('nav.homiris'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/homiris")
+        }, {
+          text: t('nav.legalAssistanceInsurance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/brandverzekeringen/rechtsbijstand")
+        }, {
+          text: t('nav.allSolutions'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/brandverzekeringen")
+        }]
       }, {
-        text: "Financieel beschermen van uw dierbaren",
-        href: "/nl/public/particulieren/sparen-en-beleggen/financiele-bescherming"
-      }]
+        title: t('nav.mobilityProtection'),
+        links: [{
+          text: t('nav.carInsurance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/voertuigverzekeringen/auto/burgerlijke-aansprakelijkheid")
+        }, {
+          text: t('nav.carOmnium'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/voertuigverzekeringen/auto/omnium")
+        }, {
+          text: t('nav.carLegalAssistance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/voertuigverzekeringen/auto/rechtsbijstand")
+        }, {
+          text: t('nav.bikeInsurance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/voertuigverzekeringen/fietsverzekering")
+        }, {
+          text: t('nav.motorcycleInsurance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/voertuigverzekeringen/motorverzekering")
+        }, {
+          text: t('nav.mopedInsurance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/voertuigverzekeringen/bromfietsverzekering")
+        }, {
+          text: t('nav.roadsideAssistance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/pechverhelping-bijstand-touring")
+        }, {
+          text: t('nav.allSolutions'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/voertuigverzekeringen")
+        }]
+      }],
+      expertise: {
+        title: t('nav.ourExpertise'),
+        content: [{
+          text: t('nav.familyInsurance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/familiale-verzekeringen/top-familiale")
+        }, {
+          text: t('nav.homeInsuranceOwner'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/brandverzekeringen/eigenaar")
+        }, {
+          text: t('nav.carInsurance'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/voertuigverzekeringen/auto/burgerlijke-aansprakelijkheid")
+        }, {
+          text: t('nav.allSolutions'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren")
+        }]
+      },
+      banner: {
+        title: "Wist u dat ...",
+        subtitle: "",
+        description: "u ook kunt verzekeren voor zachte mobiliteit?",
+        cta: "Ontdek onze fietsverzekering",
+        href: getLocalizedHref("/nl/public/particulieren/verzekeren/voertuigverzekeringen/fietsverzekering")
+      }
     }, {
-      title: "Onze beleggingsoplossingen",
-      links: [{
-        text: "Aanbod van de maand",
-        href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsaanbod"
-      }, {
-        text: "Beleggingsnieuws",
-        href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsnieuws"
-      }, {
-        text: "Spaarrekeningen",
-        href: "/nl/public/particulieren/sparen-en-beleggen/spaarrekening-vergelijken"
-      }, {
-        text: "Aandelen",
-        href: "/nl/public/particulieren/sparen-en-beleggen/aandelen"
-      }, {
-        text: "Beleggingsfondsen",
-        href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsfondsen"
-      }, {
-        text: "Financiële levensverzekeringen",
-        href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsverzekeringen"
-      }, {
-        text: "Kasbons",
-        href: "/nl/public/particulieren/sparen-en-beleggen/kasbon"
-      }, {
-        text: "Obligaties",
-        href: "/nl/public/particulieren/sparen-en-beleggen/obligaties"
-      }, {
-        text: "Gestructureerde producten",
-        href: "/nl/public/particulieren/sparen-en-beleggen/gestructureerde-producten"
-      }, {
-        text: "Al onze oplossingen",
-        href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsproducten"
-      }]
-    }],
-    expertise: {
-      title: "Onze expertise",
-      content: [{
-        text: "Beginnen sparen of beleggen?",
-        href: "https://mylife.bnpparibasfortis.be/nl/budget/starten-met-sparen-of-beleggen"
-      }, {
-        text: "Sparen voor uw pensioen : wat moet u weten?",
-        href: "https://www.bnpparibasfortis.be/nl/public/article/sparen-en-beleggen/pensioensparen-wat-moet-u-weten"
-      }, {
-        text: "Expertise via Private Banking",
-        href: "/nl/public/private-banking/vermogensbeheer/vermogensplanning"
-      }, {
-        text: "Priority Banking Exclusive",
-        href: "/nl/public/particulieren/dagelijks-bankieren/priority-banking-exclusive"
-      }, {
-        text: "Advies op afstand of face-to-face",
-        href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten"
-      }]
-    },
-    banner: {
-      title: "Wist u dat ...",
-      subtitle: "",
-      description: "u de financiële actualiteit kan volgen?",
-      cta: "Volg het beleggingsnieuws op de voet",
-      href: "/nl/public/particulieren/sparen-en-beleggen/beleggingsnieuws"
-    }
-  }, {
-    title: "Lenen",
-    sections: [{
-      title: "Lenen voor een vastgoedproject",
-      links: [{
-        text: "Hypothecair krediet",
-        href: "/nl/public/particulieren/lenen/woonlening/hypothecaire-lening"
-      }, {
-        text: "Energielening",
-        href: "/nl/public/particulieren/lenen/woonlening/energielening"
-      }, {
-        text: "Renovatielening",
-        href: "/nl/public/particulieren/lenen/woonlening/renovatielening"
-      }, {
-        text: "Overbruggingskrediet",
-        href: "/nl/public/particulieren/lenen/woonlening/overbruggingskrediet"
-      }, {
-        text: "Al onze oplossingen",
-        href: "/nl/public/particulieren/lenen/woonlening"
-      }]
-    }, {
-      title: "Lenen voor een voertuig",
-      links: [{
-        text: "Lening op afbetaling voor een nieuw voertuig",
-        href: "/nl/public/particulieren/lenen/autolening/simulatie"
-      }, {
-        text: "Lening op afbetaling voor een tweedehands voertuig",
-        href: "/nl/public/particulieren/lenen/autolening/tweedehands"
-      }, {
-        text: "Lening op afbetaling voor een fiets en zachte mobiliteit",
-        href: "/nl/public/particulieren/lenen/autolening/fietslening"
-      }, {
-        text: "Private lease",
-        href: "/nl/public/particulieren/lenen/autolening/leasing"
-      }, {
-        text: "Al onze oplossingen",
-        href: "/nl/public/particulieren/lenen/autolening"
-      }]
-    }, {
-      title: "Lenen voor een project",
-      links: [{
-        text: "Persoonlijke lening - Lening op afbetaling",
-        href: "/nl/public/particulieren/lenen/persoonlijke-lening"
-      }, {
-        text: "Kredietopening",
-        href: "/nl/public/particulieren/lenen/geldreserve"
-      }, {
-        text: "Al onze oplossingen",
-        href: "/nl/public/particulieren/lenen/geldreserve"
-      }]
-    }],
-    expertise: {
-      title: "Onze expertise",
-      content: [{
-        text: "Alles weten over duurzaam wonen",
-        href: "https://mylife.bnpparibasfortis.be/nl/uw-vastgoedproject"
-      }, {
-        text: "Alles weten over duurzame mobiliteit",
-        href: "https://mylife.bnpparibasfortis.be/nl/mobiliteit"
-      }, {
-        text: "Alles weten over budgetbeheer",
-        href: "https://mylife.bnpparibasfortis.be/nl/budget"
-      }, {
-        text: "Advies op afstand of face-to-face",
-        href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten"
-      }]
-    },
-    banner: {
-      title: "Een EPC-certificaat?",
-      subtitle: "",
-      description: "Reken op de experts van SoSimply.",
-      cta: "Meer weten",
-      href: "/nl/public/campagne/conformiteitsattest-woning"
-    }
-  }, {
-    title: "Verzekeren",
-    sections: [{
-      title: "Beschermen van uw gezin",
-      links: [{
-        text: "Familiale verzekering",
-        href: "/nl/public/particulieren/verzekeren/familiale-verzekeringen/top-familiale"
-      }, {
-        text: "Globale rechtsbijstand",
-        href: "/nl/public/particulieren/verzekeren/familiale-verzekeringen/providis-globale-rechtsbijstand"
-      }, {
-        text: "Hospitalisatieverzekering",
-        href: "/nl/public/particulieren/verzekeren/hospitalisatieverzekering"
-      }, {
-        text: "Ongevallenverzekering",
-        href: "/nl/public/particulieren/verzekeren/familiale-verzekeringen/ongevallenverzekering"
-      }, {
-        text: "Reisverzekering",
-        href: "/nl/public/particulieren/verzekeren/reisverzekering"
-      }, {
-        text: "Levens- en overlijdensverzekeringen",
-        href: "/nl/public/particulieren/verzekeren/levensverzekering"
-      }, {
-        text: "Al onze oplossingen",
-        href: "/nl/public/particulieren/verzekeren/familie-verzekeringen"
-      }]
-    }, {
-      title: "Beschermen van uw woning",
-      links: [{
-        text: "Woningverzekering eigenaar",
-        href: "/nl/public/particulieren/verzekeren/brandverzekeringen/eigenaar"
-      }, {
-        text: "Woningverzekering huurder",
-        href: "/nl/public/particulieren/verzekeren/brandverzekeringen/huurder"
-      }, {
-        text: "Woningverzekering verhuurder",
-        href: "/nl/public/particulieren/verzekeren/brandverzekeringen/verhuurder"
-      }, {
-        text: "Diefstalverzekering",
-        href: "/nl/public/particulieren/verzekeren/brandverzekeringen/diefstalverzekering"
-      }, {
-        text: "Homiris telebewaking",
-        href: "/nl/public/particulieren/verzekeren/homiris"
-      }, {
-        text: "Rechtsbijstandsverzekering",
-        href: "/nl/public/particulieren/verzekeren/brandverzekeringen/rechtsbijstand"
-      }, {
-        text: "Al onze oplossingen",
-        href: "/nl/public/particulieren/verzekeren/brandverzekeringen"
-      }]
-    }, {
-      title: "Beschermen van uw mobiliteit",
-      links: [{
-        text: "Autoverzekering",
-        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/auto/burgerlijke-aansprakelijkheid"
-      }, {
-        text: "Omniumverzekering auto",
-        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/auto/omnium"
-      }, {
-        text: "Rechtsbijstandsverzekering auto",
-        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/auto/rechtsbijstand"
-      }, {
-        text: "Fietsverzekering en zachte mobiliteit",
-        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/fietsverzekering"
-      }, {
-        text: "Motorverzekeringen",
-        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/motorverzekering"
-      }, {
-        text: "Bromfietsverzekeringen",
-        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen/bromfietsverzekering"
-      }, {
-        text: "Pechverhelping",
-        href: "/nl/public/particulieren/verzekeren/pechverhelping-bijstand-touring"
-      }, {
-        text: "Al onze oplossingen",
-        href: "/nl/public/particulieren/verzekeren/voertuigverzekeringen"
-      }]
-    }],
-    expertise: {
-      title: "Onze expertise",
-      content: [{
-        text: "Aangifte van een schadegeval",
-        href: "/nl/public/particulieren/verzekeren/schadeaangifte"
-      }, {
-        text: "Gratis check-up van uw verzekeringen",
-        href: "/nl/public/particulieren/campagne/check-up-verzekering"
-      }, {
-        text: "Beveilig uw thuis",
-        href: "https://mylife.bnpparibasfortis.be/nl/beschermen-van-u-en-uw-woning"
-      }, {
-        text: "Bescherm uw gezin bij overlijden",
-        href: "https://mylife.bnpparibasfortis.be/nl/family/bescherm-uw-familie-bij-overlijden"
-      }, {
-        text: "Preventietips natuurrampen",
-        href: "https://mylife.bnpparibasfortis.be/nl/al-mijn-verzekeringen/preventie-natuurramp"
-      }, {
-        text: "Advies op afstand of face-to-face",
-        href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten"
-      }]
-    },
-    banner: {
-      title: "Een EPC-certificaat?",
-      subtitle: "",
-      description: "Reken op de experts van SoSimply.",
-      cta: "Meer weten",
-      href: "/nl/public/campagne/conformiteitsattest-woning"
-    }
-  }, {
-    title: "Aan uw zijde",
-    sections: [{
-      title: "Uw behoeften",
-      links: [{
-        text: "Mobiliteit",
-        href: "https://mylife.bnpparibasfortis.be/nl/mobiliteit"
-      }, {
-        text: "Wonen",
-        href: "https://mylife.bnpparibasfortis.be/nl/uw-vastgoedproject"
-      }, {
-        text: "Budget",
-        href: "https://mylife.bnpparibasfortis.be/nl/budget"
-      }, {
-        text: "Gezin",
-        href: "https://mylife.bnpparibasfortis.be/nl/family"
-      }, {
-        text: "Betaalmiddelen",
-        href: "https://mylife.bnpparibasfortis.be/nl/nieuwe-betaalmiddelen"
-      }, {
-        text: "Studeren in het buitenland",
-        href: "https://mylife.bnpparibasfortis.be/nl/studeren-in-het-buitenland"
-      }, {
-        text: "Een overlijden aangeven",
-        href: "/nl/public/particulieren/overlijden"
-      }]
-    }, {
-      title: "Aanpak op maat",
-      links: [{
-        text: "De bank voor jongeren",
-        href: "/nl/public/particulieren/dagelijks-bankieren/bank-voor-jongeren"
-      }, {
-        text: "Priority Banking Exclusive",
-        href: "/nl/public/particulieren/dagelijks-bankieren/priority-banking-exclusive"
-      }, {
-        text: "Expat in België",
-        href: "/nl/public/particulieren/expats"
-      }, {
-        text: "Bank voor iedereen",
-        href: "/nl/public/particulieren/toegankelijkheid-bank"
-      }]
-    }, {
-      title: "Online en mobiele bank",
-      links: [{
-        text: "Easy Banking App",
-        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app"
-      }, {
-        text: "Selfbanking met Easy Banking App en Web",
-        href: "/nl/public/particulieren/dagelijks-bankieren/zelf-bankieren"
-      }, {
-        text: "Beheer uw budget met Easy Banking App",
-        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app/budgetbeheer-tool"
-      }, {
-        text: "Easy Banking Web",
-        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-web"
-      }, {
-        text: "Contactloos betalen",
-        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/mobiel-betalen"
-      }, {
-        text: "Veilig online",
-        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/online-veiligheid"
-      }]
-    }],
-    expertise: {
-      title: "Contacteer ons",
-      content: [{
-        text: "Aangifte van een schadegeval",
-        href: "/nl/public/particulieren/verzekeren/schadeaangifte"
-      }, {
-        text: "Advies op afstand of face-to-face",
-        href: "/nl/public/particulieren/dagelijks-bankieren/onze-diensten"
-      }, {
-        text: "Uw adviseurs via videogesprek",
-        href: "/nl/public/particulieren/dagelijks-bankieren/videogesprek"
-      }, {
-        text: "Een expert aan de lijn",
-        href: "/nl/public/particulieren/dagelijks-bankieren/bankadviseur"
-      }, {
-        text: "CASH-punten netwerk",
-        href: "/nl/public/particulieren/dagelijks-bankieren/betalingen/bankautomaat/points-cash"
-      }]
-    },
-    banner: {
-      title: "Wist u dat ...",
-      subtitle: "",
-      description: "u nu kan huren, en later kopen?",
-      cta: "Ontdek HappyNest",
-      href: "/nl/public/particulieren/campagne/happynest"
-    }
-  }];
+      title: t('nav.byYourSide'),
+      sections: [{
+        title: t('nav.yourNeeds'),
+        links: [{
+          text: t('nav.mobility'),
+          href: "https://mylife.bnpparibasfortis.be/nl/mobiliteit"
+        }, {
+          text: t('nav.housing'),
+          href: "https://mylife.bnpparibasfortis.be/nl/uw-vastgoedproject"
+        }, {
+          text: t('nav.budget'),
+          href: "https://mylife.bnpparibasfortis.be/nl/budget"
+        }, {
+          text: t('nav.family'),
+          href: "https://mylife.bnpparibasfortis.be/nl/family"
+        }, {
+          text: t('nav.paymentMethods2'),
+          href: "https://mylife.bnpparibasfortis.be/nl/nieuwe-betaalmiddelen"
+        }, {
+          text: t('nav.studyAbroad'),
+          href: "https://mylife.bnpparibasfortis.be/nl/studeren-in-het-buitenland"
+        }, {
+          text: t('nav.deathNotification'),
+          href: getLocalizedHref("/nl/public/particulieren/overlijden")
+        }]
+      }, {
+        title: t('nav.customApproach'),
+        links: [{
+          text: t('nav.youthBank'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/bank-voor-jongeren")
+        }, {
+          text: t('nav.priorityBanking'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/priority-banking-exclusive")
+        }, {
+          text: t('nav.expat'),
+          href: getLocalizedHref("/nl/public/particulieren/expats")
+        }, {
+          text: t('nav.bankForEveryone'),
+          href: getLocalizedHref("/nl/public/particulieren/toegankelijkheid-bank")
+        }]
+      }, {
+        title: t('nav.onlineMobile'),
+        links: [{
+          text: t('nav.easyBankingApp'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app")
+        }, {
+          text: t('nav.selfBanking'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/zelf-bankieren")
+        }, {
+          text: t('nav.budgetManagement'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-app/budgetbeheer-tool")
+        }, {
+          text: t('nav.easyBankingWeb'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/easy-banking-web")
+        }, {
+          text: t('nav.contactlessPay'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/mobiel-betalen")
+        }, {
+          text: t('nav.secureOnline'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/online-veiligheid")
+        }]
+      }],
+      expertise: {
+        title: t('nav.contactUs'),
+        content: [{
+          text: t('nav.damageReport'),
+          href: getLocalizedHref("/nl/public/particulieren/verzekeren/schadeaangifte")
+        }, {
+          text: t('nav.remoteAdvice'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/onze-diensten")
+        }, {
+          text: t('nav.videoConsultation'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/videogesprek")
+        }, {
+          text: t('nav.expertOnLine'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/bankadviseur")
+        }, {
+          text: t('nav.cashNetwork'),
+          href: getLocalizedHref("/nl/public/particulieren/dagelijks-bankieren/betalingen/bankautomaat/points-cash")
+        }]
+      },
+      banner: {
+        title: "Wist u dat ...",
+        subtitle: "",
+        description: "u nu kan huren, en later kopen?",
+        cta: "Ontdek HappyNest",
+        href: getLocalizedHref("/nl/public/particulieren/campagne/happynest")
+      }
+    }];
+  }, [language, t]);
   const toggleMobileSection = (title: string) => {
     setExpandedMobileSection(expandedMobileSection === title ? null : title);
   };
@@ -511,20 +559,29 @@ const BNPNavigation = memo(() => {
             <div className="flex items-center">
               <div className="flex items-center space-x-2">
                 <img 
-                  src="/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png" 
+                  src={BNPPFlogo} 
                   alt="BNP Paribas Fortis Logo" 
-                  className="h-10 w-auto"
+                  className="h-10 w-auto cursor-pointer hover:opacity-80 transition-opacity"
                   width="120"
                   height="40"
                   loading="eager"
                   decoding="async"
+                  onClick={() => navigate(getLocalizedUrl(''))}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      navigate(getLocalizedUrl(''));
+                    }
+                  }}
                 />
               </div>
             </div>
 
             {/* Right side utility items */}
             <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
-              <span className="text-xs xl:text-sm text-gray-600">Deze sectie van de site is voor</span>
+              <span className="text-xs xl:text-sm text-gray-600">{t('nav.siteSectionFor')}</span>
               
               {/* Segment Switcher */}
               <DropdownMenu>
@@ -541,7 +598,7 @@ const BNPNavigation = memo(() => {
 
               {/* Contact Link */}
               <a href="/contact" className="text-sm text-financial-green hover:underline">
-                Contacteer ons
+                {t('nav.contactUs')}
               </a>
 
               {/* Language Selector */}
@@ -569,7 +626,7 @@ const BNPNavigation = memo(() => {
                   <Search className="w-5 h-5" />
                 </button>
                 {isSearchOpen && <div className="absolute right-0 top-full mt-2 w-64 bg-white border border-gray-200 rounded-md shadow-lg p-3 z-50">
-                    <Input placeholder="Wat zoekt u?" className="w-full" onKeyDown={e => {
+                    <Input placeholder={t('nav.searchPlaceholder')} className="w-full" onKeyDown={e => {
                   if (e.key === 'Enter') {
                     // Redirect to search results
                     setIsSearchOpen(false);
@@ -590,7 +647,24 @@ const BNPNavigation = memo(() => {
                 <div className="border-b border-gray-100">
                   <div className="flex items-center justify-between h-12 px-4">
                     <div className="flex items-center space-x-2">
-                      <img src="/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png" alt="BNP Paribas Fortis Logo" className="h-10 w-auto" />
+                      <img 
+                        src={BNPPFlogo} 
+                        alt="BNP Paribas Fortis Logo" 
+                        className="h-10 w-auto cursor-pointer hover:opacity-80 transition-opacity" 
+                        onClick={() => {
+                          navigate(getLocalizedUrl(''));
+                          setIsMobileMenuOpen(false);
+                        }}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            navigate(getLocalizedUrl(''));
+                            setIsMobileMenuOpen(false);
+                          }
+                        }}
+                      />
                     </div>
                     <Button variant="ghost" onClick={() => setIsMobileMenuOpen(false)} className="p-2">
                       <X className="w-6 h-6" />
@@ -600,7 +674,7 @@ const BNPNavigation = memo(() => {
 
                 {/* Mobile Search */}
                 <div className="border-b bg-gray-50 px-3 py-1">
-                  <Input placeholder="Wat zoekt u?" className="w-full h-8 text-sm" />
+                  <Input placeholder={t('nav.searchPlaceholder')} className="w-full h-8 text-sm" />
                 </div>
 
                 {/* Mobile Navigation */}
@@ -628,7 +702,7 @@ const BNPNavigation = memo(() => {
                           className="w-full px-4 py-1.5 text-left flex items-center text-financial-green hover:bg-gray-100"
                         >
                           <ChevronRight className="w-4 h-4 rotate-180 mr-2" />
-                          <span className="text-sm">Terug</span>
+                          <span className="text-sm">{t('nav.back')}</span>
                         </button>
                       </div>
                       
@@ -719,20 +793,20 @@ const BNPNavigation = memo(() => {
                 {/* Mobile CTAs */}
                 <div className="p-4 space-y-3 border-t">
                   <Button variant="outline" className="w-full">
-                    Open een rekening
+                    {t('nav.buttons.openAccount')}
                   </Button>
                   <Button className="w-full bg-financial-green hover:bg-financial-green/90">
-                    Aanmelden
+                    {t('nav.buttons.signIn')}
                   </Button>
                   
                   {/* Mobile utility links */}
                   <div className="pt-4 space-y-2 border-t">
-                    <div className="text-sm text-gray-600">Deze sectie van de site is voor</div>
+                    <div className="text-sm text-gray-600">{t('nav.siteSectionFor')}</div>
                     <select value={selectedSegment} onChange={e => setSelectedSegment(e.target.value)} className="w-full p-2 border border-gray-300 rounded">
                       {segments.map(segment => <option key={segment} value={segment}>{segment}</option>)}
                     </select>
                     <div className="flex space-x-4">
-                      <a href="/contact" className="text-sm text-financial-green">Contacteer ons</a>
+                      <a href="/contact" className="text-sm text-financial-green">{t('nav.contactUs')}</a>
                       <select value={language} onChange={e => handleLanguageChange(e.target.value as Language)} className="text-sm border border-gray-300 rounded px-2 py-1">
                         {languages.map(lang => <option key={lang.code} value={lang.code}>{lang.name}</option>)}
                       </select>
@@ -801,10 +875,10 @@ const BNPNavigation = memo(() => {
             {/* CTA Buttons */}
             <div className="flex items-center space-x-3">
               <Button variant="outline" className="border-financial-green text-financial-green hover:bg-financial-green hover:text-white">
-                Open een rekening
+                {t('nav.buttons.openAccount')}
               </Button>
               <Button className="bg-financial-green hover:bg-financial-green/90 text-slate-50 bg-emerald-700 hover:bg-emerald-600">
-                Aanmelden
+                {t('nav.buttons.signIn')}
               </Button>
             </div>
           </div>

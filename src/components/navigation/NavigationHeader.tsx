@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 import { Search, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import BNPPFlogo from "@/assets/BNPPFlogo.png";
 
 interface NavigationHeaderProps {
   selectedSegment: string;
@@ -33,7 +33,7 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = memo(({
           <div className="flex items-center">
             <div className="flex items-center space-x-2">
               <img 
-                src="/lovable-uploads/446ebfd0-a105-4b75-9e1b-125facf1606c.png" 
+                src={BNPPFlogo} 
                 alt="BNP Paribas Fortis Logo" 
                 className="h-10 w-auto"
                 width="120"
