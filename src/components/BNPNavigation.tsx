@@ -48,16 +48,21 @@ const BNPNavigation = memo(() => {
   const handleLanguageChange = (langCode: Language) => {
     setLanguage(langCode);
     
-    // Get the current path and extract the route without language prefix
+    // Get the current path
     const currentPath = window.location.pathname;
-    let routePath = '';
     
     // Handle both development and production basenames
     const basename = import.meta.env.PROD ? '/bnp-clone' : '';
-    const pathWithoutBasename = basename ? currentPath.replace(basename, '') : currentPath;
+    
+    // Remove basename from current path if it exists
+    let pathWithoutBasename = currentPath;
+    if (basename && currentPath.startsWith(basename)) {
+      pathWithoutBasename = currentPath.slice(basename.length);
+    }
     
     // Extract the route path (remove language prefix)
     const langMatch = pathWithoutBasename.match(/^\/([a-z]{2})(\/.*)?$/);
+    let routePath = '';
     
     if (langMatch) {
       // If there's a language prefix, extract the route part
@@ -67,7 +72,7 @@ const BNPNavigation = memo(() => {
       routePath = pathWithoutBasename;
     }
     
-    // Ensure routePath starts with / if it's not empty
+    // Ensure routePath starts with / if it's not empty and doesn't already start with /
     if (routePath && !routePath.startsWith('/')) {
       routePath = `/${routePath}`;
     }
