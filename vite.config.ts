@@ -18,4 +18,15 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+    // Add cache busting
+    assetsDir: 'assets',
+    // Ensure fresh builds
+    emptyOutDir: true,
+  },
 }));
