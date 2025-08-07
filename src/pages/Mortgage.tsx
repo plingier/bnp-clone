@@ -234,7 +234,7 @@ const Mortgage = () => {
           title="De schuldsaldoverzekering"
           description="Voor velen is de aankoop van hun eigen woning een levenswerk. We willen dat door niks laten verstoren. Met de schuldsaldoverzekering kunnen u en uw familie er in alle gemoedsrust van genieten."
           buttonText="Meer weten"
-          buttonHref="/verzekeringen"
+          buttonHref="/bnp-clone/verzekeringen"
         />
 
         {/* Flexible Lending Section */}
@@ -344,28 +344,28 @@ const Mortgage = () => {
               image={{ src: "/placeholder.svg", alt: "Renovatielening" }}
               title="Renovatielening"
               description="Wilt u uw huis omtoveren volgens uw eigen wensen? Bij ons financiert u uw renovatiewerken tegen een interessant tarief."
-              button={{ text: "Ontdek de Renovatielening", href: "/renovatielening" }}
+              button={{ text: "Ontdek de Renovatielening", href: "/bnp-clone/renovatielening" }}
             />
             
             <ProductCard
               image={{ src: "/placeholder.svg", alt: "Energielening" }}
               title="Energielening"
               description="Isolatie, zonnepanelen, een groendak... Wilt u het energieverbruik van uw woning verlagen en het wooncomfort vergroten?"
-              button={{ text: "Ontdek de Energielening", href: "/energielening" }}
+              button={{ text: "Ontdek de Energielening", href: "/bnp-clone/energielening" }}
             />
             
             <ProductCard
               image={{ src: "/placeholder.svg", alt: "Verzekering Top Woning" }}
               title="Verzekering Top Woning"
               description="De brandverzekering Top Woning van AG biedt u gemoedsrust. Deze brandverzekering dekt uw woning en inboedel."
-              button={{ text: "Ontdek de verzekering", href: "/verzekeringen" }}
+              button={{ text: "Ontdek de verzekering", href: "/bnp-clone/verzekeringen" }}
             />
             
             <ProductCard
               image={{ src: "/placeholder.svg", alt: "SoSimply certificaten" }}
               title="SoSimply certificaten"
               description="Een nieuw EPC-certificaat, asbestattest of keuringsattest voor elektriciteit of gas nodig? Reken op de erkende professionals."
-              button={{ text: "Alles over SoSimply", href: "/sosimply" }}
+              button={{ text: "Alles over SoSimply", href: "/bnp-clone/sosimply" }}
             />
           </div>
         </section>
@@ -376,7 +376,7 @@ const Mortgage = () => {
           title="Van uw budget naar een hypothecair krediet tot het verzekeren van uw woning"
           description="Hoeveel kan ik juist lenen? Hoe werkt een hypothecair krediet? Hoe bescherm ik mijn woning? We geven u het antwoord op deze en vele andere vragen."
           buttonText="Vertel me meer"
-          buttonHref="/gids"
+          buttonHref="/bnp-clone/gids"
         />
 
         {/* Legal Information */}

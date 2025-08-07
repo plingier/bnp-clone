@@ -108,7 +108,10 @@ const BNPNavigation = memo(() => {
     const getLocalizedHref = (baseHref: string) => {
       // Replace language prefix in URLs
       const langPrefix = language === 'nl' ? 'nl' : language === 'fr' ? 'fr' : language === 'en' ? 'en' : 'pl';
-      return baseHref.replace(/^\/[a-z]{2}\//, `/${langPrefix}/`);
+      const localizedPath = baseHref.replace(/^\/[a-z]{2}\//, `/${langPrefix}/`);
+      
+      // Always add /bnp-clone/ prefix
+      return `/bnp-clone${localizedPath}`;
     };
 
     return [{

@@ -306,7 +306,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
             </select>
             <div className="flex space-x-4">
               <a 
-                href="/contact" 
+                href="/bnp-clone/contact" 
                 className="text-sm text-financial-green focus:outline-none focus:ring-2 focus:ring-financial-green focus:ring-offset-2 rounded"
                 aria-label="Contacteer ons voor hulp en vragen"
               >

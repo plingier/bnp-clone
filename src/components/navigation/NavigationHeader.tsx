@@ -74,7 +74,7 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = memo(({
 
             {/* Contact Link */}
             <a 
-              href="/contact" 
+              href="/bnp-clone/contact" 
               className="text-sm text-financial-green hover:underline focus:outline-none focus:ring-2 focus:ring-financial-green focus:ring-offset-2 rounded"
               aria-label="Contacteer ons voor hulp en vragen"
             >
