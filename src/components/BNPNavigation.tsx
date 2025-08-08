@@ -295,7 +295,7 @@ const BNPNavigation = memo(() => {
         title: t('nav.realEstate'),
         links: [{
           text: t('nav.mortgageCredit'),
-          href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/hypothecaire-lening")
+          href: getLocalizedHref("/nl/hypothecair-krediet")
         }, {
           text: t('nav.energyLoan'),
           href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/energielening")
@@ -344,7 +344,7 @@ const BNPNavigation = memo(() => {
         title: t('nav.ourExpertise'),
         content: [{
           text: t('nav.mortgageCredit'),
-          href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/hypothecaire-lening")
+          href: getLocalizedHref("/nl/hypothecair-krediet")
         }, {
           text: t('nav.energyLoan'),
           href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/energielening")

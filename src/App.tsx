@@ -56,13 +56,14 @@ const App = () => (
             <Route path="/:lang" element={<LanguageLayout />}>
               <Route index element={<Index />} />
               <Route path="test" element={<Test />} />
-              <Route path="hypothecair-krediet" element={<Mortgage />} />
+              <Route path="public/*" element={<Mortgage />} />
+              <Route path="hypothecaire-lening" element={<Mortgage />} />
               <Route path="*" element={<NotFound />} />
             </Route>
             
             {/* Legacy routes - redirect to default language */}
             <Route path="/test" element={<Navigate to="/en/test" replace />} />
-            <Route path="/hypothecair-krediet" element={<Navigate to="/en/hypothecair-krediet" replace />} />
+            <Route path="/bnp-clone/hypothecair-krediet" element={<Navigate to="/bnp-clone/en/hypothecair-krediet" replace />} />
             
             {/* Catch all - redirect to 404 in default language */}
             <Route path="*" element={<Navigate to="/en/404" replace />} />

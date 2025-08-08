@@ -47,7 +47,7 @@ const Index = () => {
               title={t('banner.winAirpods.title')}
               description={t('banner.winAirpods.description')}
               buttonText={t('banner.winAirpods.button')}
-              buttonHref="#simulatie"
+              buttonHref="test"
               variant="full"
             />
           </BannerContainer>
@@ -108,7 +108,7 @@ const Index = () => {
               image: { src: "https://www.bnpparibasfortis.be/media/images/R2/credit-energie2.jpg", alt: t('productcard.housing.title') },
               title: t('productcard.housing.title'),
               description: t('productcard.housing.description'),
-              button: { text: t('productcard.housing.button'), href: "#woning" },
+              button: { text: t('productcard.housing.button'), href: "hypothecaire-lening" },
             },
             {
               image: { src: "https://www.bnpparibasfortis.be/media/images/R2/assurance-moto-pri-p.jpg", alt: t('productcard.budget.title') },

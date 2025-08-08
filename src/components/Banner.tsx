@@ -26,7 +26,7 @@ const Banner: React.FC<BannerProps> = memo(({
     if (onButtonClick) {
       onButtonClick();
     } else if (buttonHref) {
-      window.open(buttonHref, '_blank');
+      window.location.href = buttonHref;
     }
   }, [onButtonClick, buttonHref]);
 

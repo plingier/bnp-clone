@@ -341,28 +341,28 @@ const Mortgage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <ProductCard
-              image={{ src: "/placeholder.svg", alt: "Renovatielening" }}
+              image={{ src: "https://www.bnpparibasfortis.be/public/media/images/R2/pret-renovation3.jpg", alt: "Renovatielening" }}
               title="Renovatielening"
               description="Wilt u uw huis omtoveren volgens uw eigen wensen? Bij ons financiert u uw renovatiewerken tegen een interessant tarief."
               button={{ text: "Ontdek de Renovatielening", href: "/bnp-clone/renovatielening" }}
             />
             
             <ProductCard
-              image={{ src: "/placeholder.svg", alt: "Energielening" }}
+              image={{ src: "https://www.bnpparibasfortis.be/public/media/images/R2/pret-renovation3.jpg", alt: "Energielening" }}
               title="Energielening"
               description="Isolatie, zonnepanelen, een groendak... Wilt u het energieverbruik van uw woning verlagen en het wooncomfort vergroten?"
               button={{ text: "Ontdek de Energielening", href: "/bnp-clone/energielening" }}
             />
             
             <ProductCard
-              image={{ src: "/placeholder.svg", alt: "Verzekering Top Woning" }}
+              image={{ src: "https://www.bnpparibasfortis.be/public/media/images/R2/pret-renovation3.jpg", alt: "Verzekering Top Woning" }}
               title="Verzekering Top Woning"
               description="De brandverzekering Top Woning van AG biedt u gemoedsrust. Deze brandverzekering dekt uw woning en inboedel."
               button={{ text: "Ontdek de verzekering", href: "/bnp-clone/verzekeringen" }}
             />
             
             <ProductCard
-              image={{ src: "/placeholder.svg", alt: "SoSimply certificaten" }}
+              image={{ src: "https://www.bnpparibasfortis.be/public/media/images/R2/pret-renovation3.jpg", alt: "SoSimply certificaten" }}
               title="SoSimply certificaten"
               description="Een nieuw EPC-certificaat, asbestattest of keuringsattest voor elektriciteit of gas nodig? Reken op de erkende professionals."
               button={{ text: "Alles over SoSimply", href: "/bnp-clone/sosimply" }}

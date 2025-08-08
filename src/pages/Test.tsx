@@ -13,7 +13,7 @@ const Test = () => {
   return (
     <div className="min-h-screen bg-background">
       <BNPNavigation />
-      <ProductHeader />
+      
       
       {/* TitleWidth Component Examples */}
       <div className="space-y-16 py-16">
@@ -47,6 +47,8 @@ const Test = () => {
           description="Een of twee houders, met debet- en/of kredietkaarten*, toegang tot online en mobiel bankieren ... Ontdek de basisinhoud van onze verschillende betaalrekeningen, die u naar wens kunt personaliseren."
         />
         
+        <ProductHeader />
+
         {/* RichText Component Examples */}
         <div className="space-y-16">
           <RichText
@@ -74,7 +76,7 @@ const Test = () => {
           
           <RichText
             image={{
-              src: "/lovable-uploads/4d9b0298-f3f2-425f-927e-dc2df46d839d.png",
+              src: bankingAppImage,
               alt: "Banking services illustration"
             }}
             title="Digitaal bankieren gemaakt eenvoudig"
