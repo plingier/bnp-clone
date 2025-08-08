@@ -13,9 +13,10 @@ const BNPNavigation = memo(() => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedSegment, setSelectedSegment] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
+  const [expandedMobileSection, setExpandedMobileSection] = useState<number | null>(null);
   const [currentMobileView, setCurrentMobileView] = useState<'main' | 'sections'>('main');
   const [selectedMainCategory, setSelectedMainCategory] = useState<any>(null);
+  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState<number | null>(null);
   
   const { language, setLanguage, t, getLocalizedUrl } = useLanguage();
   const navigate = useNavigate();
@@ -85,8 +86,9 @@ const BNPNavigation = memo(() => {
     navigate(newPath, { replace: true });
   };
 
-  const handleMainCategoryClick = useCallback((item: any) => {
+  const handleMainCategoryClick = useCallback((item: any, index: number) => {
     setSelectedMainCategory(item);
+    setSelectedCategoryIndex(index);
     setCurrentMobileView('sections');
     setExpandedMobileSection(null);
   }, []);
@@ -94,12 +96,13 @@ const BNPNavigation = memo(() => {
   const handleBackToMain = useCallback(() => {
     setCurrentMobileView('main');
     setSelectedMainCategory(null);
+    setSelectedCategoryIndex(null);
     setExpandedMobileSection(null);
   }, []);
 
-  const handleToggleMobileSection = useCallback((sectionTitle: string) => {
+  const handleToggleMobileSection = useCallback((sectionIndex: number) => {
     setExpandedMobileSection(
-      expandedMobileSection === sectionTitle ? null : sectionTitle
+      expandedMobileSection === sectionIndex ? null : sectionIndex
     );
   }, [expandedMobileSection]);
 
@@ -295,7 +298,7 @@ const BNPNavigation = memo(() => {
         title: t('nav.realEstate'),
         links: [{
           text: t('nav.mortgageCredit'),
-          href: getLocalizedHref("/nl/hypothecair-krediet")
+          href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/hypothecaire-lening")
         }, {
           text: t('nav.energyLoan'),
           href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/energielening")
@@ -344,7 +347,7 @@ const BNPNavigation = memo(() => {
         title: t('nav.ourExpertise'),
         content: [{
           text: t('nav.mortgageCredit'),
-          href: getLocalizedHref("/nl/hypothecair-krediet")
+          href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/hypothecaire-lening")
         }, {
           text: t('nav.energyLoan'),
           href: getLocalizedHref("/nl/public/particulieren/lenen/woonlening/energielening")
@@ -555,9 +558,17 @@ const BNPNavigation = memo(() => {
       }
     }];
   }, [language, t]);
-  const toggleMobileSection = (title: string) => {
-    setExpandedMobileSection(expandedMobileSection === title ? null : title);
-  };
+
+  // Update selectedMainCategory when language changes to ensure submenus are translated
+  useEffect(() => {
+    if (selectedCategoryIndex !== null && navigationItems.length > 0 && selectedCategoryIndex < navigationItems.length) {
+      const updatedCategory = navigationItems[selectedCategoryIndex];
+      if (updatedCategory) {
+        setSelectedMainCategory(updatedCategory);
+      }
+    }
+  }, [language, navigationItems, selectedCategoryIndex]);
+
   return (
     <div className="w-full bg-white border-b shadow-sm sticky top-0 z-50">
       {/* Utility Navigation - Top Row */}
@@ -646,7 +657,7 @@ const BNPNavigation = memo(() => {
             </div>
 
             {/* Mobile menu trigger */}
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen} key={language}>
               <SheetTrigger asChild>
                 <Button variant="ghost" className="lg:hidden p-2">
                   <Menu className="w-6 h-6" />
@@ -689,10 +700,10 @@ const BNPNavigation = memo(() => {
                 {/* Mobile Navigation */}
                 <div className="flex-1 overflow-y-auto">
                   {/* Main Categories View */}
-                  {currentMobileView === 'main' && navigationItems.map(item => (
+                  {currentMobileView === 'main' && navigationItems.map((item, index) => (
                     <div key={item.title} className="border-b">
                       <button 
-                        onClick={() => handleMainCategoryClick(item)}
+                        onClick={() => handleMainCategoryClick(item, index)}
                         className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
                       >
                         <span className="font-medium text-gray-900">{item.title}</span>
@@ -724,13 +735,13 @@ const BNPNavigation = memo(() => {
                       {selectedMainCategory.sections.map((section: any, idx: number) => (
                         <div key={idx} className="border-b">
                           <button 
-                            onClick={() => handleToggleMobileSection(section.title)} 
+                            onClick={() => handleToggleMobileSection(idx)} 
                             className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
                           >
                             <span className="font-medium text-gray-900">{section.title}</span>
-                            <ChevronRight className={`w-4 h-4 text-financial-green transition-transform ${expandedMobileSection === section.title ? 'rotate-90' : ''}`} />
+                            <ChevronRight className={`w-4 h-4 text-financial-green transition-transform ${expandedMobileSection === idx ? 'rotate-90' : ''}`} />
                           </button>
-                          {expandedMobileSection === section.title && (
+                          {expandedMobileSection === idx && (
                             <div className="bg-gray-50 border-t border-gray-200">
                               {section.links.map((link: any, linkIdx: number) => (
                                 <a 
@@ -750,13 +761,13 @@ const BNPNavigation = memo(() => {
                       {selectedMainCategory.expertise && (
                         <div className="border-b">
                           <button 
-                            onClick={() => handleToggleMobileSection('expertise')} 
+                            onClick={() => handleToggleMobileSection(-1)} 
                             className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
                           >
                             <span className="font-medium text-gray-900">{selectedMainCategory.expertise.title}</span>
-                            <ChevronRight className={`w-4 h-4 text-financial-green transition-transform ${expandedMobileSection === 'expertise' ? 'rotate-90' : ''}`} />
+                            <ChevronRight className={`w-4 h-4 text-financial-green transition-transform ${expandedMobileSection === -1 ? 'rotate-90' : ''}`} />
                           </button>
-                          {expandedMobileSection === 'expertise' && (
+                          {expandedMobileSection === -1 && (
                             <div className="bg-gray-50 border-t border-gray-200">
                               {selectedMainCategory.expertise.content.map((content: any, idx: number) => (
                                 <a 
@@ -776,13 +787,13 @@ const BNPNavigation = memo(() => {
                       {selectedMainCategory.banner && (
                         <div className="border-b">
                           <button 
-                            onClick={() => handleToggleMobileSection('banner')} 
+                            onClick={() => handleToggleMobileSection(-2)} 
                             className="w-full px-4 py-4 text-left flex items-center justify-between hover:bg-gray-50"
                           >
                             <span className="font-medium text-gray-900">{selectedMainCategory.banner.title}</span>
-                            <ChevronRight className={`w-4 h-4 text-financial-green transition-transform ${expandedMobileSection === 'banner' ? 'rotate-90' : ''}`} />
+                            <ChevronRight className={`w-4 h-4 text-financial-green transition-transform ${expandedMobileSection === -2 ? 'rotate-90' : ''}`} />
                           </button>
-                          {expandedMobileSection === 'banner' && (
+                          {expandedMobileSection === -2 && (
                             <div className="bg-gray-50 border-t border-gray-200 px-4 py-4">
                               <p className="text-sm text-gray-600 mb-3">{selectedMainCategory.banner.description}</p>
                               <a 
