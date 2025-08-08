@@ -108,7 +108,7 @@ const Index = () => {
               image: { src: "https://www.bnpparibasfortis.be/media/images/R2/credit-energie2.jpg", alt: t('productcard.housing.title') },
               title: t('productcard.housing.title'),
               description: t('productcard.housing.description'),
-              button: { text: t('productcard.housing.button'), href: getLocalizedUrl("hypothecaire-lening") },
+              button: { text: t('productcard.housing.button'), href: `/bnp-clone${getLocalizedUrl("hypothecaire-lening")}` },
             },
             {
               image: { src: "https://www.bnpparibasfortis.be/media/images/R2/assurance-moto-pri-p.jpg", alt: t('productcard.budget.title') },
