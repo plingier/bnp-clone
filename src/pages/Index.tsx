@@ -8,7 +8,7 @@ import { ProductCardGrid } from "@/components/ProductCard";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
-  const { t } = useLanguage();
+  const { t, getLocalizedUrl } = useLanguage();
 
   return (
     <div className="min-h-screen bg-background">
@@ -108,7 +108,7 @@ const Index = () => {
               image: { src: "https://www.bnpparibasfortis.be/media/images/R2/credit-energie2.jpg", alt: t('productcard.housing.title') },
               title: t('productcard.housing.title'),
               description: t('productcard.housing.description'),
-              button: { text: t('productcard.housing.button'), href: "hypothecaire-lening" },
+              button: { text: t('productcard.housing.button'), href: getLocalizedUrl("hypothecaire-lening") },
             },
             {
               image: { src: "https://www.bnpparibasfortis.be/media/images/R2/assurance-moto-pri-p.jpg", alt: t('productcard.budget.title') },
